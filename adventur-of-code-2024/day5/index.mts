@@ -1,8 +1,4 @@
-import { readFile } from "node:fs/promises";
-
-async function read(name: string): Promise<string> {
-  return await readFile(`./${name}`, { encoding: 'utf8' });
-}
+import { read } from '../utils.ts';
 
 async function adventurDay5part1() {
   let contents = await read('./day5/input5.txt');
@@ -49,6 +45,7 @@ async function adventurDay5part1() {
   console.log('sum: ', sum);
 }
 
+// Uncomment to run part 1
 // adventurDay5part1();
 
 // Too much: 11500
@@ -166,4 +163,5 @@ async function adventurDay5part2() {
   console.log('sum: ', sum);
 }
 
+// Uncomment to run part 2
 adventurDay5part2();

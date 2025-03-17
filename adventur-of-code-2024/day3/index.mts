@@ -1,7 +1,4 @@
-import { readFile } from "node:fs/promises";
-async function read(name) {
-  return await readFile(`./${name}`, { encoding: 'utf8' });
-}
+import { read } from '../utils.ts';
 
 async function adventurDay3Part1 () {
   let sum = 0;

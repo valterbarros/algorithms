@@ -1,12 +1,8 @@
 import "core-js/actual/index.js";
-import { readFile } from "node:fs/promises";
-
-async function read(name) {
-    return await readFile(`./${name}`, { encoding: 'utf8' });
-}
+import { read } from '../utils.ts';
 
 async function adventurDay1part1() {
-    const contents = await readFile('./day1/input1.txt', { encoding: 'utf8' });
+    const contents = await read('./day1/input1.txt');
 
     const lists = contents.split(/\s/).reduce((acc, curr, index) => {
         if (!/\d/.test(curr)) return acc;
@@ -37,7 +33,7 @@ async function adventurDay1part1() {
 // adventurDay1part1();
 
 async function adventurDay1part2() {
-    const contents = await readFile('./day1/input1.txt', { encoding: 'utf8' });
+    const contents = await read('./day1/input1.txt');
 
     function recurseIncludes(left, lists, items) {
         const index = lists.right.indexOf(left);
@@ -90,4 +86,4 @@ async function adventurDay1part2() {
 }
 
 // Uncomment to run part 2
-adventurDay1part2();
+// adventurDay1part2();

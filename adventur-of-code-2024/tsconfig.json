@@ -1,7 +1,12 @@
 {
     "compilerOptions": {
-    "noUncheckedIndexedAccess": true,
+        "noUncheckedIndexedAccess": true,
         "verbatimModuleSyntax": false,
-        "types": ["vitest/globals"]
-    }
+        "allowImportingTsExtensions": true
+    },
+    "target": "ESNext",
+    "lib": {
+        "ESNext"
+    },
+    "include": ["**/**/.mts", "./**/.mts"]
 }

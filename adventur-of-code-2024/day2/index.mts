@@ -1,8 +1,4 @@
-import { readFile } from "node:fs/promises";
-
-async function read(name) {
-  return await readFile(`./${name}`, { encoding: 'utf8' });
-}
+import { read } from '../utils.ts';
 
 async function adventurDay2part1() {
   const contents = await read('day2/input2.txt');

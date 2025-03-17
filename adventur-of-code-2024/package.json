@@ -5,6 +5,8 @@
   },
   "dependencies": {
     "core-js": "^3.39.0",
-    "gen-readlines": "^1.0.1"
+    "gen-readlines": "^1.0.1",
+    "typescript": "^5.8.2",
+    "@types/node": "22"
   }
 }
