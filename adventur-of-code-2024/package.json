@@ -1,0 +1,10 @@
+{
+  "type": "module",
+  "scripts": {
+    "ts": "node --experimental-strip-types --experimental-transform-types"
+  },
+  "dependencies": {
+    "core-js": "^3.39.0",
+    "gen-readlines": "^1.0.1"
+  }
+}
