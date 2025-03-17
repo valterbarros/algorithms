@@ -5,8 +5,7 @@
         "allowImportingTsExtensions": true
     },
     "target": "ESNext",
-    "lib": {
+    "lib": [
         "ESNext"
-    },
-    "include": ["**/**/.mts", "./**/.mts"]
+    ],
 }
