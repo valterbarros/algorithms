@@ -126,6 +126,7 @@ void main(List<String> args) async {
   var lineS = list.indexWhere((line) => line.any('^'.contains));
   var colS = list[lineS].indexWhere((char) => char == '^');
 
+  // uncomment to run part 1
   // // part 1
   // var (count, visited, _) = walk(list, lineS, colS, false);
 
@@ -135,6 +136,7 @@ void main(List<String> args) async {
   // // total: 4711
   // print(count);
 
+  // uncomment to run part 2
   // part 2
 
   var (count, visited, _) = walk(list, lineS, colS, false);
