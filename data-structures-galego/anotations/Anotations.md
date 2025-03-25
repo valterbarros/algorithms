@@ -65,6 +65,10 @@ Algoritimos:
 
 ### Linked Lists
 
+- É importante para linguagens mais staticas que definem o tamanho do array na inicialização por exemplo com a linked list é possivel aumentar a lista dinamicamente
+- Double linked lista é quando o no sabe o prev e o next
+- A parte ruim é não ter acesso via index [n]
+
 ---
 
 ### Queue
