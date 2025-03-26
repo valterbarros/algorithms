@@ -5,9 +5,11 @@ void mergeSort(List<int> nums1, int m, List<int> nums2, int n) {
 
   while(i2 >= 0) {
     if (i1 >= 0 && nums1[i1] > nums2[i2]) {
+      print('here ${i1} ${i2}');
       nums1[i1M] = nums1[i1];
       i1--;
     } else {
+      print(i1M);
       nums1[i1M] = nums2[i2];
       i2--;
     }
