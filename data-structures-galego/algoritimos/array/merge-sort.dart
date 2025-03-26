@@ -4,6 +4,7 @@ void mergeSort(List<int> nums1, int m, List<int> nums2, int n) {
   var i1 = m - 1;
 
   while(i2 >= 0) {
+    print('times');
     if (i1 >= 0 && nums1[i1] > nums2[i2]) {
       print('here ${i1} ${i2}');
       nums1[i1M] = nums1[i1];
@@ -14,6 +15,7 @@ void mergeSort(List<int> nums1, int m, List<int> nums2, int n) {
       i2--;
     }
 
+    // Backwards to not override the array items
     i1M--;
   }
 }

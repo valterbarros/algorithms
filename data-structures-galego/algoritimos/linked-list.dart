@@ -10,7 +10,7 @@ class DoublyLinkedList {
   Node? head;
   Node? tail;
 
-  addToFront(int value) {
+  unshift(int value) {
     // 4(new) -> 0 -> 1 -> 2 -> 4;
     var newNode = Node(value);
     if(this.head == null) {
@@ -75,9 +75,9 @@ class DoublyLinkedList {
 void main() {
   var l = DoublyLinkedList();
   // head  2 -> 1 -> 0 -> 5 -> 10 (tail)
-  l.addToFront(0);
-  l.addToFront(1);
-  l.addToFront(2);
+  l.unshift(0);
+  l.unshift(1);
+  l.unshift(2);
   l.push(5);
   l.push(10);
   

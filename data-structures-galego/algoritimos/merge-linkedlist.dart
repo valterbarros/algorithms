@@ -6,38 +6,38 @@ mergeL(List<int> nums1, List<int> nums2) {
   for(var n in nums1) l1.push(n);
   for(var n in nums2) l2.push(n);
 
-  var curr1 = l1.tail;
-  // add zeroes
-  for(var i = 0; i < nums2.length; i++) l1.push(0);
-  // tail after 
-  var tailL1 = l1.tail;
+  var curr1 = l1.head;
 
-  var curr2 = l2.tail;
-  
-  while(curr2 != null) {
-    
-    if (curr1 != null && curr1.value > curr2.value) {
-      tailL1?.value = curr1.value;
+  var curr2 = l2.head;
 
-      curr1 = curr1.prev;
-    } else {
-      tailL1?.value = curr2.value;
+  var l3 = DoublyLinkedList();
 
-      curr2 = curr2.prev;
+  while(curr1 != null || curr2 != null) {
+    if (curr1 != null && (curr2 == null || curr1.value <= curr2.value)) {
+      l3.push(curr1.value);
+
+      curr1 = curr1.next;
+    } else if (curr2 != null) {
+      l3.push(curr2.value);
+
+      curr2 = curr2.next;
     }
-
-    tailL1 = tailL1?.prev;
   }
 
-  return l1;
+  return l3;
 }
 
 main() {
   // head  1 -> 2 -> 4 (tail)
   // head  1 -> 3 -> 4 (tail)
+  // var l1 = mergeL(
+  //  [1,2,4],
+  //  [1,3,4]
+  // );
+
   var l1 = mergeL(
-    [1,2,4],
-    [1,3,4]
+    [5,6,10,12,21],
+    [11,12,20]
   );
 
   var curr = l1.tail;
