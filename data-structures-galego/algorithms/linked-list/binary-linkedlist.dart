@@ -1,4 +1,5 @@
-// https://leetcode.com/problems/remove-duplicates-from-sorted-list?envType=problem-list-v2&envId=linked-list
+// https://leetcode.com/problems/convert-binary-number-in-a-linked-list-to-integer/?envType=problem-list-v2&envId=linked-list
+
 class ListNode {
   int val;
   ListNode? next;
@@ -14,36 +15,35 @@ map(ListNode? head) {
     print('val: ${curr.val}');
 
     curr = curr.next;
-  }  
+  }
 }
- 
-class Solution {
-  ListNode? deleteDuplicates(ListNode? head) {
-    var curr = head;
 
-    while(curr != null) {
-      if (curr.val == curr.next?.val) {
-        print('not equal');
-        curr.next = curr.next!.next;
-      } else {
-        curr = curr.next;
-      }
+class Solution {
+  int getDecimalValue(ListNode? head) {
+    var curr = head;
+    int sum = 0;
+
+    // map(head);
+
+    while (curr != null) {
+      sum = sum * 2 + curr.val;
+
+      curr = curr.next;
     }
     
-    map(head);
-
-    return head;
+    return sum;
   }
 }
 
 main() {
-  // var nums = [1,1,2];
-  var nums = [1,1,2,6,6,7,7,7,7,9];
+  // 2 ** 2 + 0 + 2 ** 0 = 5
+  // var nums = [1,0,1];
+  // 
+  var nums = [0];
 
   ListNode? head = null;
   ListNode? tail = null;
 
-  // populate
   for(var n in nums) {
     var el = ListNode(n);
 
@@ -56,5 +56,6 @@ main() {
     }
   }
 
-  Solution().deleteDuplicates(head);
+  // this solution use HEAD as MSB
+  print(Solution().getDecimalValue(head)); // should print: true
 }

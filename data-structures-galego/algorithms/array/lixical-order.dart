@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/next-permutation/
 void nextPermutation(List<int> nums) {
   var p = 0;
   var swap = false;
@@ -41,7 +42,7 @@ void nextPermutation(List<int> nums) {
 }
 
 void main(List<String> args) {
-  var nums = [2,3,1]; // -> [3,1,2]
+  var nums = [2,3,1,3,3]; // -> FIXME: it is a case where it is wrong -> [2,3,3,3,1]
   // var nums = [1,1,5]; // -> [1,5,1]
   // var nums = [1,2,3]; // -> [1,3,2]
   // var nums = [3,2,1]; // -> [1,2,3]
