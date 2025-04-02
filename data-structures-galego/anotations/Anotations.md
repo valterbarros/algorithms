@@ -120,5 +120,8 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
 ### QuickSort
 
 - Precisa escolher o pivot e ai dividir o array de um lado fica os menores e do outro os maiores que o pivot
+  - A ideia é ir dividindo o array em dois recursivamente de acordo com o pivo
 - Temporal: No melhor e medio caso N log n no pior n ** 2
 - Espacial: No melhor log N no pior n
+- fonts:
+  - // https://pt.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/linear-time-partitioning

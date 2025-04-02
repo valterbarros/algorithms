@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/merge-sorted-array/description/
 void mergeSort(List<int> nums1, int m, List<int> nums2, int n) {
   var i2 = n - 1;
   var i1M = nums1.length - 1;
@@ -6,7 +7,7 @@ void mergeSort(List<int> nums1, int m, List<int> nums2, int n) {
   while(i2 >= 0) {
     print('times');
     if (i1 >= 0 && nums1[i1] > nums2[i2]) {
-      print('here ${i1} ${i2}');
+      print('here ${i1M}');
       nums1[i1M] = nums1[i1];
       i1--;
     } else {
@@ -21,7 +22,7 @@ void mergeSort(List<int> nums1, int m, List<int> nums2, int n) {
 }
 
 void main(List<String> args) {
-  var nums1 = [1,2,3,0,0,0]; // -> Output: [1,2,2,3,5,6]
+  var nums1 = [20,10,9,0,0,0]; // -> Output: [1,2,2,3,5,6]
   var m = 3;
   var nums2 = [2,5,6];
   var n = 3;

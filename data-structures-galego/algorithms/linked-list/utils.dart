@@ -35,3 +35,13 @@ populate(List<dynamic> arr) {
 
   return head;
 }
+
+swap(List<int> arr, int i, int j) {
+  if (arr.elementAtOrNull(i) != null && arr.elementAtOrNull(j) != null) {
+    var n1 = arr[j];
+    var n2 = arr[i];
+
+    arr[i] = n1;
+    arr[j] = n2;
+  }
+}
