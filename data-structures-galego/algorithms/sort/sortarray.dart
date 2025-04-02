@@ -49,26 +49,12 @@ class Solution {
     return nums;
   }
 }
-  // List<int> sortArray2(List<int> nums, [int? low, int? high]) {
-  //   if (low == null) low = 0;
-  //   if (high == null) high = nums.length - 1;
-  //
-  //   var pivot = 0;
-  //   var pi = pivot = partition(nums, low, high);
-  //
-  //   for(var i = 0; i < pivot; i ++) {
-  //     pi = partition(nums, low, pi - 1);
-  //     pi = partition(nums, pi + 1, pivot - 1);
-  //   }
-  //
-  //   return nums;
-  // }
 
 main() async {
   // var nums = [5,2,3,1];
   // var nums = [5,2,3,0,0,1,6,8,1,4];
   // var nums = List.generate(1000000, (index) => 2);
-  // var nums = [2,2,2,2,2];
+  var nums = [2,2,2,2,2];
 
   var n = Solution().sortArray(nums, 0, nums.length - 1);
 
