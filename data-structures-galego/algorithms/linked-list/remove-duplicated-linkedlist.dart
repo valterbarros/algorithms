@@ -29,7 +29,7 @@ class Solution {
         curr = curr.next;
       }
     }
-    
+
     map(head);
 
     return head;

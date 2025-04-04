@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class Node {
   int? val;
   Node? next;
@@ -44,4 +46,9 @@ swap(List<int> arr, int i, int j) {
     arr[i] = n1;
     arr[j] = n2;
   }
+}
+
+randomList({int len = 100000, int max = 2^32}) {
+  var random = Random(1);
+  return List.generate(len, (_) => random.nextInt(10000000));
 }

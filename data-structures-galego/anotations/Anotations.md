@@ -44,6 +44,8 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
 - Temporal: O(log n)
 - Espacial: O(1)
 - Utilizamos o [log2 n](https://pt.khanacademy.org/computing/computer-science/algorithms/binary-search/a/running-time-of-binary-search) para descobrir o número de passos necessários e descobrir o tempo de execução
+- fonts:
+  - https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search
 
 #### Sliding window
 
@@ -116,6 +118,32 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
   - Melhor cenario O(n)
 - Espacial O(1)
 - Pouco eficiente para os dias de hoje porem pode ser usado para arrays menores com 100 itens por exemplo
+- fonts:
+  - https://cs50.harvard.edu/x/2025/shorts/bubble_sort/
+
+### Insertion Sort
+
+- https://www.w3schools.com/dsa/dsa_algo_insertionsort.php
+- https://www.khanacademy.org/computing/computer-science/algorithms/insertion-sort/a/insertion-sort
+
+<figure>
+  <img src="images/insertion.png" width="50%"/>
+  <figcaption>
+    Quick sort
+  </figcaption>
+</figure>
+
+### Selection Sort
+
+- https://www.w3schools.com/dsa/dsa_algo_selectionsort.php
+- https://www.khanacademy.org/computing/computer-science/algorithms/sorting-algorithms/a/sorting
+
+<figure>
+  <img src="images/insertion.png" width="50%"/>
+  <figcaption>
+    Quick sort
+  </figcaption>
+</figure>
 
 ### QuickSort
 
@@ -124,4 +152,33 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
 - Temporal: No melhor e medio caso N log n no pior n ** 2
 - Espacial: No melhor log N no pior n
 - fonts:
-  - // https://pt.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/linear-time-partitioning
+  - https://pt.khanacademy.org/computing/computer-science/algorithms/quick-sort/a/linear-time-partitioning
+
+<figure>
+  <img src="images/quick-sort.png" width="50%"/>
+  <figcaption>
+    Quick sort
+  </figcaption>
+</figure>
+
+# MergeSort
+- Temporal: O (n log n)
+- Espacial: O(n)
+- As etapas para solução são dividir, conquistar e combinar.
+- fonts:
+  - https://pt.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/overview-of-merge-sort
+  - https://www.youtube.com/watch?v=Ns7tGNbtvV4
+
+<figure>
+  <img src="images/dividir.png" width="50%"/>
+  <figcaption>
+    Dividir e conquistar
+  </figcaption>
+</figure>
+
+<figure>
+  <img src="images/diagram-merge.png" width="50%"/>
+  <figcaption>
+    Mais sobre dividir e conquistar
+  </figcaption>
+</figure>
