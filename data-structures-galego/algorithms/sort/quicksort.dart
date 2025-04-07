@@ -66,10 +66,17 @@ qSort(List<int> arr, int l, int r) {
 main() {
   // var arr = [4,2,9,8,5];
   // var arr = [5,2,3,1];
-  var arr = [5,2,3,0,0,1,6,8,1,4];
-  // var arr = List.generate(100000, (index) => 2);
+  // var arr = [5,2,3,0,0,1,6,8,1,4];
   // var arr = [2,2,2,2,2];
+  var arr = randomList();
+
+  Stopwatch stopwatch = Stopwatch()..start();
   qSort(arr, 0, arr.length - 1);
+  stopwatch.stop();
 
   print(arr);
+
+  // 19 ms 100k items partitionLomuto
+  // 23 ms 100k items partitionHoare
+  print('Tempo de execução: ${stopwatch.elapsedMilliseconds} ms');
 }
