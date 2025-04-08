@@ -3,7 +3,8 @@ import '../linked-list/utils.dart';
 class Solution {
   Node? findMiddle(Node? head) {
     var slow = head;
-    var fast = head;
+    // Get the middle more to left example 4 -> 2 -> 1 -> 3 = 2
+    var fast = head?.next;
 
     while(fast != null && fast.next != null) {
       slow = slow?.next;
@@ -29,25 +30,22 @@ class Solution {
       tail = tail?.next;
     }
     
+    // If some of left was not consumed point that to tail.next
     if (left != null) {
-      tail = left;
+      tail?.next = left;
+    // If some of right was not consumed point that to tail.next
     } else if (right != null){
-      tail = right;
+      tail?.next = right;
     }
 
     return head.next;
   }
   
   mergeSort(head) {
-    if (head == null && head.next == null) {
-      return head;
-    }
+    if (head == null || head.next == null) return head;
     
     var middle = findMiddle(head);
     var afterMiddle = middle?.next;
-
-    print('tempo ruim ${middle?.val} -> ${afterMiddle?.val}');
-    
     middle?.next = null;
     
     var left = mergeSort(head);
@@ -62,10 +60,21 @@ class Solution {
 }
 
 main() {
-  var nums = [4,2,1,3];
+  // var nums = [4,2,1,3];
+  // var nums = [3,1,2,5,6,7];
+  // var nums = [7, 12, 9, 11, 3];
+  // var nums = [5,2,3,0,0,1,6,8,1,4];
+  // var nums = [2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2,2];
+  var nums = [7, 12, 9, 11, 3];
+  // var nums = randomList();
 
   var head = populate(nums);
 
+  Stopwatch stopwatch = Stopwatch()..start();
   var sortedHead = Solution().sortList(head);
   mapL(sortedHead);
+  stopwatch.stop();
+
+  // 17 ms 100k items
+  print('Tempo de execução: ${stopwatch.elapsedMilliseconds} ms');
 }

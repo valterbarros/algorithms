@@ -5,13 +5,10 @@ void mergeSort(List<int> nums1, int m, List<int> nums2, int n) {
   var i1 = m - 1;
 
   while(i2 >= 0) {
-    print('times');
     if (i1 >= 0 && nums1[i1] > nums2[i2]) {
-      print('here ${i1M}');
       nums1[i1M] = nums1[i1];
       i1--;
     } else {
-      print(i1M);
       nums1[i1M] = nums2[i2];
       i2--;
     }
@@ -22,7 +19,7 @@ void mergeSort(List<int> nums1, int m, List<int> nums2, int n) {
 }
 
 void main(List<String> args) {
-  var nums1 = [20,10,9,0,0,0]; // -> Output: [1,2,2,3,5,6]
+  var nums1 = [9,10,20,0,0,0]; // -> Output: [1,2,2,3,5,6]
   var m = 3;
   var nums2 = [2,5,6];
   var n = 3;

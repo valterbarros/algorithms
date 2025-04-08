@@ -77,6 +77,7 @@ main() {
   print(arr);
 
   // 19 ms 100k items partitionLomuto
+  // 20193 ms 100mi items partitionLomuto
   // 23 ms 100k items partitionHoare
   print('Tempo de execução: ${stopwatch.elapsedMilliseconds} ms');
 }
