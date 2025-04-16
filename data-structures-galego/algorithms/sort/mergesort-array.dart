@@ -1,9 +1,5 @@
 import '../linked-list/utils.dart';
 
-int elementOrNegative(List<int> arr, int index) {
-  return index < 0 || arr.elementAtOrNull(index) == null ? -99999999 : arr[index];
-}
-
 /**
  * merge two lists putting the greater numbers to the end of array close to array.length
  * create a new list to append order numbers
@@ -21,7 +17,7 @@ merge(List<int> left, List<int> right) {
    * return from less to bigger
    */
   while (l < left.length && r < right.length) {
-    if (elementOrNegative(left, l) < elementOrNegative(right, r)) {
+    if (left[l] < right[r]) {
       aux.add(left[l]);
       l++;
     } else {
@@ -36,8 +32,8 @@ merge(List<int> left, List<int> right) {
     // Since the while is checking until both of index is less
     // than length one of the range will always be empty left or right
     // It is very important to keep the order of merged list
-    ...right.getRange(r, right.length),
     ...left.getRange(l, left.length),
+    ...right.getRange(r, right.length),
   ];
   
   return merged;

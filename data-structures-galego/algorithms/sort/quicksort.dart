@@ -29,21 +29,21 @@ partitionHoare(List<int> nums, int low, int high) {
   return (smaller, larger);
 }
 
-(int, int) partitionLomuto(List<int> arr, int l, int r) {
-  var pivot = arr[r];
-  var i = l - 1;
+(int, int) partitionLomuto(List<int> arr, int left, int right) {
+  var pivot = arr[right];
+  var low = left;
 
-  for(var j = l; j < r; j++) {
+  for(var j = left; j < right; j++) {
     if (arr[j] <= pivot) {
-      i += 1;
+      swap(arr, low, j);
 
-      swap(arr, i, j);
+      low += 1;
     }
   }
 
-  var next = i + 1;
+  var next = low;
   
-  swap(arr, next, r);
+  swap(arr, next, right);
 
   var smaller = next - 1;
   var larger = next + 1;
@@ -51,24 +51,24 @@ partitionHoare(List<int> nums, int low, int high) {
   return (smaller, larger);
 }
 
-qSort(List<int> arr, int l, int r) {
-  if (l < r) {
+qSort(List<int> arr, int left, int right) {
+  if (left < right) {
     // Uncomment to enable lomuto
-    var (smaller, larger) = partitionLomuto(arr, l, r);
+    var (smaller, larger) = partitionLomuto(arr, left, right);
     // Uncomment to enable Hoare
     // var (smaller, larger) = partitionHoare(arr, l, r);
 
-    qSort(arr, l, smaller);
-    qSort(arr, larger, r);
+    qSort(arr, left, smaller);
+    qSort(arr, larger, right);
   }
 }
 
 main() {
   // var arr = [4,2,9,8,5];
   // var arr = [5,2,3,1];
-  // var arr = [5,2,3,0,0,1,6,8,1,4];
+  var arr = [5,2,3,0,0,1,6,8,1,4,4,4,4];
   // var arr = [2,2,2,2,2];
-  var arr = randomList();
+  // var arr = randomList();
 
   Stopwatch stopwatch = Stopwatch()..start();
   qSort(arr, 0, arr.length - 1);

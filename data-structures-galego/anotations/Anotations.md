@@ -112,7 +112,7 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
 
 ### Sorting
 
-### Bubble sort
+#### Bubble sort
 
 - Complexidade temporal O(N^2)
   - Melhor cenario O(n)
@@ -121,7 +121,7 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
 - fonts:
   - https://cs50.harvard.edu/x/2025/shorts/bubble_sort/
 
-### Insertion Sort
+#### Insertion Sort
 
 - https://www.w3schools.com/dsa/dsa_algo_insertionsort.php
 - https://www.khanacademy.org/computing/computer-science/algorithms/insertion-sort/a/insertion-sort
@@ -133,7 +133,7 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
   </figcaption>
 </figure>
 
-### Selection Sort
+#### Selection Sort
 
 - https://www.w3schools.com/dsa/dsa_algo_selectionsort.php
 - https://www.khanacademy.org/computing/computer-science/algorithms/sorting-algorithms/a/sorting
@@ -145,7 +145,7 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
   </figcaption>
 </figure>
 
-### QuickSort
+#### QuickSort
 
 - Precisa escolher o pivot e ai dividir o array de um lado fica os menores e do outro os maiores que o pivot
   - A ideia é ir dividindo o array em dois recursivamente de acordo com o pivo
@@ -161,7 +161,7 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
   </figcaption>
 </figure>
 
-# MergeSort
+#### MergeSort
 - Temporal: O (n log n)
 - Espacial: O(n)
 - As etapas para solução são dividir, conquistar e combinar.
@@ -182,3 +182,79 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
     Mais sobre dividir e conquistar
   </figcaption>
 </figure>
+
+### Binaries
+
+- Transformação de binario para decimal
+  - Cada casa vale 2 na potencia de 1,2,3,4...
+  - O ultimo bit mais a esquerda é o sinal do binario - ou +
+  - O bit de paridade é o primeiro bit direita se ele for um o binario é impar se for zero par
+- Em algumas linguagens de programação o decimal é representado por 32 bit
+- MSB
+  - LSB(least significant bit) geralmente é o bit mais a direita e MSB(most significante bit) é o bit mais a esquerda
+  - LSB é o menor valor e MSB o maior valor
+  - Font: https://www.techtarget.com/whatis/definition/most-significant-bit-or-byte
+
+<figure>
+  <img src="images/binary.png" width="50%"/>
+  <figcaption>
+    Representação do binario
+  </figcaption>
+</figure>
+
+#### Left/Right shift
+
+Left(<<)
+Right(>>)
+
+- Move os bits para a direita e esquerda
+  - Com numeros que não dão overflow, o shift n << 1 vai duplicar o numero
+  - Ja o n >> 1 dividi o numero por dois a não ser que aconteça o overflow
+
+<figure>
+  <img src="images/shift.png" width="50%"/>
+  <figcaption>
+    Shift
+  </figcaption>
+</figure>
+
+#### And OR Not and XOR
+
+<figure>
+  <img src="images/or.png" width="50%"/>
+  <figcaption>
+    Shift
+  </figcaption>
+</figure>
+
+And(&)
+
+- Caso o bit atual seja 1 em ambos os casos ele retorna um
+- Caso queira saber se um numero é par basta apenas testar ele com o 1 exemplo 5 & 1 caso retorne 1 é impar 
+- caso retorne 0 é par isso por estar testando o ultimo bit o bit de paridade
+
+Or(|)
+
+- Caso pelo menos um dos bits testados sejam 1 ele retorna true
+- Exemplo: 010 | 001 = 011
+
+Xor(^)
+
+- O xor apenas é 1 quando ambos os bits avaliados são diferentes
+- Xor de um numero com ele mesmo sempre é 0
+  - Xor de um numero com 0 é ele mesmo
+- é cumulativo e associativo
+- Exercicios: https://www.youtube.com/watch?v=WnPLSRLSANE1
+- Exemplo: 001 ^ 000 = 001
+
+<figure>
+  <img src="images/xor.png" width="50%"/>
+  <figcaption>
+    Missing numbers implementation
+  </figcaption>
+</figure>
+
+Not(~)
+
+- Basicamente invert todos os bits onde for 0 fica 1 onde for 1 fica zero
+- Exemplo: ~101 = 010 
