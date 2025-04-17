@@ -8,12 +8,13 @@
 // dec += pow(2, i).toInt() * (nb + na);
 
 class Solution {
+  // sum binaries font: https://byjus.com/maths/binary-addition/
   // binary sum rules
   // 1 + 1 = 10
   // 1 + 1 + 1 = 11
   // 1 + 0 = 1
   // 0 + 0 = 0
-  List<int> getPattern(int bits) {
+  List<int> getVal(int bits) {
     // if all is one that mean it is 1 and has rest 1 too
     if (bits == 3) return [1,1];
     // if just one bit is 1 set val to 1 
@@ -24,39 +25,36 @@ class Solution {
     return [0,0];
   }
 
-  List<String> addPad(String a, String b) {
-    return [
-      a.padLeft(b.length, '0'),
-      b.padLeft(a.length, '0'),
-    ];
-  }
-
   String addBinary(String a, String b) {
-    var [pa, pb] = addPad(a,b);
-    var charsA = pa.split('').toList();
-    var charsB = pb.split('').toList();
-    // TODO: try to replace for StringBuffer
-    var bits = [];
+    var bits = StringBuffer();
     var rest = 0;
 
-    for(var i = charsA.length - 1; i >= 0; i--) {
-      var na = int.parse(charsA.elementAtOrNull(i) ?? '0');
-      var nb = int.parse(charsB.elementAtOrNull(i) ?? '0');
+    var decrA = a.length - 1;
+    var decrB = b.length - 1;
 
-      var [val, r] = getPattern(na + nb + rest);
+    // Check rest on that condition to on the last while execution
+    // If there is rest value add that to bits
+    while(decrA >= 0 || decrB >= 0 || rest != 0) {
+      // the code unit of the '0' is 48 and for '1' is 49
+      // the subtraction would returns 0 or 1
+      // This is faster than split string into array and acess elements by index
+      // 48 - 48 = 0
+      // 49 - 48 = 1
+      int na = decrA >= 0 ? a.codeUnitAt(decrA) - 48 : 0;
+      int nb = decrB >= 0 ? b.codeUnitAt(decrB) - 48 : 0;
 
-      bits.add(val);
+      var [val, r] = getVal(na + nb + rest);
+
+      bits.write(val);
       rest = r;
+
+      decrA--;
+      decrB--;
     }
-
-    bits.add(rest);
-
-    // I think zero on last is not important
-    if (bits.lastOrNull == 0) bits.removeLast();
     
-    print(bits.reversed.join(''));
+    print(bits.toString().split('').reversed.join(''));
 
-    return bits.reversed.join('');
+    return bits.toString().split('').reversed.join('');
   }
 }
 

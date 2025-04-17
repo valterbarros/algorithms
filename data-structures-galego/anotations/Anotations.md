@@ -96,10 +96,6 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
 
 ---
 
-#### Binary tree
-
----
-
 #### Trie
 
 - Usada para autocomplete
@@ -221,7 +217,7 @@ Right(>>)
 #### And OR Not and XOR
 
 <figure>
-  <img src="images/or.png" width="50%"/>
+  <img alt="Shift" src="images/or.png" width="50%"/>
   <figcaption>
     Shift
   </figcaption>
@@ -248,7 +244,7 @@ Xor(^)
 - Exemplo: 001 ^ 000 = 001
 
 <figure>
-  <img src="images/xor.png" width="50%"/>
+  <img alt="Missing numbers implementation" src="images/xor.png" width="50%"/>
   <figcaption>
     Missing numbers implementation
   </figcaption>
@@ -258,3 +254,54 @@ Not(~)
 
 - Basicamente invert todos os bits onde for 0 fica 1 onde for 1 fica zero
 - Exemplo: ~101 = 010 
+
+### Binary tree
+
+- Precisa de um tree node e da binary tree em si
+- Geralmente são colocados valores numericos como nodes
+- Na busca e inserção de dados é feito por um lado da binary
+
+<figure>
+  <img alt="binary tree" src="images/binary-tree.png" width="50%"/>
+  <figcaption>
+    binary tree
+  </figcaption>
+</figure>
+
+#### Traversals
+
+Preorder traversal
+
+- Preorder começa no root e vai seguindo pela esquerda depois volta e vai pela direita dos nodes
+
+<figure>
+  <img alt="preorder traversal" src="images/pre-trav.png" width="50%"/>
+  <figcaption>
+    preorder traversal
+  </figcaption>
+</figure>
+
+Inorder traversal
+
+- O root fica no meio do retorno
+- Abri tudo a esquerda e so depois adiciona ao resultado, um pouco parecido com o preorder porem o momento de inserção no resultado é outro
+
+<figure>
+  <img alt="inorder traversal" src="images/inorder.png" width="50%"/>
+  <figcaption>
+    inorder traversal
+  </figcaption>
+</figure>
+
+Postorder traversal
+
+- O root fica no final
+- A execução é parecida com as outras porem agora o root será o último a ser adicionado
+- É melhor para poupar memoria com diminuição da callstack
+
+<figure>
+  <img alt="postorder traversal" src="images/postorder.png" width="50%"/>
+  <figcaption>
+    postorder traversal
+  </figcaption>
+</figure>

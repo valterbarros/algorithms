@@ -9,7 +9,6 @@ missingNumber(List<int> nums) {
     var increment = i ^ curr;
     // If no number is missing it will return original value from nums.length
     missing = missing ^ increment;
-    var a = 1;
   }
 
   print(missing);
