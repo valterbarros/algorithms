@@ -106,6 +106,12 @@ No rust ele precisa saber exatamente qual o tamanho devem ter os arrays, para fa
 
 -
 
+### Recusive
+- Funções recursivas são funções que chamam a elas mesmas, com isso uma stack de chamadas é criada no programa
+- É preciso encontrar um **caso base** é o que acontece na potenciação onde todo numero elevado a 0 é igual a 1 isso faz a recursão retornar. Basicamente a recursão seria solucionar um sub problema que é uma instancia menor do problema e com a solução solucionar o problema.
+- fonts:
+- https://pt.khanacademy.org/computing/computer-science/algorithms/recursive-algorithms/a/recursion
+
 ### Sorting
 
 #### Bubble sort
