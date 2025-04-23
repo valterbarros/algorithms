@@ -8,8 +8,8 @@ var pegs = [peg1, peg2, peg3];
 
 Peg peg(int idx) => pegs[idx];
 
-// check which peg is not fromPeg neither toPeg
-int getSparePeg(int fromPegIdx, int toPegIdx) {
+// returns the auxiliary peg
+int getAuxPeg(int fromPegIdx, int toPegIdx) {
   return [0, 1, 2].firstWhere((i) => i != fromPegIdx && i != toPegIdx);
 }
 
@@ -40,22 +40,22 @@ hanoi(int numDisks, int fromPegIdx, int toPegIdx) {
     return 0;
   }
 
-  var sparePegIdx = getSparePeg(fromPegIdx, toPegIdx);
+  var auxPegIdx = getAuxPeg(fromPegIdx, toPegIdx);
 
   // Call recursive with -1 disks
-  // Move disks to intermediary peg
-  hanoi(numDisks - 1, fromPegIdx, sparePegIdx);
+  // Move disks to aux peg
+  hanoi(numDisks - 1, fromPegIdx, auxPegIdx);
 
   // Move the disk to destiny peg
   moveDisk(fromPegIdx, toPegIdx);
 
   // Add element here again
-  // Move the disk -1 back again
-  hanoi(numDisks - 1, sparePegIdx, toPegIdx);
+  // Move the disk -1 from aux to destiny
+  hanoi(numDisks - 1, auxPegIdx, toPegIdx);
 }
 
 void main() {
-  var numDisks = 2;
+  var numDisks = 3;
   // fill
   for(var i = numDisks; i > 0; i--) peg1.add(i);
   
