@@ -1,7 +1,8 @@
 // Recursive binary search
 // find base case
 // sub divide the problem in sub problems until the end
-import 'algorithms/linked-list/utils.dart';
+
+import '../linked-list/utils.dart';
 
 bsearch(List<int> arr, int search, int low, int high) {
   if (low > high) return -1;
