@@ -8,21 +8,26 @@ class Node {
 
 class BinaryTree {
   Node? root;
+  
+  // The change in order technics is where root is begin middle or end
 
   // preOrder traversal
   preTrav() {
     List<int> nums = [];
     preTravRecur(root, nums);
-    
+
     return nums;
   }
 
   preTravRecur(Node? node, List<int> nums) {
     if (node == null) return false;
     
+    // add root at first execution
     nums.add(node.val);
     
+    // First search all left path
     preTravRecur(node.left, nums);
+    // After search all right path
     preTravRecur(node.right, nums);
   }
 
@@ -40,6 +45,7 @@ class BinaryTree {
 
     inorTravRecur(node.left, nums);
 
+    // add root after consume all left path
     nums.add(node.val);
 
     inorTravRecur(node.right, nums);
@@ -60,6 +66,7 @@ class BinaryTree {
 
     postTravRecur(node.right, nums);
 
+    // add root after consume all left and right path
     nums.add(node.val);
   }
 
@@ -69,8 +76,10 @@ class BinaryTree {
     if (node == null) return false;
     if (node.val == val) return true;
 
+    // Small values are stored on left
     if (val < node.val) return searchRecur(val, node.left);
 
+    // keep recursive not found yet
     return searchRecur(val, node.right);
   }
 
@@ -85,6 +94,7 @@ class BinaryTree {
     if (node == null) return;
 
     if (val < node.val) {
+      // Small values are stored on left
       if (node.left == null) {
         node.left = Node(val);
         return;
@@ -92,6 +102,7 @@ class BinaryTree {
 
       insertRecur(val, node.left);
     } else {
+      // Greater values are stored on left
       if (node.right == null) {
         node.right = Node(val);
         return;

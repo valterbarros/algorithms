@@ -46,6 +46,7 @@ class Solution {
       var [val, r] = getVal(na + nb + rest);
 
       bits.write(val);
+      // return rest for next execution
       rest = r;
 
       decrA--;

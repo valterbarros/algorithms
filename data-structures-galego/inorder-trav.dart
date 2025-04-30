@@ -1,5 +1,4 @@
 // https://leetcode.com/problems/binary-tree-inorder-traversal/
-
 class Node {
   int val;
   Node? right;
@@ -37,19 +36,24 @@ class BinaryTree {
   void _insertRecur(int val, Node? node) {
     if (node == null) return;
 
+    // Insertion by less
     if (val < node.val) {
       if (node.left == null) {
+        // successfully append value to binary tree
         node.left = Node(val);
         return;
       }
 
+      // keep searching until right is empty
       _insertRecur(val, node.left);
     } else {
       if (node.right == null) {
+        // successfully append value to binary tree
         node.right = Node(val);
         return;
       }
 
+      // keep searching until right is empty
       _insertRecur(val, node.right);
     }
   }

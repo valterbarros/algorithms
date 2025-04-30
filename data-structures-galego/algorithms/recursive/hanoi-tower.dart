@@ -20,7 +20,9 @@ moveDisk(int fromPegIdx, int toPegIdx) {
   var tpLast = toPeg.lastOrNull;
   // Not allowed movement
   // check if my last fromPeg item is less than toPeg last item
-  if (fpLast != null && tpLast != null && (fpLast > tpLast)) return;
+  if (fpLast != null && tpLast != null && (fpLast > tpLast)) {
+    return;
+  }
 
   if (fromPeg.length > 1) {
     toPeg.add(fromPeg.last);
@@ -42,15 +44,15 @@ hanoi(int numDisks, int fromPegIdx, int toPegIdx) {
 
   var auxPegIdx = getAuxPeg(fromPegIdx, toPegIdx);
 
-  // Call recursive with -1 disks
+  // Call recursive with -1 disks 3, 2, 1...
   // Move disks to aux peg
   hanoi(numDisks - 1, fromPegIdx, auxPegIdx);
 
   // Move the disk to destiny peg
   moveDisk(fromPegIdx, toPegIdx);
 
-  // Add element here again
-  // Move the disk -1 from aux to destiny
+  // Call recursive with -1 disks 3, 2, 1...
+  // Move disks to destiny peg
   hanoi(numDisks - 1, auxPegIdx, toPegIdx);
 }
 
@@ -69,15 +71,15 @@ void main() {
   // 1 - 2
 
   print('before');
-  print('peg1: $peg1');
-  print('peg2: $peg2');
-  print('peg3: $peg3');
+  print('peg0: $peg1');
+  print('peg1: $peg2');
+  print('peg2: $peg3');
 
   hanoi(numDisks, 0, 1);
   
   print('after');
 
-  print('peg1: $peg1');
-  print('peg2: $peg2');
-  print('peg3: $peg3');
+  print('peg0: $peg1');
+  print('peg1: $peg2');
+  print('peg2: $peg3');
 }
