@@ -1,13 +1,13 @@
-class Node {
+class TreeNode {
   int val;
-  Node? right;
-  Node? left;
+  TreeNode? right;
+  TreeNode? left;
 
-  Node([this.val = 0]);  
+  TreeNode([this.val = 0]);  
 }
 
 class BinaryTree {
-  Node? root;
+  TreeNode? root;
   
   // The change in order technics is where root is begin middle or end
 
@@ -19,7 +19,7 @@ class BinaryTree {
     return nums;
   }
 
-  preTravRecur(Node? node, List<int> nums) {
+  preTravRecur(TreeNode? node, List<int> nums) {
     if (node == null) return false;
     
     // add root at first execution
@@ -40,7 +40,7 @@ class BinaryTree {
     return nums;
   }
 
-  inorTravRecur(Node? node, List<int> nums) {
+  inorTravRecur(TreeNode? node, List<int> nums) {
     if (node == null) return false;
 
     inorTravRecur(node.left, nums);
@@ -59,7 +59,7 @@ class BinaryTree {
     return nums;
   }
 
-  postTravRecur(Node? node, List<int> nums) {
+  postTravRecur(TreeNode? node, List<int> nums) {
     if (node == null) return false;
 
     postTravRecur(node.left, nums);
@@ -72,7 +72,7 @@ class BinaryTree {
 
   search(int val) => searchRecur(val, root);
 
-  searchRecur(int val, Node? node) {
+  searchRecur(int val, TreeNode? node) {
     if (node == null) return false;
     if (node.val == val) return true;
 
@@ -85,18 +85,18 @@ class BinaryTree {
 
   insert(int val) {
     // insert root
-    if (root == null) return root = Node(val);
+    if (root == null) return root = TreeNode(val);
 
     insertRecur(val, root);
   }
 
-  void insertRecur(int val, Node? node) {
+  void insertRecur(int val, TreeNode? node) {
     if (node == null) return;
 
     if (val < node.val) {
       // Small values are stored on left
       if (node.left == null) {
-        node.left = Node(val);
+        node.left = TreeNode(val);
         return;
       }
 
@@ -104,7 +104,7 @@ class BinaryTree {
     } else {
       // Greater values are stored on left
       if (node.right == null) {
-        node.right = Node(val);
+        node.right = TreeNode(val);
         return;
       }
 
@@ -135,7 +135,7 @@ main() {
 
   // print(bt.preTrav());
   // print(bt.inorTrav());
-  print(bt.postTrav());
+  print(bt.inorTrav());
 
   // print(Node().val);
 }
