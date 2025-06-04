@@ -280,7 +280,7 @@ Not(~)
   </figcaption>
 </figure>
 
-#### Traversals
+#### Traversals (similar a DFS)
 
 Preorder traversal
 
@@ -317,3 +317,11 @@ Postorder traversal
     postorder traversal
   </figcaption>
 </figure>
+
+BFS - breath first seach
+
+- Basicamente faz uma busca por nivel ao inves de por profundidade, e vai visitando cada item
+- Para isso é usado um deque()
+- Pega o root, dai verifica left e right dele e assim por diante
+
+![](vx_images/324542076117073.png)
