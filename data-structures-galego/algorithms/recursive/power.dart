@@ -29,6 +29,7 @@ power(int base, int exponent) {
 }
 
 main() {
+  // var val = power(3, 3);
   // var val = power(5,5);
   // var val = power(5,-3); // 0.008
   var val = power(3, -2); // 0.008
