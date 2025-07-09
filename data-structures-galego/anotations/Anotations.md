@@ -320,8 +320,19 @@ Postorder traversal
 
 BFS - breath first seach
 
-- Basicamente faz uma busca por nivel ao inves de por profundidade, e vai visitando cada item
+- Basicamente faz uma busca por nivel ao inves de por pr
+    }ofundidade, e vai visitando cada item
 - Para isso é usado um deque()
 - Pega o root, dai verifica left e right dele e assim por diante
 
 ![](vx_images/324542076117073.png)
+
+#### Graphs
+- Se assemelha um pouco com o que foi visto com binary tree, principalmente na forma como é feito o transversal usando BFS
+- Porem diferentemente da binary tree um node pode ter varios neighbors, ao inves de dois
+
+![Grafo com valores de custo de um nodo para outro](vx_images/348883848082915.png)
+
+Algoritimo de dijkstra
+- Usado para calcular distancia entre nodes
+
