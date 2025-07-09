@@ -3,6 +3,7 @@ import 'dart:collection';
 // Note: If performance is too important use heapq alternative, to add elements from less to greater
 
 // dijkstra is the name of the guy that have created the algorithm
+// basically it get minimum distance from start node to all other neighbor
 dijkstra(Map<String, Map<String, int>> graph, String start) {
   Queue<(String, int)> queue = new Queue();
   queue.addFirst((start, 0));
