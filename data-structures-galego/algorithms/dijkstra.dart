@@ -19,12 +19,12 @@ dijkstra(Map<String, Map<String, int>> graph, String start) {
     for(var MapEntry(key:neighbor, value:weight) in neighbors!.entries) {
       // currentDistance is distance to node, other node need to sum that because they appear just after
       var distance = currentDistance + weight;
-      
+
       // This is important in case of to have (c, 3) and (c, 4) this would exclude the greater number
       if (currentDistance > distances[neighbor]!) continue;
 
       // check which distance to same neighbor is less or is null and need to be processed
-      if (distances[neighbor] != null && distance < distances[neighbor]!) {
+      if (distance < distances[neighbor]!) {
         distances[neighbor] = distance;
         // Add element to queue with distance from neighbor to "start" param
         queue.addLast((neighbor, distance));
