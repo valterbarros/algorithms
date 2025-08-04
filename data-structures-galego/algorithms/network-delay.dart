@@ -27,8 +27,7 @@ class Solution {
 
     // print(graph);
 
-    // start all keys with big number to at first interaction the distance be < less
-    var distances = { for (var e in graph.keys) e: 999999 };
+    Map<int, int> distances = {};
     distances[selected] = 0;
 
     while(queue.isNotEmpty) {
@@ -50,6 +49,8 @@ class Solution {
         }
       }
     }
+    
+    print(distances);
     
     var _max = -1;
     if (distances.length < reach) {
