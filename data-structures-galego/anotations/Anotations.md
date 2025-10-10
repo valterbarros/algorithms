@@ -336,3 +336,6 @@ BFS - breath first seach
 Algoritimo de dijkstra
 - Usado para calcular distancia entre nodes
 
+#### Stacks
+
+- Basicamente funciona como um empilhamento
