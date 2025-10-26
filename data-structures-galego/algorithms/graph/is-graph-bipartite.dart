@@ -1,10 +1,15 @@
 import 'dart:collection';
 
+// https://leetcode.com/problems/is-graph-bipartite/description/
+// how to tell if graph is bipartite https://www.youtube.com/watch?v=bZBmN7I7GNQ
+
 class Solution {
   bool isBipartite(List<List<int>> graph) {
     var queue = new Queue<int>();
+    // store node and color, it is used to check what node was visited
     var colors = <int, bool>{};
 
+    // Loop all nodes but as colors is being populated so many will be skipped
     for (var i = 0; i < graph.length; i++) {
       if (colors.containsKey(i)) continue;
 
@@ -21,6 +26,7 @@ class Solution {
           if (!colors.containsKey(node)) {
             queue.addLast(node);
             colors.putIfAbsent(node, () => !parentCol!);
+          // Same color from parent? not bipartite
           } else if (parentCol == colors[node]) {
             return false;
           }
