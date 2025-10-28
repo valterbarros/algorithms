@@ -1,6 +1,5 @@
 // https://leetcode.com/problems/number-of-provinces/description/
 // Explain about DSU: https://www.youtube.com/watch?v=aBxjDBC4M1U
-// TODO: implement DSU
 // DSU prototype
 // store parent and size in maps
 // add itens to parent and size
