@@ -330,11 +330,29 @@ BFS - breath first seach
 #### Graphs
 - Se assemelha um pouco com o que foi visto com binary tree, principalmente na forma como é feito o transversal usando BFS
 - Porem diferentemente da binary tree um node pode ter varios neighbors, ao inves de dois
+- DSU é uma estrutura de dados para grafos
 
 ![Grafo com valores de custo de um nodo para outro](vx_images/348883848082915.png)
 
 Algoritimo de dijkstra
 - Usado para calcular distancia entre nodes
+
+Mais detalhes de um grafo e nomeclaturas
+
+![](vx_images/446727264356232.png)
+
+|             Termo             |   Tradução   |                                      Significado                                      |
+| ----------------------------- | ------------ | ------------------------------------------------------------------------------------- |
+| **Vertex (plural: vertices)** | vértice / nó | Um **ponto** do grafo — representa algo (ex: pessoa, cidade, servidor, usuário, etc.) |
+| **Edge**                      | aresta       | **Conexão entre dois vértices** — pode ser uma amizade, uma estrada, um link…         |
+| **Graph**                     | grafo        | Conjunto de vértices **+** arestas                                                    |
+| **Adjacent**                  | adjacente    | Quando 2 vértices **estão ligados diretamente por uma aresta**                        |
+| **Path**                      | caminho      | Qualquer **sequência de vértices conectados** (A → B → C)                             |
+| **Connected**                 | conectado    | Quando **existe algum caminho entre dois vértices**, mesmo que indireto               |
+| **Component (conexo)**        | componente   | Um **grupo isolado** dentro do grafo — não tem conexão com outros grupos              |
+| **Cycle**                     | ciclo        | Quando você consegue **sair de um nó e voltar pra ele mesmo** sem repetir aresta      |
+
+
 
 #### Stacks
 
