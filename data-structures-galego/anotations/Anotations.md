@@ -336,6 +336,7 @@ BFS - breath first seach
 
 Algoritimo de dijkstra
 - Usado para calcular distancia entre nodes
+- Pode funcionar com complexidade de log(n)
 
 Mais detalhes de um grafo e nomeclaturas
 
