@@ -26,7 +26,7 @@ class DSU {
   }
 
   // union two sets
-  union(int node1, int node2) {
+  int union(int node1, int node2) {
     add(node1);
     add(node2);
     
@@ -36,7 +36,14 @@ class DSU {
     var parent2 = find(node2);
     
     // same parent
-    if (parent1 == parent2) return;
+    if (parent1 == parent2) return 0;
+
+    int s1 = size[parent1]!;
+    int s2 = size[parent2]!;
+    int gain = (s1 + s2) * (s1 + s2 - 1) - (s1 * (s1 - 1) + s2 * (s2 - 1));
+
+    // possible connections formule
+    // (a + b) * (a + b - 1) / 2 - (a * (a - 1) / 2 + b * (b - 1) / 2)
 
     swap(int a, int b) {
       parent[a] = b;
@@ -49,12 +56,25 @@ class DSU {
     } else {
       swap(parent2, parent1);
     }
+    
+    return gain;
+  }
+
+  // retorna todos os tamanhos únicos dos componentes
+  List<int> componentSizes() {
+    Set<int> roots = {};
+    for (var node in parent.keys) {
+      roots.add(find(node));
+    }
+    return roots.map((r) => size[r]!).toList();
   }
 }
 
 class Solution {
   void count(int n, List<String> pairs) {
     final dsu = DSU();
+    
+    var total = 0;
 
     // processa todas as amizades (somente para garantir que todos estão no DSU)
     for (var pair in pairs) {
@@ -63,42 +83,15 @@ class Solution {
       int a = int.parse(split[0]);
       int b = int.parse(split[1]);
       dsu.union(a, b);
-    }
-
-    // pega todos os componentes finais (raiz => tamanho)
-    List<int> comps = [];
-    Set<int> seen = {};
-    for (var node in dsu.parent.keys) {
-      int root = dsu.find(node);
-      if (!seen.contains(root)) {
-        comps.add(dsu.size[root]!);
-        seen.add(root);
+      // soma o valor atual de todos os componentes
+      int currentValue = 0;
+      for (var s in dsu.componentSizes()) {
+        currentValue += s * (s - 1);
       }
+
+      total += currentValue;
     }
-
-    // agora simula unir sempre os maiores grupos
-    comps.sort((b, a) => a - b); // decrescente
-
-    int total = 0;
-
-    while (comps.length > 1) {
-      // pega os dois maiores grupos
-      int a = comps.removeAt(0);
-      int b = comps.removeAt(0);
-      
-      total += (a - 1) + (b - 1);
-
-      // novo grupo resultante
-      int newSize = a + b;
-      // insere de volta mantendo ordem decrescente
-      int idx = comps.indexWhere((x) => x <= newSize);
-      if (idx == -1) {
-        comps.add(newSize);
-      } else {
-        comps.insert(idx, newSize);
-      }
-    }
-
+    
     print(total);
   }
 }
