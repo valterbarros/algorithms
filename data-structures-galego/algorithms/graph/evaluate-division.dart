@@ -14,7 +14,6 @@
  * a —(2)→ b
  * b —(3)→ c
 */
-// WIP WIP
 
 class DSU {
   var size = <String, int>{};
