@@ -357,4 +357,5 @@ Mais detalhes de um grafo e nomeclaturas
 
 #### Stacks
 
-- Basicamente funciona como um empilhamento
+- Basicamente funciona como um empilhamento, o ultimo a entrar será o primeiro a sair
+- 
