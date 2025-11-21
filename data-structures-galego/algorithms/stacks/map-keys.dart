@@ -1,44 +1,47 @@
-typedef MapObject = Map<String, Object>;
-
 // map keys and replace recursion to use stack
 class Solution {
-  map(MapObject original, Function(String key) fn) {
-    List<(MapObject, MapObject)> stack = [];
-    MapObject newObj = {}; 
+  T _emptyClone<T>(T value) {
+    if (value is Map) return <String, Object?>{} as T;
+    if (value is List) return <Object?>[] as T;
+    return value; // primitivo
+  }
 
-    stack.add((original, newObj));
+  T mapKeys<T>(Object original, String Function(String key) fn) {
+    List<(Object, Object)> stack = [];
+
+    final target = _emptyClone(original);
+    stack.add((original, target));
 
     while(stack.isNotEmpty) {
-      // Values is always a MapObject
-      var (value, clonedPopped) = stack.removeLast();
+      var (old, cloned) = stack.removeLast();
 
-      var entries = value.entries;
+      // old and cloned is always equal type
+      if (old is Map && cloned is Map) {
+        var entries = old.entries;
 
-      for (var MapEntry(key: key, value: value) in entries) {
-        if (value is List) {
-          // create object and save reference add to clonedPopped
+        for (var MapEntry(key: key, value: value) in entries) {
+          // create object and save reference add to cloned
           // and add itens to right place
-          var curr = [];
-          clonedPopped[fn(key)] = curr;
           // send item that hold reference from parent to stack
-          value.forEach((itemOld) {
-            MapObject item = {};
-            curr.add(item);
-            stack.add((itemOld, item));
-          });
-        } else if (value is MapObject) {
-          MapObject item = {};
-          // Same trick of reference here when element is a MapObject
-          clonedPopped[fn(key)] = item;
+          var item = _emptyClone(value);
+          cloned[fn(key)] = item;
           stack.add((value, item));
-        } else {
-          // when value is string or int
-          clonedPopped[fn(key)] = value;
         }
+      } else if (old is List && cloned is List) {
+        // create object and save reference add to cloned
+        // and add itens to right place
+        // send item that hold reference from parent to stack
+        old.forEach((itemOld) {
+          var item = _emptyClone(itemOld);
+          cloned.add(item);
+          stack.add((itemOld, item));
+        });
       }
+
+      // if it is string or int or other than object or array just continue
     }
 
-    return newObj;
+    return target as T;
   }
 }
 
@@ -48,8 +51,8 @@ main() {
     'telephone': '21312312312',
     'buys': [
       { 'name_buy': 'fish', 'attributes': [{ 'weight': 2 }] },
-      { 'name_buy': 'fish', 'attributes': [{ 'weight': 2 }] },
-      { 'name_buy': 'fish', 'attributes': [{ 'weight': 2 }] },
+      { 'name_buy': 'bear', 'attributes': [{ 'weight': 3 }] },
+      { 'name_buy': 'dog', 'attributes': [{ 'weight': 4 }] },
     ],
     'prices': {
       'sunday': 100,
@@ -97,6 +100,8 @@ main() {
 //        _name_buy: fish,
 //        _attributes: [{_weight: 2}]}]
 //      } 
-  
-  print(Solution().map(obj, (key) => '_$key'));
+  print(Solution().mapKeys(obj, (key) => '_$key'));
+
+  // var original = [{'key': 'value'}, 'valter'];
+  // print(Solution().mapKeys(original, (key) => '_$key'));
 }
