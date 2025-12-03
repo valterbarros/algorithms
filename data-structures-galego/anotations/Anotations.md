@@ -361,3 +361,23 @@ Mais detalhes de um grafo e nomeclaturas
 - Pode ser utilizado como stack de processamento ou para substituir recursão
 
 #### Heap
+
+- É uma **estrutura de dados baseada em árvore binária**, mas **implementada de forma eficiente usando um array**, sem usar nós ou ponteiros explicitamente.
+- Representa uma **árvore binária quase completa** (todos os níveis cheios, exceto possivelmente o último, preenchido da esquerda para a direita).
+- A relação entre pai e filhos no array é dada por:
+  - **Filho esquerdo:** `2 * i + 1`
+  - **Filho direito:** `2 * i + 2`
+  - **Pai:** `(i - 1) // 2`
+- Existem dois tipos principais:
+  - **Min-Heap:** o menor valor fica sempre no topo (raiz)
+  - **Max-Heap:** o maior valor fica sempre no topo (raiz)
+- A propriedade do heap garante apenas a relação **pai ↔ filhos**, não uma ordenação global como em árvores de busca.
+- **Inserção (heapify up):**
+  - Usado quando um novo elemento entra na heap
+  - O novo elemento é adicionado no final do array
+  - Ele sobe comparando com o pai até a propriedade do heap ser restaurada
+- **Remoção do topo (heapify down):**
+  - Usado quando o topo do heap é removido ou alterado
+  - O topo é removido
+  - O último elemento do array é movido para o topo
+  - Ele desce comparando com os filhos e trocando de posição até restaurar a propriedade do heap
