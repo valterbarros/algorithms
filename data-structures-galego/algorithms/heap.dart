@@ -33,12 +33,14 @@ class MinHeap {
     if (heap.isEmpty) return null;
     
     if (heap.length == 1) return heap.removeLast();
-    
+
+    // get root
     var root = heap.first;
+    // set last element as root
     heap[0] = heap.removeLast();
 
     heapifyDown(0);
-    
+
     return root;
   }
 
@@ -52,7 +54,7 @@ class MinHeap {
       var tmp = heap[_parent(currentIndex)];
       heap[_parent(currentIndex)] = heap[currentIndex];
       heap[currentIndex] = tmp;
-      
+
       // after swap the less than is parent of currentIndex
       currentIndex = _parent(currentIndex);
     }
@@ -60,21 +62,30 @@ class MinHeap {
 
   push(int el) {
     // append to heap
+    // ex: [1,2,3, el]
     heap.add(el);
     // send last index
     heapifyUp(heap.length - 1);
   }
+  
+  size(){
+    return heap.length;
+  }
+  
+  head() {
+    return heap[0];
+  }
 }
 
-main() {
-  var h = MinHeap();
-  h.push(2);
-  h.push(1);
-  h.push(0);
-  
-  print(h.pop());
-  print(h.pop());
-  print(h.pop());
-  
-  print(h);
-}
+// main() {
+//   var h = MinHeap();
+//   h.push(2);
+//   h.push(1);
+//   h.push(0);
+//  
+//   print(h.pop());
+//   print(h.pop());
+//   print(h.pop());
+//  
+//   print(h);
+// }

@@ -364,6 +364,8 @@ Mais detalhes de um grafo e nomeclaturas
 
 - É uma **estrutura de dados baseada em árvore binária**, mas **implementada de forma eficiente usando um array**, sem usar nós ou ponteiros explicitamente.
 - Representa uma **árvore binária quase completa** (todos os níveis cheios, exceto possivelmente o último, preenchido da esquerda para a direita).
+- Pelo que vi pode ser usado em problemas que precisam remover maior ou menor numero por operação, com heap da pra fazer sem executar um sort,
+- melhorando o tempo do algoritmo para um O(log n).
 - A relação entre pai e filhos no array é dada por:
   - **Filho esquerdo:** `2 * i + 1`
   - **Filho direito:** `2 * i + 2`
