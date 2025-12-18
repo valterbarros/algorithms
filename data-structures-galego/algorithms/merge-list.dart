@@ -1,5 +1,12 @@
-// WIP
-typedef Sort = ({ int val, List<int> list, int index });
+// https://leetcode.com/problems/merge-k-sorted-lists/description/
+// 23. Merge k Sorted Lists
+
+class ListNode {
+  int val;
+  ListNode? next;
+  ListNode([this.val = 0, this.next]);
+}
+typedef Sort = ({ int val, ListNode node });
 
 class MinHeap {
   List<Sort> heap = [];
@@ -12,7 +19,7 @@ class MinHeap {
     var smallest = index;
     var left = _leftChild(index);
     var right = _rightChild(index);
-    
+
     if (left < heap.length && heap[left].val < heap[smallest].val) {
       smallest = left;
     }
@@ -33,7 +40,7 @@ class MinHeap {
     if (heap.isEmpty) return null;
 
     if (heap.length == 1) return heap.removeLast();
-    
+
     var root = heap.first;
     heap[0] = heap.removeLast();
 
@@ -44,7 +51,7 @@ class MinHeap {
 
   heapifyUp(int index) {
     var currentIndex = index;
-    
+
     while (currentIndex > 0 && heap[_parent(currentIndex)].val > heap[currentIndex].val) {
       var tmp = heap[_parent(currentIndex)];
       heap[_parent(currentIndex)] = heap[currentIndex];
@@ -70,42 +77,60 @@ class MinHeap {
 
 class Solution {
   var heap = new MinHeap();
-  
-  add(List<int> l1) {
-    heap.push((val: l1[0], list: l1, index: 0));
+
+  add(ListNode head) {
+    heap.push((val: head.val, node: head));
   }
 
-  merge() {
-    var res = [];
+  ListNode? mergeKLists(List<ListNode?> lists) {
+    if (lists.isEmpty) return null;
+    // just for edge cases like [] or [[]]
+    for (var list in lists) {
+      if (list == null) continue;
+      add(list);
+    }
+
+    var head = ListNode(1);
+    var current = head;
 
     while(heap.size > 0) {
+      // 1 step: remove from heap
       Sort values = heap.pop();
-      var list = values.list;
-      var index = values.index;
+      var node = values.node;
       var val = values.val;
-      
-      res.add(val);
 
-      if (index + 1 < list.length) {
-        var nextIndex = index + 1;
-        heap.push((val: list[nextIndex], list: list, index: nextIndex));
+      // 2. append to general linkedlist
+      // add to general linked list, copping the value not reference
+      current.next = ListNode(val);
+      current = current.next!;
+
+      // 3. append next node to heap, and automatically it sort by value  
+      // passing by reference
+      var nextNode = node.next;
+      if (nextNode != null) {
+        add(nextNode);
       }
     }
-    
-    return res;
-  }  
+
+    return head.next;
+  }
 }
 
+ListNode generateLL(List<int> values) {
+  var head = ListNode(values[0]);
+  var current = head;
+  for (var val in values.getRange(1, values.length)) {
+    var node = ListNode(val);
+    current.next = node;
+    current = node;
+  }
+
+  return head;
+}
+  
 main() {
   // given many lists [[1,4,5],[1,3,4],[2,6]]
-  // try with array but if not work try with linked list
-  // merge then and keep order
-  // using heap
-  
   var s = Solution();
-  s.add([1,4,5]);
-  s.add([1,3,4]);
-  s.add([2,6]);
-  
-  print(s.merge());
+
+  s.mergeKLists([generateLL([1,4,5]), generateLL([1,3,4]), generateLL([2,6])]);
 }
