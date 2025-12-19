@@ -36,7 +36,7 @@ class MinHeap {
 
     // get root
     var root = heap.first;
-    // set last element as root
+    // set last element as root, to reorganize tree using heapify
     heap[0] = heap.removeLast();
 
     heapifyDown(0);
