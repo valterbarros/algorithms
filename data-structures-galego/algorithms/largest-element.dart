@@ -4,6 +4,9 @@
 import 'heap.dart';
 
 class KthLargest {
+  // Needs to be MinHeap because MaxHeap should consume too much space
+  // to avoid that minHeap is used but for each add the size is checked if overflow k pop a item
+  // at the end heap has size = k, the value is basically what has inside heap
   var heapq = new MinHeap();
   var kNumber;
 
