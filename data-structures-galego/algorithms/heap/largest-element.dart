@@ -25,7 +25,7 @@ class KthLargest {
   add(int val) {
     heapq.push(val);
     
-    // after push remove less element = head of heap 
+    // keep heap with k size
     if (heapq.size() > kNumber) heapq.pop();
 
     return heapq.head();
@@ -33,12 +33,6 @@ class KthLargest {
 }
 
 main () {
-  // KthLargest kthLargest = new KthLargest(3, [4, 5, 8, 2]);
-  //
-  // for ( var n in [2,5,10,9,4]) {
-  //   print(kthLargest.add(n));
-  // }
-
   KthLargest kthLargest = new KthLargest(4, [7, 7, 7, 7, 8, 3]);
 
   for (var n in [2,10,9,9]) {

@@ -372,6 +372,8 @@ Mais detalhes de um grafo e nomeclaturas
   - **Pai:** `(i - 1) // 2`
 - Existem dois tipos principais:
   - **Min-Heap:** o menor valor fica sempre no topo (raiz)
+    - Dependendo dos casos é melhor usar essa mesmo para numero maximo, principalmente para quantidades pequenas
+    - mantendo apenas os maiores numeros na heap
   - **Max-Heap:** o maior valor fica sempre no topo (raiz)
 - A propriedade do heap garante apenas a relação **pai ↔ filhos**, não uma ordenação global como em árvores de busca.
 - **Inserção (heapify up):**
