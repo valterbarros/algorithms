@@ -1,7 +1,7 @@
 package array
 
 import (
-	utils "algorithms_go/array/utils"
+	utils "data-structures/algorithms_go/array/utils"
 	"testing"
 )
 

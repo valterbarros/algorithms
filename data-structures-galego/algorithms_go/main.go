@@ -4,7 +4,7 @@
 package main
 
 import (
-	array "algorithms_go/array"
+	array "data-structures/algorithms_go/array"
 	"fmt"
 	"os"
 )

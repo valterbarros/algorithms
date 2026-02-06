@@ -1,4 +1,3 @@
+// this file enables workspace for go
 go 1.25.5
 use .
-
-use ./array
