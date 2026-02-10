@@ -18,4 +18,9 @@ func RunPointers() {
 	*r1 = 2
 
 	fmt.Println("should change original var: ", v1 == 2)
+
+	// Create a map key string and value is pointer of int
+	strMap := make(map[string]*int)
+	integ := 1
+	strMap["string"] = &integ
 }

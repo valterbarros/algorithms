@@ -7,6 +7,10 @@ type Recurrence struct {
 	name string
 }
 
+type Recurrences []struct {
+	name string
+}
+
 // (r Recurrence) is Receiver and this function can be called struct embeded too
 func (r Recurrence) GetName() string {
 	return r.name
@@ -34,4 +38,13 @@ func RunStructs() {
 	r.SetName("valter 2")
 
 	fmt.Println("change original name: ", r.GetName() == "valter 2")
+
+	// An especime of shurtcut to create many items in single interaction
+	rs := Recurrences{
+		{name: "valter"},
+		{name: "jessica"},
+		{name: "other"},
+	}
+
+	fmt.Println(rs)
 }
