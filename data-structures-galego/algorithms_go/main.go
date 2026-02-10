@@ -11,6 +11,7 @@ import (
 
 func main() {
 	if len(os.Args) < 2 {
+		// eg: go run main.go array structs
 		fmt.Println("Usage: go run main.go [array]")
 		return
 	}
