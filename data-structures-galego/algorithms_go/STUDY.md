@@ -14,3 +14,7 @@ Links go docs:
 
 [Go tour](https://research.swtch.com/gotour)
   - A talk about go explaining about interfaces etc
+[Code cademy go courses](https://www.codecademy.com/catalog/language/go)
+
+TODO:
+Tentar criar um mini cli para executar os scripts de dentro do `samples/`

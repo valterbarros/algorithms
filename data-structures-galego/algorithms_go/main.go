@@ -4,7 +4,7 @@
 package main
 
 import (
-	array "data-structures/algorithms_go/array"
+	"data-structures/algorithms_go/samples"
 	"fmt"
 	"os"
 )
@@ -24,9 +24,13 @@ func main() {
 		}
 		switch os.Args[2] {
 		case "structs":
-			array.RunStructs()
+			samples.RunStructs()
 		case "pointers":
-			array.RunPointers()
+			samples.RunPointers()
+		case "strings":
+			samples.RunStrings()
+		case "enums":
+			samples.RunEnums()
 		default:
 			fmt.Println("Function not recognized")
 		}

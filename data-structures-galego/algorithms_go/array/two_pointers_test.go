@@ -23,10 +23,6 @@ func reverse(b []byte, left int, right int) {
 func RunTwoPointers(s string) string {
 	left := 0
 	right := 0
-	// in go string is a sequence of bytes, in that way is note possible to acess [0] [1] of a string
-	// exist too a difference between strings and runes
-	// A more deep detail is that it is not called a cast it is called a convertion and the value is copied from string to bytes
-	// original string keeps intact
 	bytes := []byte(s)
 
 	// here the simple quote represents the rune or byte(uint8)

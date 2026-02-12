@@ -1,4 +1,6 @@
-package array
+// https://gobyexample.com/pointers
+
+package samples
 
 import "fmt"
 

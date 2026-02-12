@@ -1,4 +1,6 @@
-package array
+// https://gobyexample.com/structs
+
+package samples
 
 import "fmt"
 
@@ -22,6 +24,7 @@ func (r *Recurrence) SetName(name string) {
 	r.name = name
 }
 
+// is private when first char is lowercase
 func (r Recurrence) privateProp() string {
 	return "prop"
 }

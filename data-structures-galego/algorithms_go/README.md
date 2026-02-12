@@ -46,5 +46,6 @@ You can also run and debug algorithms or tests directly in [Visual Studio Code](
 
 - `main.go`: Entry point to run algorithms by category and name.
 - `array/`, `linked-list/`, etc.: Folders with Go files for each algorithm and their tests.
+- `samples/` - is just algorithms of learning go
 
 Let me know if you want this added to your README.md automatically!

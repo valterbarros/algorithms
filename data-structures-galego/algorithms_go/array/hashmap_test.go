@@ -47,9 +47,11 @@ func TestHashMap(t *testing.T) {
 	}
 
 	for _, tt := range tests {
-		result := RunHashMap(tt.input)
-		if result != tt.expected {
-			t.Errorf("input: %q, expected %d, got %d", tt.input, tt.expected, result)
-		}
+		t.Run("should return right index when input is: "+tt.input, func(t *testing.T) {
+			result := RunHashMap(tt.input)
+			if result != tt.expected {
+				t.Errorf("input: %q, expected %d, got %d", tt.input, tt.expected, result)
+			}
+		})
 	}
 }
