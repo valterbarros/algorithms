@@ -9,7 +9,9 @@ func TestPointer(v *int) {
 	fmt.Println("value of *int is: ", v)
 }
 
-func RunPointers() {
+type PointersType struct{}
+
+func (p PointersType) Run() {
 	v1 := 1
 	// that holds memory address for v1
 	r1 := &v1

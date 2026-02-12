@@ -29,7 +29,9 @@ func (r Recurrence) privateProp() string {
 	return "prop"
 }
 
-func RunStructs() {
+type StructsType struct{}
+
+func (s StructsType) Run() {
 	// creating new struct
 	r := Recurrence{name: "valter 123"}
 

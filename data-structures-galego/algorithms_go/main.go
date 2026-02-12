@@ -22,16 +22,19 @@ func main() {
 			fmt.Println("Choose a function: two-pointers, binary-search, sliding-window, exponential-search, structs, pointers, hashmap")
 			return
 		}
-		switch os.Args[2] {
-		case "structs":
-			samples.RunStructs()
-		case "pointers":
-			samples.RunPointers()
-		case "strings":
-			samples.RunStrings()
-		case "enums":
-			samples.RunEnums()
-		default:
+		samplesMap := map[string]samples.Sample{
+			"structs":   samples.StructsType{},
+			"pointers":  samples.PointersType{},
+			"strings":   samples.PointersType{},
+			"enums":     samples.EnumsType{},
+			"variables": samples.VariablesType{},
+			"types":     samples.TypesType{},
+			"functions": samples.FunctionsType{},
+		}
+
+		if sample, ok := samplesMap[os.Args[2]]; ok {
+			sample.Run()
+		} else {
 			fmt.Println("Function not recognized")
 		}
 	default:

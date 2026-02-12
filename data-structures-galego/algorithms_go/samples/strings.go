@@ -4,7 +4,9 @@ package samples
 
 import "fmt"
 
-func RunStrings() {
+type StringsType struct{}
+
+func (s StringsType) Run() {
 	// String "interpolations"
 	// https://pkg.go.dev/fmt#hdr-Printing
 	str := fmt.Sprintf("the number is: %d", 1)
@@ -16,6 +18,7 @@ func RunStrings() {
 	// With rune is possible to store utf8 characters in a single value
 	// rune is int32
 	var fullChar rune
+	// can only be one character, just like char in other languages
 	fullChar = 'é'
 	fmt.Println("full char: ", fullChar) // -> 233
 

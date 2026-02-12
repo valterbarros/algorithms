@@ -16,5 +16,9 @@ Links go docs:
   - A talk about go explaining about interfaces etc
 [Code cademy go courses](https://www.codecademy.com/catalog/language/go)
 
-TODO:
-Tentar criar um mini cli para executar os scripts de dentro do `samples/`
+[Go course udemy](https://www.udemy.com/course/aprenda-golang-do-zero-desenvolva-uma-aplicacao-completa)
+
+- [Project devbook](https://github.com/OtavioGallego/devbook)
+  - A full stack project using go and frontend web
+- [Examples](https://github.com/OtavioGallego/curso-golang)
+  - Examples from go on course 

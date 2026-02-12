@@ -30,7 +30,9 @@ const (
 	StateConnected
 )
 
-func RunEnums() {
+type EnumsType struct{}
+
+func (e EnumsType) Run() {
 	fmt.Println("untyped: ", Pending, Ready, InProgress)
 	fmt.Println("ServerState: ", StateIddle, StateConnected)
 
