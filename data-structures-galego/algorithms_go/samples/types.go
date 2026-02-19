@@ -13,7 +13,9 @@ func (t TypesType) Run() {
 	// basically int: int, int8, int16, int32, int64
 	// go get type by inference and set int, that is based on processor architecture
 
+	// go get type by inference and set int, that is based on processor architecture
 	num := 1
+	fmt.Println("infer int type: ", reflect.TypeOf(num))
 
 	// It is not possible to make operations with differents types like int8 + int16
 	// var byt int8 = 1
@@ -35,7 +37,6 @@ func (t TypesType) Run() {
 	// for float there is just
 	// float32 and float64
 
-	// go get type by inference and set int, that is based on processor architecture
 	num2 := 2.0
 	// returns float64
 	fmt.Println(reflect.TypeOf(num2))
@@ -56,4 +57,21 @@ func (t TypesType) Run() {
 
 	// is possible to do this
 	// var f func()
+
+	// any == interface{}
+	var whatIsType2 any = func() {}
+
+	var a int = 1
+	fmt.Println(a)
+	// it is a type switch
+	switch whatIsType2.(type) {
+	case func():
+		fmt.Println("is a function")
+	case int:
+		fmt.Println("is an int")
+	case string:
+		fmt.Println("is a string")
+	default:
+		fmt.Println("is not a function")
+	}
 }
