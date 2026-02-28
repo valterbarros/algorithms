@@ -4,6 +4,15 @@ package samples
 
 import "fmt"
 
+type person struct {
+	age int
+}
+
+// inherit?
+type student struct {
+	person
+}
+
 // creates struct
 type Recurrence struct {
 	name string
@@ -32,6 +41,11 @@ func (r Recurrence) privateProp() string {
 type StructsType struct{}
 
 func (s StructsType) Run() {
+	// inherit?
+	stud := student{person{20}}
+	// Actually age is inside person, but it is possible to acess direct on student as it "inherit" it
+	fmt.Println("age of student: ", stud.age)
+
 	// creating new struct
 	r := Recurrence{name: "valter 123"}
 

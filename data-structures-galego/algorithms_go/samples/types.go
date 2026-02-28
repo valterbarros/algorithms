@@ -8,7 +8,32 @@ import (
 
 type TypesType struct{}
 
+type FuncType func()
+
+// It is possible to add method a to func type?!
+func (f FuncType) callFn() {
+	f()
+}
+
+type IntType int
+
+func (i IntType) getInt() {
+	fmt.Println("selected type: ", i)
+}
+
 func (t TypesType) Run() {
+	var fnType FuncType
+	fnType = func() {
+		fmt.Println("inside FuncType")
+	}
+	// More advance example a function type call a method of that method
+	fnType.callFn()
+
+	// Add method to int type
+	var intType IntType
+	intType = 1
+	intType.getInt()
+
 	// there is some types for int and float
 	// basically int: int, int8, int16, int32, int64
 	// go get type by inference and set int, that is based on processor architecture
