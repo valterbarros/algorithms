@@ -15,10 +15,10 @@ This folder contains Go implementations of classic algorithms and data structure
    cd algorithms_go
    ```
 
-4. **Run a Specific Algorithm**  
-   Use the main file to run a specific algorithm. For example:
+4. **Run menu with algorithms**  
+   For example:
    ```sh
-   go run main.go array binary-search
+   ./running.sh
    ```
 
 5. **Run Tests**  
@@ -31,7 +31,6 @@ This folder contains Go implementations of classic algorithms and data structure
    ```sh
    go test -v binary-search_test.go
    ```
-
 
 ### Running with VS Code
 

@@ -1,43 +1,100 @@
-// You can edit this code!
-// Click here and start typing.
-
 package main
 
 import (
+	"bufio"
 	"data-structures/algorithms_go/samples"
 	"fmt"
 	"os"
+	"sort"
+	"strings"
 )
 
+var samplesMap = map[string]samples.Sample{
+	"structs":   samples.StructsType{},
+	"pointers":  samples.PointersType{},
+	"strings":   samples.StringsType{},
+	"enums":     samples.EnumsType{},
+	"variables": samples.VariablesType{},
+	"types":     samples.TypesType{},
+	"functions": samples.FunctionsType{},
+}
+
+func showMenu() {
+	fmt.Println("\n--- MENU SAMPLES ---")
+
+	// Para o menu ficar sempre em ordem alfabética (opcional)
+	keys := make([]string, 0, len(samplesMap))
+	for k := range samplesMap {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+
+	for _, k := range keys {
+		fmt.Printf("-> %s\n", k)
+	}
+	fmt.Println("leave")
+	fmt.Print("\nChoose an option: ")
+}
+
+const cacheFile = ".last_sample"
+
+func saveLast(command string) {
+	os.WriteFile(cacheFile, []byte(command), 0644)
+}
+
+func resetLast() {
+	os.WriteFile(cacheFile, []byte(""), 0644)
+}
+
+func getLast() string {
+	data, _ := os.ReadFile(cacheFile)
+	return string(data)
+}
+
+var envLastGo = "LAST_GO_ENV"
+
+func runCommand(command string) {
+	if s, has := samplesMap[command]; has {
+		saveLast(command)
+
+		fmt.Printf("\n--- Executing: %s ---\n", command)
+		s.Run()
+		fmt.Println("\n(r: repeat | b: menu | leave: sair)")
+	} else {
+		fmt.Printf("Opção [%s] invalid. try again.\n", command)
+	}
+}
+
 func main() {
-	if len(os.Args) < 2 {
-		// eg: go run main.go array structs
-		fmt.Println("Usage: go run main.go [array]")
-		return
+	lastCommand := getLast()
+
+	fmt.Println("Running last command: ", lastCommand)
+	if lastCommand != "" {
+		runCommand(lastCommand)
+	} else {
+		showMenu()
 	}
 
-	switch os.Args[1] {
-	case "array":
-		if len(os.Args) < 3 {
-			fmt.Println("Choose a function: two-pointers, binary-search, sliding-window, exponential-search, structs, pointers, hashmap")
-			return
-		}
-		samplesMap := map[string]samples.Sample{
-			"structs":   samples.StructsType{},
-			"pointers":  samples.PointersType{},
-			"strings":   samples.PointersType{},
-			"enums":     samples.EnumsType{},
-			"variables": samples.VariablesType{},
-			"types":     samples.TypesType{},
-			"functions": samples.FunctionsType{},
+	scanner := bufio.NewScanner(os.Stdin)
+
+	for scanner.Scan() {
+		command := strings.TrimSpace(strings.ToLower(scanner.Text()))
+
+		if command == "leave" {
+			os.Exit(0)
+			break
 		}
 
-		if sample, ok := samplesMap[os.Args[2]]; ok {
-			sample.Run()
-		} else {
-			fmt.Println("Function not recognized")
+		if command == "b" {
+			resetLast()
+			showMenu()
 		}
-	default:
-		fmt.Println("Module not recognized")
+
+		if command == "r" {
+			fmt.Println("🔄 Recompiling...")
+			break
+		}
+
+		runCommand(command)
 	}
 }
