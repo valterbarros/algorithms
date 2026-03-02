@@ -4,9 +4,12 @@ import (
 	"bufio"
 	"data-structures/algorithms_go/samples"
 	"fmt"
+	"maps"
 	"os"
 	"os/signal"
+	"slices"
 	"sort"
+	"strconv"
 	"strings"
 )
 
@@ -34,8 +37,8 @@ func showMenu() {
 	}
 	sort.Strings(keys)
 
-	for _, k := range keys {
-		fmt.Printf("-> %s\n", k)
+	for index, k := range keys {
+		fmt.Printf("%d -> %s\n", index, k)
 	}
 	fmt.Print("\nChoose an option (l: leave): ")
 }
@@ -58,14 +61,27 @@ func getLast() string {
 var envLastGo = "LAST_GO_ENV"
 
 func runCommand(command string) {
-	if s, has := samplesMap[command]; has {
+	// maps.Keys return seq and is necessary to put that on a slice with slices.Collect
+	keys := slices.Collect(maps.Keys(samplesMap))
+	slices.Sort(keys)
+	// convert number
+	commandInt, err := strconv.ParseInt(command, 10, 64)
+	// TODO: fix out of range error in case of wrong input
+	mappedCommand := keys[commandInt]
+
+	if err != nil {
+		fmt.Printf("Opção [%s] invalid. try again.\n", mappedCommand)
+		return
+	}
+
+	if s, has := samplesMap[mappedCommand]; has {
 		saveLast(command)
 
-		fmt.Printf("\n--- Executing: %s ---\n", command)
+		fmt.Printf("\n--- Executing: %s ---\n", mappedCommand)
 		s.Run()
 		fmt.Println("\n(r: repeat | b: menu | l: leave)")
 	} else {
-		fmt.Printf("Opção [%s] invalid. try again.\n", command)
+		fmt.Printf("Opção [%s] invalid. try again.\n", mappedCommand)
 	}
 }
 

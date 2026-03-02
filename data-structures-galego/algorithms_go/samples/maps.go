@@ -44,9 +44,6 @@ func (e MapsType) Run() {
 
 	fmt.Println("map4: ", map4)
 
+	// it returns a seq and is necessary to use slice.Collect to get slice of that
 	fmt.Println("keys4: ", maps.Keys(map4))
-
-	for a, index := range maps.Keys(map4) {
-		fmt.Println("a", a, index)
-	}
 }
