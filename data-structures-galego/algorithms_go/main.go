@@ -19,6 +19,9 @@ var samplesMap = map[string]samples.Sample{
 	"variables": samples.VariablesType{},
 	"types":     samples.TypesType{},
 	"functions": samples.FunctionsType{},
+	"arrays":    samples.ArrayType{},
+	"maps":      samples.MapsType{},
+	"controls":  samples.ControlsType{},
 }
 
 func showMenu() {

@@ -1,0 +1,48 @@
+package samples
+
+import "fmt"
+
+type ArrayType struct{}
+
+func (e ArrayType) Run() {
+	// it is possible to create slice with make
+	// capacity 15 and length 10
+	slice0 := make([]float32, 10, 15)
+	fmt.Println("capacity slice0", cap(slice0), len(slice0))
+
+	// array fixed size
+	array1 := [5]int{1, 2, 3}
+	// change array pos
+	array1[1] = 4
+
+	fmt.Println("array1: ", array1)
+
+	// slice has a pointer to real array and the size is dynamic
+	slice1 := []int{1, 2, 3, 4}
+	fmt.Println("slice1: ", slice1)
+	// when slice reach the cap, go basically duplicate the size of the intern array
+	fmt.Println("capacity slice1", cap(slice1), len(slice1))
+	slice1 = append(slice1, 2)
+	fmt.Println("capacity slice1", cap(slice1), len(slice1))
+
+	// append to slice
+	slice2 := []int{1, 2, 3, 4, 5}
+	// Append returns a new array
+	slice2 = append(slice2, 50)
+
+	fmt.Println("slice1: ", slice1)
+
+	// it is possible to swap slice positions
+
+	slice3 := []int{1, 2, 3, 4, 5, 6}
+	// it asically put 0 in 1 and 1 in 0
+	slice3[0], slice3[1] = slice3[1], slice3[0]
+	fmt.Println("slice3: ", slice3)
+
+	// it is possible to pega a slice of array range
+	// ... is for "dynamic" array but not appendable
+	array2 := [...]int{1, 2, 3, 4, 5}
+	slice4 := array2[1:3]
+
+	fmt.Println("slice4: ", slice4)
+}
