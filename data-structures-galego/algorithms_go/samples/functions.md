@@ -1,14 +1,29 @@
 #### Functions
 
-defer is used to run that as last function
+defer is used to run that as last function, that is executed before a return from function
 
 ```go
-defer func() {
-	fmt.Println("\ndefer fn, use it to clear data")
-}()
+func testingDefer() int {
+	// defer is used to run that as last function
+	defer func() {
+		fmt.Println("\ndefer fn, use it to clear data")
+	}()
+
+	return 1
+}
+
+fmt.Println("Testing return: ", testingDefer())
+
 ```
 
-functions are first class citizens in go
+output:
+
+```
+// defer fn, use it to clear data
+// Testing return:  1
+```
+
+Functions are first class citizens in go
 and can be used just like any other var
 
 ```go
@@ -76,4 +91,35 @@ it is possible to call that with array
 
 ```go
 parameters([]int{3, 2, 1}...)
+```
+
+Panic and recover, in some manner it is similar to try...catch, defer + recover is basically a catch
+
+It will cause a panic
+
+> To force a panic we can call `panic("error here")`
+
+```go
+func funcWillPanic() int {
+	defer recoverFunc()
+
+	// trying to acess a index out of bound = panic
+	return []int{1, 2, 3}[50]
+}
+```
+
+The r variable from recover will return the error
+
+```go
+func recoverFunc() {
+	if r := recover(); r != nil {
+		fmt.Println("\n\napp was recovered from recoverFunc", r)
+	}
+}
+```
+
+not Panic because the recover inside defer fn
+
+```go
+funcWillPanic()
 ```

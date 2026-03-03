@@ -4,15 +4,20 @@ import "fmt"
 
 type FunctionsType struct{}
 
-func (ff FunctionsType) Run() {
+func testingDefer() int {
 	// defer is used to run that as last function
 	defer func() {
 		fmt.Println("\ndefer fn, use it to clear data")
 	}()
 
+	return 1
+}
+
+func (ff FunctionsType) Run() {
+	fmt.Println("Testing return: ", testingDefer())
+
 	// functions are first class citizens in go
 	// and can be used just like any other var
-
 	var f = func(text string) string {
 		return text
 	}
@@ -69,4 +74,20 @@ func (ff FunctionsType) Run() {
 	// it is possible to call that with array
 	parameters([]int{3, 2, 1}...)
 
+	// panic and recover
+	recoverFunc := func() {
+		if r := recover(); r != nil {
+			// r is the error
+			fmt.Println("\n\napp was recovered from recoverFunc", r)
+		}
+	}
+
+	funcWillPanic := func() int {
+		defer recoverFunc()
+
+		// trying to acess a index out of bound
+		return []int{1, 2, 3}[50]
+	}
+
+	funcWillPanic()
 }
