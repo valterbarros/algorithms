@@ -27,7 +27,7 @@ func (s StringsType) Run() {
 	// in go string is a sequence of bytes readonly, in that way is note possible to acess [0] [1] of a string
 	// A more deep detail is that it is not called a cast it is called a convertion and the value is copied in memory from string to bytes
 	// original string keeps intact
-	// it returns two bytes because é is no ascii
+	// it returns two bytes because é is no ascii(using 7 bits, from 0 to 127)
 	notFull = []byte("é")
 
 	fmt.Println("not full char: ", notFull) // -> [195, 169]

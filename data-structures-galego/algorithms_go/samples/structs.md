@@ -1,7 +1,5 @@
 #### Structs
 
-**inherit?**
-
 ```go
 type person struct {
     age int
@@ -11,7 +9,7 @@ type student struct {
 }
 ```
 
-**creates struct**
+creates struct
 
 ```go
 type Recurrence struct {
@@ -19,7 +17,7 @@ type Recurrence struct {
 }
 ```
 
-**(r Recurrence) is Receiver and this function can be called struct embeded too**
+(r Recurrence) is Receiver and this function can be called struct embeded too
 
 ```go
 func (r Recurrence) GetName() string {
@@ -27,7 +25,7 @@ func (r Recurrence) GetName() string {
 }
 ```
 
-**using * alter the original r variable**
+using * alter the original r variable
 
 ```go
 func (r *Recurrence) SetName(name string) {
@@ -36,7 +34,7 @@ func (r *Recurrence) SetName(name string) {
 }
 ```
 
-**is private when first char is lowercase**
+is private when first char is lowercase
 
 ```go
 func (r Recurrence) privateProp() string {
@@ -44,7 +42,7 @@ func (r Recurrence) privateProp() string {
 }
 ```
 
-**inherit?**
+inherit?! in next example it is possible to access, student.age or person.student.age
 
 ```go
 stud := student{person{20}}
@@ -52,14 +50,13 @@ stud := student{person{20}}
 fmt.Println("age of student: ", stud.age)
 ```
 
-**creating new struct**
+creating new struct
 
 ```go
 r := Recurrence{name: "valter 123"}
 fmt.Println(r.GetName())
 ```
-
-**SetName and check change**
+SetName and check change
 
 ```go
 r.SetName("valter 2")

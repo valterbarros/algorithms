@@ -1,13 +1,13 @@
 #### Maps
 
-**create a map without initialization**
+create a map without initialization
 
 ```go
 map1 := make(map[string]int)
 fmt.Println("map1: ", map1)
 ```
 
-**it is possible to use any to accept any type but is more recommended to use struct**
+it is possible to use any to accept any type but is more recommended to use struct
 
 ```go
 map2 := make(map[string]any)
@@ -15,13 +15,14 @@ map2["first"] = 1
 fmt.Println("map2: ", map2)
 ```
 
-**here is necessary to run a type assertition**
+As that map is using any type go don't permit the usage of that without a type assertition
+> That garantes less errors at runtime
 
 ```go
 // c := int64(map2["first"]) * 2
 ```
 
-**It is possible to create map inner map**
+It is possible to create map inner map
 
 ```go
 map3 := make(map[string]map[string]int)
@@ -31,21 +32,19 @@ map3["inner"] = map[string]int{
 fmt.Println("map3: ", map3)
 ```
 
-**remove a key**
+remove a key
 
 ```go
 delete(map3, "inner")
 ```
 
-**clear map**
+clear map
 
 ```go
 clear(map3)
 ```
 
-**maps package has so many fns like maps.Equal()**
-
-**map keys**
+maps package has so many fns like maps.Equal()
 
 ```go
 map4 := map[string]string{
@@ -55,7 +54,7 @@ map4 := map[string]string{
 fmt.Println("map4: ", map4)
 ```
 
-**it returns a seq and is necessary to use slice.Collect to get slice of that**
+it returns a seq and is necessary to use `slice.Collect` to get slice of that
 
 ```go
 fmt.Println("keys4: ", maps.Keys(map4))

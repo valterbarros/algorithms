@@ -1,7 +1,11 @@
 #### Arrays
 
 > More deep details about array and slices can be found
-[Range Over Function Types](https://go.dev/blog/range-functions)
+[Go Slices: usage and internals](https://go.dev/blog/slices-intro)
+
+This is a structure of a slice, slice has a pointer to original array
+
+![../imgs/slice-1.png](../imgs/slice-1.png)
 
 is it possible to create slice with make capacity 15 and length 10
 ```go
@@ -52,7 +56,7 @@ fmt.Println("slice3: ", slice3)
 ```
 
 it is possible to get a slice of array range
-... is for "dynamic" array size but not appendable
+`...` is for "dynamic" array size but not appendable
 
 ```go
 array2 := [...]int{1, 2, 3, 4, 5}

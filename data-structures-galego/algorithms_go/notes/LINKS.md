@@ -18,7 +18,7 @@ Links go docs:
 
 [Arrays]
 
-- [Range Over Function Types](https://go.dev/blog/range-functions)
+- [Go Slices: usage and internals](https://go.dev/blog/slices-intro)
 
 [Go course udemy](https://www.udemy.com/course/aprenda-golang-do-zero-desenvolva-uma-aplicacao-completa)
 

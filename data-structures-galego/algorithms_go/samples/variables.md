@@ -1,8 +1,8 @@
 #### Variables
 
-**type variable1 int**
+type variable1 int
 
-**can be declared like this**
+can be declared like this
 
 ```go
 var (
@@ -11,19 +11,19 @@ var (
 )
 ```
 
-**or like this**
+or like this
 
 ```go
 var variable3 string
 ```
 
-**custom type**
+custom type
 
 ```go
 type newType string
 ```
 
-**const**
+const
 
 ```go
 const (
@@ -31,14 +31,14 @@ const (
 )
 ```
 
-**and using inference :=**
-**inference only works inside functions**
+and using inference :=
+inference only works inside functions
 
 ```go
 variable4 := "valter"
 ```
 
-**custom type**
+custom type
 
 ```go
 var variable5 newType
@@ -49,7 +49,7 @@ variable5 = variable6
 variable5 = constType
 ```
 
-**assignment**
+assignment
 
 ```go
 variable1 = "valter"
@@ -58,8 +58,8 @@ variable3 = "developer"
 fmt.Println(variable1, variable2, variable3, variable4, variable5, variable6)
 ```
 
-**is possible to swap variables value**
-**valter junior -> junior valter**
+is possible to swap variables value
+valter junior -> junior valter
 
 ```go
 variable1, variable2 = variable2, variable1
