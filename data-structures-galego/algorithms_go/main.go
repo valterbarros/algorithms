@@ -8,7 +8,6 @@ import (
 	"os"
 	"os/signal"
 	"slices"
-	"sort"
 	"strconv"
 	"strings"
 )
@@ -27,15 +26,30 @@ var samplesMap = map[string]samples.Sample{
 	"controls":  samples.ControlsType{},
 }
 
+// maps.Keys return seq and is necessary to put that on a slice with slices.Collect
+type keysType []string
+
+var keys keysType = slices.Collect(maps.Keys(samplesMap))
+
+func init() {
+	slices.Sort(keys)
+}
+
+func (k keysType) getByIndex(index string) string {
+	// convert number
+	commandInt, err := strconv.ParseInt(index, 10, 64)
+
+	if outOfBound := int(commandInt) > len(k)-1; outOfBound || err != nil {
+		return "-"
+	}
+
+	mappedCommand := k[commandInt]
+
+	return mappedCommand
+}
+
 func showMenu() {
 	fmt.Println("\n--- MENU SAMPLES ---")
-
-	// Para o menu ficar sempre em ordem alfabética (opcional)
-	keys := make([]string, 0, len(samplesMap))
-	for k := range samplesMap {
-		keys = append(keys, k)
-	}
-	sort.Strings(keys)
 
 	for index, k := range keys {
 		fmt.Printf("%d -> %s\n", index, k)
@@ -61,18 +75,7 @@ func getLast() string {
 var envLastGo = "LAST_GO_ENV"
 
 func runCommand(command string) {
-	// maps.Keys return seq and is necessary to put that on a slice with slices.Collect
-	keys := slices.Collect(maps.Keys(samplesMap))
-	slices.Sort(keys)
-	// convert number
-	commandInt, err := strconv.ParseInt(command, 10, 64)
-	// TODO: fix out of range error in case of wrong input
-	mappedCommand := keys[commandInt]
-
-	if err != nil {
-		fmt.Printf("Opção [%s] invalid. try again.\n", mappedCommand)
-		return
-	}
+	mappedCommand := keys.getByIndex(command)
 
 	if s, has := samplesMap[mappedCommand]; has {
 		saveLast(command)
