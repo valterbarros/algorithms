@@ -1,5 +1,7 @@
 ## Pointers
 
+### Working with pointers
+
 Passing var as pointer, it is a pointer for a int(`*int`)
 
 ```go
@@ -30,6 +32,8 @@ basically with that is possible to change the original value
 *pointer1 = 2
 fmt.Println("should change original var: ", variable1 == 2)
 ```
+
+### Pointer as map value
 
 Create a map key string and value is pointer of int
 

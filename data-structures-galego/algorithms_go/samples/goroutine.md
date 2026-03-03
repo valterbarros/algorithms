@@ -2,7 +2,7 @@
 
 TODO: add examples iterating with for range on channels
 
-channels usage
+### Channels usage
 
 channel as func very powerfull could be any type string, int etc
 

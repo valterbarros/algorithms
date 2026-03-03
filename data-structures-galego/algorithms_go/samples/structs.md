@@ -1,5 +1,7 @@
 ## Structs
 
+### Creating structs
+
 ```go
 type person struct {
     age int
@@ -16,6 +18,8 @@ type Recurrence struct {
     name string
 }
 ```
+
+### Adding methods to struct
 
 (r Recurrence) is Receiver and this function can be called struct embeded too
 
@@ -34,6 +38,8 @@ func (r *Recurrence) SetName(name string) {
 }
 ```
 
+### Private method
+
 is private when first char is lowercase
 
 ```go
@@ -42,6 +48,8 @@ func (r Recurrence) privateProp() string {
 }
 ```
 
+### Inherit in structs
+
 inherit?! in next example it is possible to access, student.age or person.student.age
 
 ```go
@@ -49,6 +57,8 @@ stud := student{person{20}}
 // Actually age is inside person, but it is possible to acess direct on student as it "inherit" it
 fmt.Println("age of student: ", stud.age)
 ```
+
+### Using structs
 
 creating new struct
 

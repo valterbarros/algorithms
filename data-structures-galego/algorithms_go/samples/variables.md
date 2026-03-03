@@ -1,5 +1,7 @@
 ## Variables
 
+### Declaring Vars
+
 type variable1 int
 
 can be declared like this
@@ -57,6 +59,8 @@ variable2 = "junior"
 variable3 = "developer"
 fmt.Println(variable1, variable2, variable3, variable4, variable5, variable6)
 ```
+
+### Swap values
 
 is possible to swap variables value
 valter junior -> junior valter

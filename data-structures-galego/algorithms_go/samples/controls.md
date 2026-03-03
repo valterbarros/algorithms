@@ -1,5 +1,7 @@
 ## Controls(if, else, switch, etc)
 
+### If init
+
 it is called if init, init a var inside if
 
 ```go
@@ -19,7 +21,7 @@ val := 1
 fmt.Println("redeclare val: ", val)
 ```
 
-switch case:
+### Switch case
 
 ```go
 cond := 1

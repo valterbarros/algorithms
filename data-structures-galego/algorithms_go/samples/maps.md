@@ -1,5 +1,7 @@
 ## Maps
 
+### Working with map
+
 create a map without initialization
 
 ```go
@@ -15,14 +17,6 @@ map2["first"] = 1
 fmt.Println("map2: ", map2)
 ```
 
-As that map is using any type go don't permit the usage of that without a type assertition
-> That garantes less errors at runtime
-
-```go
-// error:
-c := int64(map2["first"]) * 2
-```
-
 It is possible to create map inner map
 
 ```go
@@ -32,6 +26,18 @@ map3["inner"] = map[string]int{
 }
 fmt.Println("map3: ", map3)
 ```
+
+### Go safe map attributes manipulation
+
+As that map is using any type go don't permit the usage of that without a type assertition
+> That garantes less errors at runtime
+
+```go
+// error:
+c := int64(map2["first"]) * 2
+```
+
+### Editing map
 
 remove a key
 

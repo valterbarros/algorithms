@@ -1,6 +1,6 @@
 ## Enums
 
-set direct value
+### set direct value
 
 ```go
 const (
@@ -10,7 +10,7 @@ const (
 )
 ```
 
-use a type to set enums
+### use a type to set enums
 
 ```go
 type ServerState int
@@ -21,7 +21,7 @@ const (
 )
 ```
 
-Methods on int type
+### Methods on int type
 
 ```go
 func (ss ServerState) String() string {

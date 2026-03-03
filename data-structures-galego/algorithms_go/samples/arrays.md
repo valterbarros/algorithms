@@ -1,5 +1,7 @@
 ## Arrays
 
+### Internals
+
 > More deep details about array and slices can be found
 [Go Slices: usage and internals](https://go.dev/blog/slices-intro)
 
@@ -34,6 +36,8 @@ slice1 = append(slice1, 2)
 fmt.Println("capacity slice1", cap(slice1), len(slice1))
 ```
 
+### Manipulation
+
 Append to slice
 ```go
 slice2 := []int{1, 2, 3, 4, 5}
@@ -65,7 +69,7 @@ slice4 := array2[1:3]
 fmt.Println("slice4: ", slice4)
 ```
 
-using slices package
+### Using slices package
 
 ```go
 slice5 := []int{50, 10, 1, 9, 4}
@@ -73,6 +77,8 @@ slices.Sort(slice5)
 fmt.Println("slice5: ", slice5)
 
 ```
+
+### Curiosity
 
 is possible to change original array?!
 > as slice has a pointer to original array if you change that it reflects on original array

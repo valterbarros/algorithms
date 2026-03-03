@@ -1,5 +1,7 @@
 ## Types
 
+### Methods on types
+
 It is possible to add method a to func type?!
 
 ```go
@@ -17,6 +19,8 @@ func (i IntType) getInt() {
     fmt.Println("selected type: ", i)
 }
 ```
+
+### Int types
 
 there is some types for int and float
 basically int: int, int8, int16, int32, int64
