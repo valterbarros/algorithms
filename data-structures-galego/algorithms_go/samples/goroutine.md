@@ -28,7 +28,7 @@ go func() {
 }()
 ```
 
-This would block main code until go routine is finished
+This would block main code until go routine is finished, it happens when go routine send data through channel
 
 ```go
 // receiving channel

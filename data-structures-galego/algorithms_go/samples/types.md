@@ -30,17 +30,17 @@ fmt.Println("infer int type: ", reflect.TypeOf(num))
 It is not possible to make operations with differents types like int8 + int16
 
 ```go
-// var byt int8 = 1
-// var byt2 int16 = 2
-// X Error
-// byt+byt2
+var byt int8 = 1
+var byt2 int16 = 2
+// Error
+byt+byt2
 ```
 
 uint unssined int
 
 ```go
-// X error:
-// var variable uint = -1;
+// Error
+var variable uint = -1;
 ```
 
 rune is alias for int32

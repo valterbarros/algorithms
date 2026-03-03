@@ -19,7 +19,8 @@ As that map is using any type go don't permit the usage of that without a type a
 > That garantes less errors at runtime
 
 ```go
-// c := int64(map2["first"]) * 2
+// error:
+c := int64(map2["first"]) * 2
 ```
 
 It is possible to create map inner map
@@ -55,6 +56,7 @@ fmt.Println("map4: ", map4)
 ```
 
 it returns a seq and is necessary to use `slice.Collect` to get slice of that
+> More about [Range Over Function Types](https://go.dev/blog/slices-intro)
 
 ```go
 fmt.Println("keys4: ", maps.Keys(map4))
