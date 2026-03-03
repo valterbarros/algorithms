@@ -16,6 +16,10 @@ Links go docs:
   - A talk about go explaining about interfaces etc
 [Code cademy go courses](https://www.codecademy.com/catalog/language/go)
 
+[Arrays]
+
+- [Range Over Function Types](https://go.dev/blog/range-functions)
+
 [Go course udemy](https://www.udemy.com/course/aprenda-golang-do-zero-desenvolva-uma-aplicacao-completa)
 
 - [Project devbook](https://github.com/OtavioGallego/devbook)

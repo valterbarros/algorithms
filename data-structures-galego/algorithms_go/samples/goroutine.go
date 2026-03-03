@@ -10,7 +10,7 @@ type GoroutineType struct{}
 func (e GoroutineType) Run() {
 	// TODO: add examples iterating with for range on channels
 	// channels usage
-	// channel as func very powerfull bu could be any type string, int etc
+	// channel as func very powerfull could be any type string, int etc
 	var c = make(chan func())
 
 	go func() {

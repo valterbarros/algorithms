@@ -3,6 +3,14 @@ Topics:
 - [Links](./LINKS.md)
 - [Commands](./COMMANDS.md)
 - [Samples of go with comments](../samples/)
-
-TODO:
-Tentar criar um mini cli para executar os scripts de dentro do `samples/`
+  - [Arrays](../samples/arrays.md)
+  - [Controls](../samples/controls.md)
+  - [Enums](../samples/enums.md)
+  - [Functions](../samples/functions.md)
+  - [Goroutines](../samples/goroutines.md)
+  - [Maps](../samples/maps.md)
+  - [Pointers](../samples/pointers.md)
+  - [Strings](../samples/strings.md)
+  - [Structs](../samples/structs.md)
+  - [Types](../samples/types.md)
+  - [Variables](../samples/variables.md)

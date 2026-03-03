@@ -1,6 +1,9 @@
 package samples
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
 type ArrayType struct{}
 
@@ -45,4 +48,20 @@ func (e ArrayType) Run() {
 	slice4 := array2[1:3]
 
 	fmt.Println("slice4: ", slice4)
+
+	// unordered slice of array
+	slice5 := []int{50, 10, 1, 9, 4}
+	// using slices package
+	slices.Sort(slice5)
+
+	fmt.Println("slice5: ", slice5)
+
+	// is possible to change original array?!
+	// as slice has a pointer to original array if you change that it reflects on original array
+	array3 := [...]int{1, 2, 3}
+	// get all range :
+	slice6 := array3[:]
+	slice6[0] = 2
+
+	fmt.Println("array3: ", array3)
 }
