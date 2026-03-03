@@ -1,4 +1,4 @@
-#### Structs
+## Structs
 
 ```go
 type person struct {

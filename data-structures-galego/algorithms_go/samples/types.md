@@ -1,4 +1,4 @@
-#### Types
+## Types
 
 It is possible to add method a to func type?!
 

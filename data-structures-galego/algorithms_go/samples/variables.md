@@ -1,4 +1,4 @@
-#### Variables
+## Variables
 
 type variable1 int
 

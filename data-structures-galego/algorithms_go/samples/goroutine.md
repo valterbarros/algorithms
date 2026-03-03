@@ -1,4 +1,4 @@
-#### Goroutines
+## Goroutines
 
 TODO: add examples iterating with for range on channels
 

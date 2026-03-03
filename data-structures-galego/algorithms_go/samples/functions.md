@@ -1,4 +1,6 @@
-#### Functions
+## Functions
+
+### defer keyword
 
 defer is used to run that as last function, that is executed before a return from function
 
@@ -22,6 +24,8 @@ output:
 // defer fn, use it to clear data
 // Testing return:  1
 ```
+
+### More examples and function capabilities
 
 Functions are first class citizens in go
 and can be used just like any other var
@@ -93,7 +97,9 @@ it is possible to call that with array
 parameters([]int{3, 2, 1}...)
 ```
 
-Panic and recover, in some manner it is similar to try...catch, defer + recover is basically a catch
+### Panic and recover
+
+In some manner it is similar to try...catch, defer + recover is basically a catch
 
 It will cause a panic
 
@@ -108,7 +114,7 @@ func funcWillPanic() int {
 }
 ```
 
-The r variable from recover will return the error
+The `r` variable from recover will return the error
 
 ```go
 func recoverFunc() {

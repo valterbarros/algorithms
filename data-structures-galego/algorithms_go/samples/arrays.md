@@ -1,4 +1,4 @@
-#### Arrays
+## Arrays
 
 > More deep details about array and slices can be found
 [Go Slices: usage and internals](https://go.dev/blog/slices-intro)

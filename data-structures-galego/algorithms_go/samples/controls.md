@@ -1,4 +1,4 @@
-#### Controls(if, else, switch, etc)
+## Controls(if, else, switch, etc)
 
 it is called if init, init a var inside if
 

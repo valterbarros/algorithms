@@ -1,4 +1,4 @@
-#### Pointers
+## Pointers
 
 Passing var as pointer, it is a pointer for a int(`*int`)
 
