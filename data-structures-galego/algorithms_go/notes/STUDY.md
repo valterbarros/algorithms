@@ -7,7 +7,7 @@ Topics:
   - [Controls](../samples/controls.md)
   - [Enums](../samples/enums.md)
   - [Functions](../samples/functions.md)
-  - [Goroutines](../samples/goroutines.md)
+  - [Goroutines](../samples/goroutine.md)
   - [Maps](../samples/maps.md)
   - [Pointers](../samples/pointers.md)
   - [Strings](../samples/strings.md)
