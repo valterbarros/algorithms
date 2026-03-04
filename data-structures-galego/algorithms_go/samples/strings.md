@@ -1,6 +1,6 @@
 ## Strings
 
-[Study](../notes/STUDY.md) / [Strings](.)
+[Study](../notes/STUDY.md) / Strings
 
 ### String "interpolations"
 

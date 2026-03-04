@@ -56,7 +56,7 @@ func replaceBy(data, name string) string {
 	breadCrumbReg := regexp.MustCompile(`(?im)^\[Study+\].+\)`)
 	// (?i) is for case insensitive
 	titleReg := regexp.MustCompile(`(?i)(^##\s[a-z]+)`)
-	breadBase := "[Study](../notes/STUDY.md) / [" + name + "](.)"
+	breadBase := "[Study](../notes/STUDY.md) / " + name
 
 	// if has edit update breadcrumb
 	if has := breadCrumbReg.MatchString(data); has {

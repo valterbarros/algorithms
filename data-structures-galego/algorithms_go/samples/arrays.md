@@ -1,6 +1,6 @@
 ## Arrays
 
-[Study](../notes/STUDY.md) / [Arrays](.)
+[Study](../notes/STUDY.md) / Arrays
 
 ### Internals
 

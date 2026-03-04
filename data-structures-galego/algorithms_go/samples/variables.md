@@ -1,6 +1,6 @@
 ## Variables
 
-[Study](../notes/STUDY.md) / [Variables](.)
+[Study](../notes/STUDY.md) / Variables
 
 ### Declaring Vars
 

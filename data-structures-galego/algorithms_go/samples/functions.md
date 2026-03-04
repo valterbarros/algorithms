@@ -1,6 +1,6 @@
 ## Functions
 
-[Study](../notes/STUDY.md) / [Functions](.)
+[Study](../notes/STUDY.md) / Functions
 
 ### defer keyword
 

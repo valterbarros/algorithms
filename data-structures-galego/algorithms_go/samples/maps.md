@@ -1,6 +1,6 @@
 ## Maps
 
-[Study](../notes/STUDY.md) / [Maps](.)
+[Study](../notes/STUDY.md) / Maps
 
 ### Working with map
 

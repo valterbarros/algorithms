@@ -1,6 +1,6 @@
 ## Controls
 
-[Study](../notes/STUDY.md) / [Controls](.)
+[Study](../notes/STUDY.md) / Controls
 
 ### If init
 

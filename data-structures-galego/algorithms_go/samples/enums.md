@@ -1,6 +1,6 @@
 ## Enums
 
-[Study](../notes/STUDY.md) / [Enums](.)
+[Study](../notes/STUDY.md) / Enums
 
 ### set direct value
 

@@ -1,6 +1,6 @@
 ## Types
 
-[Study](../notes/STUDY.md) / [Types](.)
+[Study](../notes/STUDY.md) / Types
 
 ### Methods on types
 

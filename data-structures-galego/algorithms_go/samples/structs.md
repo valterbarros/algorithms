@@ -1,6 +1,6 @@
 ## Structs
 
-[Study](../notes/STUDY.md) / [Structs](.)
+[Study](../notes/STUDY.md) / Structs
 
 ### Creating structs
 
