@@ -1,5 +1,7 @@
 ## Goroutines
 
+[Study](../notes/STUDY.md) / [Goroutine](.)
+
 TODO: add examples iterating with for range on channels
 
 ### Channels usage

@@ -1,5 +1,7 @@
 ## Maps
 
+[Study](../notes/STUDY.md) / [Maps](.)
+
 ### Working with map
 
 create a map without initialization

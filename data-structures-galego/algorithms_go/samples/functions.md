@@ -1,5 +1,7 @@
 ## Functions
 
+[Study](../notes/STUDY.md) / [Functions](.)
+
 ### defer keyword
 
 defer is used to run that as last function, that is executed before a return from function

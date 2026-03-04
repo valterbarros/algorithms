@@ -1,5 +1,7 @@
 ## Structs
 
+[Study](../notes/STUDY.md) / [Structs](.)
+
 ### Creating structs
 
 ```go

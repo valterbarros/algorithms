@@ -1,5 +1,7 @@
 ## Types
 
+[Study](../notes/STUDY.md) / [Types](.)
+
 ### Methods on types
 
 It is possible to add method a to func type?!

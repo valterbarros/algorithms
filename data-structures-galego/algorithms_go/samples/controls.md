@@ -1,4 +1,6 @@
-## Controls(if, else, switch, etc)
+## Controls
+
+[Study](../notes/STUDY.md) / [Controls](.)
 
 ### If init
 

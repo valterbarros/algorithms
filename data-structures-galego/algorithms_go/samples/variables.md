@@ -1,5 +1,7 @@
 ## Variables
 
+[Study](../notes/STUDY.md) / [Variables](.)
+
 ### Declaring Vars
 
 type variable1 int

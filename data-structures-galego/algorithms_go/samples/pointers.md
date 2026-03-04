@@ -1,5 +1,7 @@
 ## Pointers
 
+[Study](../notes/STUDY.md) / [Pointers](.)
+
 ### Working with pointers
 
 Passing var as pointer, it is a pointer for a int(`*int`)

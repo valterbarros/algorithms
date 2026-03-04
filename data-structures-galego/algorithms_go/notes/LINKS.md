@@ -12,6 +12,8 @@ Links go docs:
   - [Go standard library](https://pkg.go.dev/std)
     - A more tecnical description about each go method
 
+[Go cookbook](https://go-cookbook.com/)
+  - A comprehensive collection of practical Go code snippets, examples, and recipes for building efficient, reliable, and scalable applications. 
 [Go tour](https://research.swtch.com/gotour)
   - A talk about go explaining about interfaces etc
 [Code cademy go courses](https://www.codecademy.com/catalog/language/go)
