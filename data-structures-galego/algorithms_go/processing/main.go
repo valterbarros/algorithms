@@ -10,8 +10,12 @@ import (
 	"strings"
 )
 
-// TODO: run each file in a go routine
 func main() {
+	addBreadCrumb()
+}
+
+func addBreadCrumb() {
+	// TODO: run each file in a go routine
 	// Replace first and then overwrite the file with new content
 	// add breadcrumb to all files
 	utils.IterateFiles("samples/", ".md", func(name string) {
