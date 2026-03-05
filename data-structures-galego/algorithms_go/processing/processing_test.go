@@ -41,3 +41,64 @@ func TestReplaceBy(t *testing.T) {
 		}
 	})
 }
+
+func TestProcessComments(t *testing.T) {
+	t.Run("should update get comments", func(t *testing.T) {
+		source := `// testing a new go feature
+// to work with...
+
+func defering() {
+	...
+}
+
+defer defering()
+`
+		result := processComments(source)
+
+		expected := `testing a new go feature
+to work with...
+` + "\n```go" + `
+func defering() {
+	...
+}
+defer defering()
+`
+
+		if result != expected {
+			t.Errorf("\nWrong expected: \n%s result: \n%s", expected, result)
+		}
+	})
+
+	t.Run("should work with subcomment inside go fns", func(t *testing.T) {
+		// Skip until be possible to add subcommands
+		t.Skip()
+		source := `// testing a new go feature
+// to work with...
+
+func defering() {
+	// SubComment here inside code
+	slice0 := make([]float32, 10, 15)
+	fmt.Println("capacity slice0", cap(slice0), len(slice0))
+}
+
+defer defering()
+`
+		result := processComments(source)
+
+		expected := `testing a new go feature
+to work with...
+` + "\n```go" + `
+func defering() {
+	// SubComment here inside code
+	slice0 := make([]float32, 10, 15)
+	fmt.Println("capacity slice0", cap(slice0), len(slice0))
+}
+
+defer defering()
+`
+
+		if result != expected {
+			t.Errorf("\nWrong expected:\n\n%s result: \n\n%s", expected, result)
+		}
+	})
+}

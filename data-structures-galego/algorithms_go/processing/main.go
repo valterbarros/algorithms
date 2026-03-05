@@ -1,7 +1,6 @@
 package main
 
 // trying to add breadcrumb and other automatizations to samples/*.md
-// TODO: try to get comments from .go file and pass to .md file formatted
 
 import (
 	"data-structures/algorithms_go/utils"
@@ -11,7 +10,45 @@ import (
 )
 
 func main() {
-	addBreadCrumb()
+	data := utils.GetFileData("samples/arrays.go")
+	processComments(data)
+	// addBreadCrumb()
+}
+
+func processComments(data string) string {
+	// TODO: try to get comments from .go file and pass to .md file formatted
+	reg := regexp.MustCompile(`(?im)^(\s{0,1}\/\/\s|\s+\b)`)
+
+	hasCodeSeq := false
+	isCodeOpen := false
+
+	finish := reg.ReplaceAllStringFunc(data, func(m string) string {
+		str := m
+
+		if isCodeOpen {
+			str = strings.TrimSpace(m)
+		} else {
+			str = strings.ReplaceAll(strings.TrimSpace(m), "//", "")
+		}
+
+		// open comment ```go
+		// it comes from a comment and that is a code
+		if !hasCodeSeq && !strings.Contains(m, "//") {
+			str = "\n```go\n"
+		}
+
+		// close comment ```
+		if hasCodeSeq && strings.Contains(m, "//") {
+			str = "```\n"
+		}
+
+		hasCodeSeq = !strings.Contains(m, "//")
+
+		return str
+	})
+
+	// utils.SaveFile("/tmp/arrays2.md", finish)
+	return finish
 }
 
 func addBreadCrumb() {
