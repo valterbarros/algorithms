@@ -19,7 +19,7 @@ func main() {
 
 		viewName := utils.Capitalize(strings.ReplaceAll(name, ".md", ""))
 
-		withBreadCrumb := ReplaceBy(data, viewName)
+		withBreadCrumb := replaceBy(data, viewName)
 		fmt.Println(withBreadCrumb)
 
 		// Save to file
@@ -27,13 +27,13 @@ func main() {
 	})
 }
 
-const BreadCrumbPattern string = `(?im)^\[Study+\].+`
+const breadCrumbPattern string = `(?im)^\[Study+\].+`
 
-func ReplaceBy(data, name string) string {
+func replaceBy(data, name string) string {
 	// (?i) is for case insensitive
 	titleReg := regexp.MustCompile(`(?im)(^##\s[a-z]+)`)
 	breadBase := "[Study](../notes/STUDY.md) / " + name
-	breadCrumbReg := regexp.MustCompile(BreadCrumbPattern)
+	breadCrumbReg := regexp.MustCompile(breadCrumbPattern)
 
 	// if has edit update breadcrumb
 	if has := breadCrumbReg.MatchString(data); has {

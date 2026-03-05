@@ -13,7 +13,7 @@ func TestReplaceBy(t *testing.T) {
 
 ### Sub topic
 		`
-		result := ReplaceBy(source, "Arrays")
+		result := replaceBy(source, "Arrays")
 
 		ok := strings.Contains(result, "[Study](../notes/STUDY.md) / Arrays")
 		if !ok {
@@ -27,12 +27,12 @@ func TestReplaceBy(t *testing.T) {
 
 ### Sub topic
 		`
-		result := ReplaceBy(source, "Arrays")
-		result = ReplaceBy(result, "Arrays")
-		result = ReplaceBy(result, "Arrays")
-		result = ReplaceBy(result, "Arrays")
+		result := replaceBy(source, "Arrays")
+		result = replaceBy(result, "Arrays")
+		result = replaceBy(result, "Arrays")
+		result = replaceBy(result, "Arrays")
 
-		breadCrumbReg := regexp.MustCompile(BreadCrumbPattern)
+		breadCrumbReg := regexp.MustCompile(breadCrumbPattern)
 
 		exact := breadCrumbReg.MatchString(result)
 
