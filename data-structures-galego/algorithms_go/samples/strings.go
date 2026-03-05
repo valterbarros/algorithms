@@ -2,7 +2,11 @@
 
 package samples
 
-import "fmt"
+import (
+	"fmt"
+	"regexp"
+	"strings"
+)
 
 type StringsType struct{}
 
@@ -37,4 +41,11 @@ func (s StringsType) Run() {
 	for idx, char := range chars {
 		fmt.Println(idx, char)
 	}
+
+	// replace string
+	fmt.Println("string replaced: ", strings.ReplaceAll("valter", "v", "w"))
+
+	// using regex, the (?im) is to change mode of regex, in that case is using case insensitive and multiline regex
+	reg1 := regexp.MustCompile(`(?im)V`)
+	fmt.Println("string replaced2: ", reg1.ReplaceAllString("valter", "w"))
 }

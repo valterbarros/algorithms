@@ -44,4 +44,21 @@ for idx, char := range chars {
   // char is type rune
   fmt.Println(idx, char)
 }
+
+```
+
+### Replace
+
+it is possible to replace a string using a method from strings
+
+```go
+strings.ReplaceAll("valter", "v", "w")
+```
+
+Or using regex
+
+```go
+// using regex, the (?im) is to change mode of regex, in that case is using case insensitive and multiline regex
+reg1 := regexp.MustCompile(`(?im)V`)
+fmt.Println("string replaced2: ", reg1.ReplaceAllString("valter", "w"))
 ```

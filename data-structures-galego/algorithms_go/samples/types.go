@@ -17,6 +17,10 @@ func (f FuncType) callFn() {
 
 type IntType int
 
+type anyStruct struct {
+	param any
+}
+
 func (i IntType) getInt() {
 	fmt.Println("selected type: ", i)
 }
@@ -99,4 +103,12 @@ func (t TypesType) Run() {
 	default:
 		fmt.Println("is not a function")
 	}
+
+	// It is possible to run type assertion like that
+	var newSt any = "Olá, Go!"
+
+	// Checks if newSt is string
+	strVar, ok := newSt.(string)
+
+	fmt.Println("valor of check: ", strVar, ok)
 }
