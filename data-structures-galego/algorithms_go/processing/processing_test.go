@@ -45,37 +45,11 @@ func TestReplaceBy(t *testing.T) {
 
 func TestProcessComments(t *testing.T) {
 	t.Run("should update get comments", func(t *testing.T) {
-		source := `package samples
+		source := utils.GetFileData("../tests/fixtures/source.01.source")
 
-import (
-	"fmt"
-	"slices"
-)
-
-type ArrayType struct{}
-
-func (e ArrayType) Run() {
-	// testing a new go feature
-	// to work with...
-
-	func defering() {
-		...
-	}
-
-	defer defering()
-}
-`
 		result := processComments(source)
 
-		expected := `testing a new go feature
-to work with...
-` + "\n```go" + `
-
-func defering() {
-	...
-}
-
-defer defering()`
+		expected := utils.GetFileData("../tests/fixtures/expect.01.md")
 
 		utils.SaveFile("/tmp/array2-result.md", expected)
 

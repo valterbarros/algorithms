@@ -1,0 +1,19 @@
+package samples
+
+import (
+	"fmt"
+	"slices"
+)
+
+type ArrayType struct{}
+
+func (e ArrayType) Run() {
+	// testing a new go feature
+	// to work with...
+
+	func defering() {
+		...
+	}
+
+	defer defering()
+}
