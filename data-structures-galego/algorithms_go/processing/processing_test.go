@@ -58,33 +58,26 @@ func TestProcessComments(t *testing.T) {
 		}
 	})
 
-	t.Run("should work with subcomment inside go fns", func(t *testing.T) {
+	t.Run("should be possible to keep a comment side code", func(t *testing.T) {
 		// Skip until be possible to add subcommands
-		t.Skip()
-		source := `// testing a new go feature
-// to work with...
+		// t.Skip()
+		source := `package samples
 
-func defering() {
-	// SubComment here inside code
-	slice0 := make([]float32, 10, 15)
-	fmt.Println("capacity slice0", cap(slice0), len(slice0))
+import (
+	"fmt"
+	"slices"
+)
+
+type ArrayType struct{}
+
+func (e ArrayType) Run() {
+	slice3[0], slice3[1] = slice3[1], slice3[0] // it basically put 0 in 1 and 1 in 0
 }
-
-defer defering()
 `
 		result := processComments(source)
 
-		expected := `testing a new go feature
-to work with...
-` + "\n```go" + `
-func defering() {
-	// SubComment here inside code
-	slice0 := make([]float32, 10, 15)
-	fmt.Println("capacity slice0", cap(slice0), len(slice0))
-}
-
-defer defering()
-`
+		expected := "\n```go" + `
+slice3[0], slice3[1] = slice3[1], slice3[0] // it basically put 0 in 1 and 1 in 0`
 
 		if result != expected {
 			t.Errorf("\nWrong expected:\n\n%s result: \n\n%s", expected, result)

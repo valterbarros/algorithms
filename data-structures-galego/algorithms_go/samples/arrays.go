@@ -52,8 +52,7 @@ func (e ArrayType) Run() {
 	fmt.Println("slice3: ", slice3)
 
 	// it is possible to get a slice of array range
-	// ... is for "dynamic" array but not appendable
-	array2 := [...]int{1, 2, 3, 4, 5}
+	array2 := [...]int{1, 2, 3, 4, 5} // ... is for "dynamic" array but not appendable
 	slice4 := array2[1:3]
 
 	fmt.Println("slice4: ", slice4)
@@ -72,8 +71,7 @@ func (e ArrayType) Run() {
 	// is possible to change original array?!
 	// > as slice has a pointer to original array if you change that it reflects on original array
 	array3 := [...]int{1, 2, 3}
-	// get all range :
-	slice6 := array3[:]
+	slice6 := array3[:] // get all range :
 	slice6[0] = 2
 
 	fmt.Println("array3: ", array3)

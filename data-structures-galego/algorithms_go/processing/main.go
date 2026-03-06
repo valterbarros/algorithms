@@ -30,7 +30,7 @@ func processComments(data string) string {
 		str := original
 
 		if str != "" {
-			// remove identation additional and comment //
+			// remove identation additional
 			str = str[1:]
 		} else {
 			// if it is empty that is a new line
@@ -39,7 +39,7 @@ func processComments(data string) string {
 		}
 
 		// check if it current is comment and if comment that is at begin of string?
-		isComment := strings.Contains(original, "//")
+		isComment := strings.Contains(original, "//") && strings.Index(original, "//") < 10
 
 		if isComment {
 			str = strings.ReplaceAll(str, "// ", "")
