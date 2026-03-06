@@ -30,7 +30,12 @@ func processComments(data string) string {
 		str := original
 
 		if str != "" {
+			// remove identation additional
 			str = str[1:]
+		} else {
+			// if it is empty that is a new line
+			finish += "\n"
+			continue
 		}
 
 		// get next
