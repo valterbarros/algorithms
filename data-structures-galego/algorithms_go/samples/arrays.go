@@ -40,20 +40,18 @@ func (e ArrayType) Run() {
 	// ### Manipulation
 
 	// append to slice
-	slice2 := []int{1, 2, 3, 4, 5}
 	// Append returns a new array
+	slice2 := []int{1, 2, 3, 4, 5}
 	slice2 = append(slice2, 50)
 
 	fmt.Println("slice1: ", slice1)
 
 	// it is possible to swap slice positions
-
 	slice3 := []int{1, 2, 3, 4, 5, 6}
-	// it asically put 0 in 1 and 1 in 0
-	slice3[0], slice3[1] = slice3[1], slice3[0]
+	slice3[0], slice3[1] = slice3[1], slice3[0] // it basically put 0 in 1 and 1 in 0
 	fmt.Println("slice3: ", slice3)
 
-	// it is possible to pega a slice of array range
+	// it is possible to get a slice of array range
 	// ... is for "dynamic" array but not appendable
 	array2 := [...]int{1, 2, 3, 4, 5}
 	slice4 := array2[1:3]

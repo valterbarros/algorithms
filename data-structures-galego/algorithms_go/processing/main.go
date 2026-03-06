@@ -18,19 +18,19 @@ func main() {
 func processComments(data string) string {
 	data = removeHead(data)
 	// TODO: try to get comments from .go file and pass to .md file formatted
-	// reg := regexp.MustCompile(`(?im)^(\s{0,1}\/\/\s|\s+\b)`)
 	reg := regexp.MustCompile(`(?im)\n`)
 
 	hasCodeSeq := false
-	isCodeOpen := false
+	// isCodeOpen := false
 
 	finish := ""
 	splitted := reg.Split(data, -1)
+
 	for _, original := range splitted {
 		str := original
 
 		if str != "" {
-			// remove identation additional
+			// remove identation additional and comment //
 			str = str[1:]
 		} else {
 			// if it is empty that is a new line
@@ -38,30 +38,28 @@ func processComments(data string) string {
 			continue
 		}
 
-		// get next
-		// fmt.Println("next: ", splitted[index+1])
-		if isCodeOpen {
-			str = strings.TrimSpace(str)
-		} else if str != "" {
+		// check if it current is comment and if comment that is at begin of string?
+		isComment := strings.Contains(original, "//")
+
+		if isComment {
 			str = strings.ReplaceAll(str, "// ", "")
 		}
 
+		// after split \n was removed fro all lines
 		str = str + "\n"
-
-		// isCurrentCodeSeq := strings.Contains(str, "//")
 
 		// open comment ```go
 		// it comes from a comment and that is a code
-		if !hasCodeSeq && !strings.Contains(original, "//") {
+		if !hasCodeSeq && !isComment {
 			str = "\n```go\n" + str
 		}
 
 		// close comment ```
-		if hasCodeSeq && strings.Contains(original, "//") {
+		if hasCodeSeq && isComment {
 			str = "```\n" + str
 		}
 
-		hasCodeSeq = !strings.Contains(original, "//")
+		hasCodeSeq = !isComment
 
 		finish += str
 	}
@@ -75,10 +73,9 @@ func processComments(data string) string {
 }
 
 func removeHead(data string) string {
-	// reg := regexp.MustCompile(`(?i)^[\s\S]+Run\(\)\s\{`)
 	reg2 := regexp.MustCompile(`(?i)Run\(\)\s\{\n`)
 	idx := reg2.FindStringIndex(data)
-	// fmt.Println("idex: ", data[idx[1]:])
+
 	return data[idx[1]:]
 }
 
