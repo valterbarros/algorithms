@@ -42,6 +42,11 @@ func (s StringsType) Run() {
 		fmt.Println(idx, char)
 	}
 
+	// It is possible to get strings by range
+	// get from 3 until end of string
+	newString := "  testando"
+	fmt.Println("new String: ", newString[3:])
+
 	// replace string
 	fmt.Println("string replaced: ", strings.ReplaceAll("valter", "v", "w"))
 

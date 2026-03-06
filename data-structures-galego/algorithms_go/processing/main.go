@@ -17,37 +17,49 @@ func main() {
 
 func processComments(data string) string {
 	// TODO: try to get comments from .go file and pass to .md file formatted
-	reg := regexp.MustCompile(`(?im)^(\s{0,1}\/\/\s|\s+\b)`)
+	// reg := regexp.MustCompile(`(?im)^(\s{0,1}\/\/\s|\s+\b)`)
+	reg := regexp.MustCompile(`(?im)\n`)
 
 	hasCodeSeq := false
 	isCodeOpen := false
 
-	finish := reg.ReplaceAllStringFunc(data, func(m string) string {
-		str := m
+	finish := ""
+	splitted := reg.Split(data, -1)
+	for _, original := range splitted {
+		str := original
 
+		// get next
+		// fmt.Println("next: ", splitted[index+1])
 		if isCodeOpen {
-			str = strings.TrimSpace(m)
-		} else {
-			str = strings.ReplaceAll(strings.TrimSpace(m), "//", "")
+			str = strings.TrimSpace(str)
+		} else if str != "" {
+			str = strings.ReplaceAll(str, "// ", "")
 		}
+
+		str = str + "\n"
+
+		// isCurrentCodeSeq := strings.Contains(str, "//")
 
 		// open comment ```go
 		// it comes from a comment and that is a code
-		if !hasCodeSeq && !strings.Contains(m, "//") {
-			str = "\n```go\n"
+		if !hasCodeSeq && !strings.Contains(original, "//") {
+			str = "\n```go" + str
 		}
 
 		// close comment ```
-		if hasCodeSeq && strings.Contains(m, "//") {
-			str = "```\n"
+		if hasCodeSeq && strings.Contains(original, "//") {
+			str = "```\n" + str
 		}
 
-		hasCodeSeq = !strings.Contains(m, "//")
+		hasCodeSeq = !strings.Contains(original, "//")
 
-		return str
-	})
+		finish += str
+	}
 
-	// utils.SaveFile("/tmp/arrays2.md", finish)
+	// remove new line \n
+	finish = finish[:len(finish)-2]
+
+	utils.SaveFile("/tmp/arrays2.md", finish)
 	return finish
 }
 

@@ -61,8 +61,8 @@ to work with...
 func defering() {
 	...
 }
-defer defering()
-`
+
+defer defering()`
 
 		if result != expected {
 			t.Errorf("\nWrong expected: \n%s result: \n%s", expected, result)
