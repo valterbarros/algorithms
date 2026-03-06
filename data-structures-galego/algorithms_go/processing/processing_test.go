@@ -1,6 +1,7 @@
 package main
 
 import (
+	"data-structures/algorithms_go/utils"
 	"regexp"
 	"strings"
 	"testing"
@@ -44,25 +45,39 @@ func TestReplaceBy(t *testing.T) {
 
 func TestProcessComments(t *testing.T) {
 	t.Run("should update get comments", func(t *testing.T) {
-		source := `// testing a new go feature
-// to work with...
+		source := `package samples
 
-func defering() {
-	...
+import (
+	"fmt"
+	"slices"
+)
+
+type ArrayType struct{}
+
+func (e ArrayType) Run() {
+	// testing a new go feature
+	// to work with...
+
+	func defering() {
+		...
+	}
+
+	defer defering()
 }
-
-defer defering()
 `
 		result := processComments(source)
 
 		expected := `testing a new go feature
 to work with...
 ` + "\n```go" + `
+
 func defering() {
 	...
 }
 
 defer defering()`
+
+		utils.SaveFile("/tmp/array2-result.md", expected)
 
 		if result != expected {
 			t.Errorf("\nWrong expected: \n%s result: \n%s", expected, result)

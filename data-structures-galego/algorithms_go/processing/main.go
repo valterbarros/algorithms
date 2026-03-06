@@ -16,6 +16,7 @@ func main() {
 }
 
 func processComments(data string) string {
+	data = removeHead(data)
 	// TODO: try to get comments from .go file and pass to .md file formatted
 	// reg := regexp.MustCompile(`(?im)^(\s{0,1}\/\/\s|\s+\b)`)
 	reg := regexp.MustCompile(`(?im)\n`)
@@ -27,6 +28,10 @@ func processComments(data string) string {
 	splitted := reg.Split(data, -1)
 	for _, original := range splitted {
 		str := original
+
+		if str != "" {
+			str = str[1:]
+		}
 
 		// get next
 		// fmt.Println("next: ", splitted[index+1])
@@ -43,7 +48,7 @@ func processComments(data string) string {
 		// open comment ```go
 		// it comes from a comment and that is a code
 		if !hasCodeSeq && !strings.Contains(original, "//") {
-			str = "\n```go" + str
+			str = "\n```go\n" + str
 		}
 
 		// close comment ```
@@ -57,10 +62,19 @@ func processComments(data string) string {
 	}
 
 	// remove new line \n
-	finish = finish[:len(finish)-2]
+	removeReg := regexp.MustCompile(`[\n\}]+$`)
+	finish = removeReg.ReplaceAllString(finish, "")
 
 	utils.SaveFile("/tmp/arrays2.md", finish)
 	return finish
+}
+
+func removeHead(data string) string {
+	// reg := regexp.MustCompile(`(?i)^[\s\S]+Run\(\)\s\{`)
+	reg2 := regexp.MustCompile(`(?i)Run\(\)\s\{\n`)
+	idx := reg2.FindStringIndex(data)
+	// fmt.Println("idex: ", data[idx[1]:])
+	return data[idx[1]:]
 }
 
 func addBreadCrumb() {
