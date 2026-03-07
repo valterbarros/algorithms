@@ -59,8 +59,6 @@ func TestProcessComments(t *testing.T) {
 	})
 
 	t.Run("should be possible to keep a comment side code", func(t *testing.T) {
-		// Skip until be possible to add subcommands
-		// t.Skip()
 		source := `package samples
 
 import (
@@ -83,10 +81,10 @@ func (e ArrayType) Run() {
 
 		expected := "\n```go" + `
 slice3 := []int{1,2,3,4}
-it basically put 0 in 1 and 1 in 0
+// it basically put 0 in 1 and 1 in 0
 slice3[0], slice3[1] = slice3[1], slice3[0]` + "\n```" + `
 
-get first element
+Get first element
 
 ` + "```go" + `
 slices[1]

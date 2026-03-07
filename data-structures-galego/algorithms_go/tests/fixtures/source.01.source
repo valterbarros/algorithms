@@ -20,6 +20,7 @@ func (e ArrayType) Run() {
 	// it is possible to create slice with make
 	// capacity 15 and length 10
 	slice0 := make([]float32, 10, 15)
+
 	fmt.Println("capacity slice0", cap(slice0), len(slice0))
 
 	// array fixed size

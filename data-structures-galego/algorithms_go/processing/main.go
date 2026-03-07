@@ -22,7 +22,7 @@ func processComments(data string) string {
 
 	hasCodeSeq := false
 
-	finish := ""
+	markdown := ""
 	splitted := reg.Split(data, -1)
 
 	for index, original := range splitted {
@@ -33,7 +33,13 @@ func processComments(data string) string {
 			str = str[1:]
 		} else {
 			// if it is empty that is a new line
-			finish += "\n"
+			newLine := "\n"
+			if hasCodeSeq /* I'm new line and a code squence is open I need to close that*/ {
+				hasCodeSeq = false
+				newLine = "```\n"
+			}
+
+			markdown += newLine
 			continue
 		}
 
@@ -41,8 +47,8 @@ func processComments(data string) string {
 		isNextNewLine := index < len(splitted)-1 && splitted[index+1] == ""
 		// isNextComment := index < len(splitted)-1 && isCommentCheck(original)
 
-		if isComment {
-			str = strings.ReplaceAll(str, "// ", "")
+		if !hasCodeSeq && isComment {
+			str = utils.Capitalize(strings.ReplaceAll(str, "// ", ""))
 		}
 
 		// after split \n was removed fro all lines
@@ -59,15 +65,15 @@ func processComments(data string) string {
 			str = str + "```\n"
 		}
 
-		finish += str
+		markdown += str
 	}
 
 	// remove new line \n
 	removeReg := regexp.MustCompile(`[\n\}]+$`)
-	finish = removeReg.ReplaceAllString(finish, "")
+	markdown = removeReg.ReplaceAllString(markdown, "")
 
-	utils.SaveFile("/tmp/arrays2.md", finish)
-	return finish
+	utils.SaveFile("/tmp/arrays2.md", markdown)
+	return markdown
 }
 
 func removeHead(data string) string {

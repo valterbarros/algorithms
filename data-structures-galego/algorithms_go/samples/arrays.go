@@ -24,9 +24,9 @@ func (e ArrayType) Run() {
 
 	// array fixed size
 	array1 := [5]int{1, 2, 3}
+
 	// change array pos
 	array1[1] = 4
-
 	fmt.Println("array1: ", array1)
 
 	// slice has a pointer to real array and the size is dynamic
@@ -48,13 +48,13 @@ func (e ArrayType) Run() {
 
 	// it is possible to swap slice positions
 	slice3 := []int{1, 2, 3, 4, 5, 6}
-	slice3[0], slice3[1] = slice3[1], slice3[0] // it basically put 0 in 1 and 1 in 0
+	// it basically put 0 in 1 and 1 in 0
+	slice3[0], slice3[1] = slice3[1], slice3[0]
 	fmt.Println("slice3: ", slice3)
 
 	// it is possible to get a slice of array range
 	array2 := [...]int{1, 2, 3, 4, 5} // ... is for "dynamic" array but not appendable
 	slice4 := array2[1:3]
-
 	fmt.Println("slice4: ", slice4)
 
 	// ### Using slices package
@@ -63,16 +63,14 @@ func (e ArrayType) Run() {
 	slice5 := []int{50, 10, 1, 9, 4}
 	// using slices package
 	slices.Sort(slice5)
-
 	fmt.Println("slice5: ", slice5)
 
 	// ### Curiosity
 
-	// is possible to change original array?!
+	// is it possible to change original array?!
 	// > as slice has a pointer to original array if you change that it reflects on original array
 	array3 := [...]int{1, 2, 3}
 	slice6 := array3[:] // get all range :
 	slice6[0] = 2
-
 	fmt.Println("array3: ", array3)
 }
