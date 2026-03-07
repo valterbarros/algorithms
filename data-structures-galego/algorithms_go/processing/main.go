@@ -21,12 +21,11 @@ func processComments(data string) string {
 	reg := regexp.MustCompile(`(?im)\n`)
 
 	hasCodeSeq := false
-	// isCodeOpen := false
 
 	finish := ""
 	splitted := reg.Split(data, -1)
 
-	for _, original := range splitted {
+	for index, original := range splitted {
 		str := original
 
 		if str != "" {
@@ -38,8 +37,9 @@ func processComments(data string) string {
 			continue
 		}
 
-		// check if it current is comment and if comment that is at begin of string?
-		isComment := strings.Contains(original, "//") && strings.Index(original, "//") < 10
+		isComment := isCommentCheck(original)
+		isNextNewLine := index < len(splitted)-1 && splitted[index+1] == ""
+		// isNextComment := index < len(splitted)-1 && isCommentCheck(original)
 
 		if isComment {
 			str = strings.ReplaceAll(str, "// ", "")
@@ -51,15 +51,13 @@ func processComments(data string) string {
 		// open comment ```go
 		// it comes from a comment and that is a code
 		if !hasCodeSeq && !isComment {
+			hasCodeSeq = true
 			str = "\n```go\n" + str
+		} else if hasCodeSeq && isNextNewLine /* The isNextNewLine closes the code sequence*/ {
+			hasCodeSeq = false
+			// close comment ```
+			str = str + "```\n"
 		}
-
-		// close comment ```
-		if hasCodeSeq && isComment {
-			str = "```\n" + str
-		}
-
-		hasCodeSeq = !isComment
 
 		finish += str
 	}
@@ -77,6 +75,11 @@ func removeHead(data string) string {
 	idx := reg2.FindStringIndex(data)
 
 	return data[idx[1]:]
+}
+
+func isCommentCheck(str string) bool {
+	// check if it current is comment and if comment that is at begin of string?
+	return str != "" && strings.Contains(str, "//") && strings.Index(str, "//") < 10
 }
 
 func addBreadCrumb() {

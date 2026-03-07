@@ -71,13 +71,27 @@ import (
 type ArrayType struct{}
 
 func (e ArrayType) Run() {
-	slice3[0], slice3[1] = slice3[1], slice3[0] // it basically put 0 in 1 and 1 in 0
+	slice3 := []int{1,2,3,4}
+	// it basically put 0 in 1 and 1 in 0
+	slice3[0], slice3[1] = slice3[1], slice3[0]
+
+	// get first element
+	slices[1]
 }
 `
 		result := processComments(source)
 
 		expected := "\n```go" + `
-slice3[0], slice3[1] = slice3[1], slice3[0] // it basically put 0 in 1 and 1 in 0`
+slice3 := []int{1,2,3,4}
+it basically put 0 in 1 and 1 in 0
+slice3[0], slice3[1] = slice3[1], slice3[0]` + "\n```" + `
+
+get first element
+
+` + "```go" + `
+slices[1]
+
+` + "```"
 
 		if result != expected {
 			t.Errorf("\nWrong expected:\n\n%s result: \n\n%s", expected, result)
