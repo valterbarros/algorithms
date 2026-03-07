@@ -26,6 +26,10 @@ func (i IntType) getInt() {
 }
 
 func (t TypesType) Run() {
+	// ## Types
+
+	// [Study](../notes/STUDY.md) / Types
+
 	var fnType FuncType
 	fnType = func() {
 		fmt.Println("inside FuncType")
@@ -38,28 +42,24 @@ func (t TypesType) Run() {
 	intType = 1
 	intType.getInt()
 
-	// there is some types for int and float
+	// > there is some types for int and float
 	// basically int: int, int8, int16, int32, int64
 	// go get type by inference and set int, that is based on processor architecture
-
 	// go get type by inference and set int, that is based on processor architecture
 	num := 1
 	fmt.Println("infer int type: ", reflect.TypeOf(num))
 
-	// It is not possible to make operations with differents types like int8 + int16
+	// TODO: make that appear as multiline now it is merged in one line
+	// It is not possible to make operations with differents types like int8 + int1
 	// var byt int8 = 1
 	// var byt2 int16 = 2
-
 	// X Error
 	// byt+byt2
-
 	// uint unssined int
 	// X error:
 	// var variable uint = -1;
-
 	// rune is alias for int32
 	// byte is an alias for uint8
-
 	// returns int
 	fmt.Println(reflect.TypeOf(num))
 
@@ -71,7 +71,6 @@ func (t TypesType) Run() {
 	fmt.Println(reflect.TypeOf(num2))
 
 	// type boolean
-
 	isOk := true
 	fmt.Println(isOk)
 
@@ -86,10 +85,8 @@ func (t TypesType) Run() {
 
 	// is possible to do this
 	// var f func()
-
 	// any == interface{}
 	var whatIsType2 any = func() {}
-
 	var a int = 1
 	fmt.Println(a)
 	// it is a type switch
@@ -109,6 +106,5 @@ func (t TypesType) Run() {
 
 	// Checks if newSt is string
 	strVar, ok := newSt.(string)
-
 	fmt.Println("valor of check: ", strVar, ok)
 }

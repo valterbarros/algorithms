@@ -21,7 +21,6 @@ func (ss ServerState) String() string {
 	if ss == 1 {
 		return "connected"
 	}
-
 	return "other"
 }
 
@@ -33,6 +32,10 @@ const (
 type EnumsType struct{}
 
 func (e EnumsType) Run() {
+	// ## Enums
+
+	// [Study](../notes/STUDY.md) / Enums
+
 	fmt.Println("untyped: ", Pending, Ready, InProgress)
 	fmt.Println("ServerState: ", StateIddle, StateConnected)
 

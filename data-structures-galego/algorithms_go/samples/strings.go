@@ -11,11 +11,14 @@ import (
 type StringsType struct{}
 
 func (s StringsType) Run() {
+	// ## Strings
+
+	// [Study](../notes/STUDY.md) / Strings
+
 	// String "interpolations"
 	// https://pkg.go.dev/fmt#hdr-Printing
 	str := fmt.Sprintf("the number is: %d", 1)
 	str1 := fmt.Sprintf("the number is: %s", "one")
-
 	fmt.Println("interpolated: ", str, str1)
 
 	// this is a rune
@@ -33,7 +36,6 @@ func (s StringsType) Run() {
 	// original string keeps intact
 	// it returns two bytes because é is no ascii(using 7 bits, from 0 to 127)
 	notFull = []byte("é")
-
 	fmt.Println("not full char: ", notFull) // -> [195, 169]
 
 	chars := "é😍😋...😋.😋.😅"

@@ -7,6 +7,10 @@ import (
 type ControlsType struct{}
 
 func (e ControlsType) Run() {
+	// ## Controls
+
+	// [Study](../notes/STUDY.md) / Controls
+
 	returnBool := func() int {
 		return 1
 	}
@@ -18,7 +22,6 @@ func (e ControlsType) Run() {
 
 	// it is possible to redeclare val
 	val := 1
-
 	fmt.Println("redeclare val: ", val)
 
 	// switch case:
@@ -31,7 +34,6 @@ func (e ControlsType) Run() {
 	}
 
 	// switch change position of condition
-
 	switch {
 	case 1 > 0:
 		fmt.Println("yes it is greater : 1 > 0")

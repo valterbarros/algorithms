@@ -4,16 +4,18 @@ import "fmt"
 
 type FunctionsType struct{}
 
-func testingDefer() int {
-	// defer is used to run that as last function
-	defer func() {
-		fmt.Println("\ndefer fn, use it to clear data")
-	}()
-
-	return 1
-}
-
 func (ff FunctionsType) Run() {
+	// ## Functions
+
+	// [Study](../notes/STUDY.md) / Functions
+
+	testingDefer := func() int {
+		// defer is used to run that as last function
+		defer func() {
+			fmt.Println("\ndefer fn, use it to clear data")
+		}()
+		return 1
+	}
 	fmt.Println("Testing return: ", testingDefer())
 
 	// functions are first class citizens in go
@@ -21,16 +23,13 @@ func (ff FunctionsType) Run() {
 	var f = func(text string) string {
 		return text
 	}
-
 	fmt.Println(f("Hey Jude!"))
 
 	// function can have multi returns
 	locale := func() (string, string) {
 		return "!Ola! Cabron!", "Hello man"
 	}
-
 	esMx, ptBR := locale()
-
 	fmt.Println(esMx, ptBR)
 
 	// Go has shurtcut? yes
@@ -40,19 +39,14 @@ func (ff FunctionsType) Run() {
 
 		return true
 	}
-
 	if true && shurt() {
 		fmt.Println("shurtcut")
 	}
 
-	// a := range[]int{1,2,3}
-
 	// It is possible to create function with named return
-
 	named := func(n1, n2 int) (sum int, sub int) {
 		sum = n1 + n2
 		sub = n1 - n2
-
 		// note for return with no clause
 		return
 	}
@@ -62,15 +56,12 @@ func (ff FunctionsType) Run() {
 	fmt.Println("sum and sub: ", sum, sub)
 
 	// It is possible to pass n parameters
-
 	parameters := func(nums ...int) {
 		for _, n := range nums {
 			fmt.Printf("nums: %d ", n)
 		}
 	}
-
 	parameters(1, 2, 3)
-
 	// it is possible to call that with array
 	parameters([]int{3, 2, 1}...)
 
@@ -84,10 +75,8 @@ func (ff FunctionsType) Run() {
 
 	funcWillPanic := func() int {
 		defer recoverFunc()
-
 		// trying to acess a index out of bound
 		return []int{1, 2, 3}[50]
 	}
-
 	funcWillPanic()
 }

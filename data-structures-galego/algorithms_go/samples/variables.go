@@ -4,6 +4,7 @@ import "fmt"
 
 // type variable1 int
 
+// TODO: Make that appear at final .md file
 // can be declared like this
 var (
 	variable1 string
@@ -22,6 +23,10 @@ const (
 type VariablesType struct{}
 
 func (v VariablesType) Run() {
+	// ## Variables
+
+	// [Study](../notes/STUDY.md) / Variables
+
 	// and using inference :=
 	// inference only works inside functions
 	variable4 := "valter"
@@ -37,12 +42,10 @@ func (v VariablesType) Run() {
 	variable1 = "valter"
 	variable2 = "junior"
 	variable3 = "developer"
-
 	fmt.Println(variable1, variable2, variable3, variable4, variable5, variable6)
 
 	// is possible to swap variables value
 	// valter junior -> junior valter
 	variable1, variable2 = variable2, variable1
-
 	fmt.Println("after swap: ", variable1, variable2)
 }
