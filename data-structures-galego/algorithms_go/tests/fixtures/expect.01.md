@@ -4,10 +4,10 @@
 
 ### Internals
 
-> More deep details about array and slices can be found
+> More deep details about array and slices can be found   
 [Go Slices: usage and internals](https://go.dev/blog/slices-intro)
 
-It is possible to create slice with make
+It is possible to create slice with make   
 Capacity 15 and length 10
 
 ```go

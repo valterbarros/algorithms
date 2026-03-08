@@ -6,6 +6,7 @@ import (
 	"reflect"
 )
 
+// TODO: make that appear at .md
 type TypesType struct{}
 
 type FuncType func()
@@ -49,17 +50,22 @@ func (t TypesType) Run() {
 	num := 1
 	fmt.Println("infer int type: ", reflect.TypeOf(num))
 
-	// TODO: make that appear as multiline now it is merged in one line
 	// It is not possible to make operations with differents types like int8 + int1
 	// var byt int8 = 1
 	// var byt2 int16 = 2
 	// X Error
+	// ```go
 	// byt+byt2
-	// uint unssined int
+	// ````
+
 	// X error:
-	// var variable uint = -1;
-	// rune is alias for int32
+	// ```go
+	// var variable uint = -1
+	// ```
+
+	// > rune is alias for int32
 	// byte is an alias for uint8
+
 	// returns int
 	fmt.Println(reflect.TypeOf(num))
 

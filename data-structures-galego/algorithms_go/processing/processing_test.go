@@ -95,4 +95,17 @@ slices[1]
 			t.Errorf("\nWrong expected:\n\n%s result: \n\n%s", expected, result)
 		}
 	})
+	t.Run("should be possible to have multiline comments", func(t *testing.T) {
+		source := utils.GetFileData("../tests/fixtures/source.02.source")
+
+		result := processComments(source)
+
+		expected := utils.GetFileData("../tests/fixtures/expect.02.md")
+
+		utils.SaveFile("/tmp/array2-result.md", expected)
+
+		if result != expected {
+			t.Errorf("\nWrong expected: \n%s result: \n%s", expected, result)
+		}
+	})
 }

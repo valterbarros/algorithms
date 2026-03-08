@@ -4,13 +4,17 @@ package main
 
 import (
 	"data-structures/algorithms_go/utils"
+	"flag"
 	"fmt"
 	"regexp"
 	"strings"
 )
 
 func main() {
-	data := utils.GetFileData("samples/arrays.go")
+	fileRun := flag.String("file-run", "", "File name")
+	flag.Parse()
+
+	data := utils.GetFileData("samples/" + *fileRun + ".go")
 	processComments(data)
 	// addBreadCrumb()
 }
@@ -45,10 +49,15 @@ func processComments(data string) string {
 
 		isComment := isCommentCheck(original)
 		isNextNewLine := index < len(splitted)-1 && splitted[index+1] == ""
-		// isNextComment := index < len(splitted)-1 && isCommentCheck(original)
+		isNextComment := index < len(splitted)-1 && isCommentCheck(splitted[index+1])
 
 		if !hasCodeSeq && isComment {
 			str = utils.Capitalize(strings.ReplaceAll(str, "// ", ""))
+		}
+
+		// to avoid many comment line be in same line
+		if !hasCodeSeq && isComment && isNextComment {
+			str = str + "   "
 		}
 
 		// after split \n was removed fro all lines
@@ -77,6 +86,7 @@ func processComments(data string) string {
 }
 
 func removeHead(data string) string {
+	// TODO: get functions and add to .md file
 	reg2 := regexp.MustCompile(`(?i)Run\(\)\s\{\n`)
 	idx := reg2.FindStringIndex(data)
 
@@ -85,6 +95,8 @@ func removeHead(data string) string {
 
 func isCommentCheck(str string) bool {
 	// check if it current is comment and if comment that is at begin of string?
+	// // new comment here => results true
+	// slices[0] + ... // new comment here => results false
 	return str != "" && strings.Contains(str, "//") && strings.Index(str, "//") < 10
 }
 
