@@ -1,0 +1,17 @@
+package samples
+
+import (
+	"fmt"
+	"slices"
+)
+
+type ArrayType struct{}
+
+func (e ArrayType) Run() {
+	slice3 := []int{1,2,3,4}
+	// it basically put 0 in 1 and 1 in 0
+	slice3[0], slice3[1] = slice3[1], slice3[0]
+
+	// get first element
+	slices[1]
+}

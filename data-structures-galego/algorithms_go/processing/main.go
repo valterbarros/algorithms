@@ -10,6 +10,8 @@ import (
 	"strings"
 )
 
+const breadCrumbPattern string = `(?i)(\/\/\s)?\[Study+\].+`
+
 func main() {
 	fileRun := flag.String("file-run", "", "File name")
 	flag.Parse()
@@ -21,13 +23,11 @@ func main() {
 
 func processComments(data string) string {
 	data = removeHead(data)
-	// TODO: try to get comments from .go file and pass to .md file formatted
 	reg := regexp.MustCompile(`(?im)\n`)
-
-	hasCodeSeq := false
 
 	markdown := ""
 	splitted := reg.Split(data, -1)
+	hasCodeSeq := false
 
 	for index, original := range splitted {
 		str := original
@@ -68,7 +68,7 @@ func processComments(data string) string {
 		if !hasCodeSeq && !isComment {
 			hasCodeSeq = true
 			str = "\n```go\n" + str
-		} else if hasCodeSeq && isNextNewLine /* The isNextNewLine closes the code sequence*/ {
+		} else if hasCodeSeq && isNextNewLine /*The isNextNewLine closes the code sequence*/ {
 			hasCodeSeq = false
 			// close comment ```
 			str = str + "```\n"
@@ -86,11 +86,24 @@ func processComments(data string) string {
 }
 
 func removeHead(data string) string {
-	// TODO: get functions and add to .md file
-	reg2 := regexp.MustCompile(`(?i)Run\(\)\s\{\n`)
-	idx := reg2.FindStringIndex(data)
+	runReg := regexp.MustCompile(`(?i)[\s\S]+Run\(\)\s\{\n`)
+	head := runReg.ReplaceAllLiteralString(data, "")
+	startEndReg := regexp.MustCompile(`(?m)\/\/\sbegin([\s\S]+)\/\/\send`)
+	matches := startEndReg.FindStringSubmatch(data)
 
-	return data[idx[1]:]
+	if len(matches) > 0 {
+		comment := matches[1]
+		// add spaces to keep pattern
+		comment = regexp.MustCompile(`(?m)^`).ReplaceAllString(comment, " ")
+		// $0 is breadcrumb match
+		head = regexp.MustCompile(breadCrumbPattern).ReplaceAllString(head, "$0"+comment)
+	}
+
+	// remove new line \n
+	removeReg := regexp.MustCompile(`[\n\}]+$`)
+	head = removeReg.ReplaceAllString(head, "")
+
+	return head
 }
 
 func isCommentCheck(str string) bool {
@@ -116,8 +129,6 @@ func addBreadCrumb() {
 		utils.SaveFile("samples/"+name, withBreadCrumb)
 	})
 }
-
-const breadCrumbPattern string = `(?im)^\[Study+\].+`
 
 func replaceBy(data, name string) string {
 	// (?i) is for case insensitive

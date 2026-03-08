@@ -6,7 +6,6 @@ import (
 	"reflect"
 )
 
-// TODO: make that appear at .md
 type TypesType struct{}
 
 type FuncType func()

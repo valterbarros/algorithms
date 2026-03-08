@@ -1,3 +1,17 @@
+## Arrays
+
+[Study](../notes/STUDY.md) / Arrays 
+
+```go
+type FuncType func()
+func funcEmptyArray() []int {
+	return []int{}
+}
+
+```
+
+### Internals
+
 There is some types for int and float   
 Basically int: int, int8, int16, int32, int64   
 Go get type by inference and set int, that is based on processor architecture   
@@ -15,3 +29,4 @@ Get first element
 
 ```go
 slices[1]
+var fnType FuncType

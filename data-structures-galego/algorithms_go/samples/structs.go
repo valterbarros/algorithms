@@ -4,7 +4,7 @@ package samples
 
 import "fmt"
 
-// TODO: make that appear at final .md file
+// begin
 type person struct {
 	age int
 }
@@ -38,6 +38,8 @@ func (r *Recurrence) SetName(name string) {
 func (r Recurrence) privateProp() string {
 	return "prop"
 }
+
+// end
 
 type StructsType struct{}
 

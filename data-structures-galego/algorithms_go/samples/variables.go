@@ -2,9 +2,9 @@ package samples
 
 import "fmt"
 
-// type variable1 int
+// begin
 
-// TODO: Make that appear at final .md file
+// type variable1 int
 // can be declared like this
 var (
 	variable1 string
@@ -19,6 +19,8 @@ type newType string
 const (
 	constType newType = "const type"
 )
+
+// end
 
 type VariablesType struct{}
 
