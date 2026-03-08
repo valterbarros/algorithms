@@ -15,6 +15,9 @@ func (e ControlsType) Run() {
 		return 1
 	}
 
+	// ### If init
+
+	// it is called if init, init a var inside if
 	// if init
 	if val := returnBool(); val > 0 {
 		fmt.Println("return int", val)
@@ -24,7 +27,7 @@ func (e ControlsType) Run() {
 	val := 1
 	fmt.Println("redeclare val: ", val)
 
-	// switch case:
+	// ### switch case:
 	cond := 1
 	switch cond {
 	case 1:

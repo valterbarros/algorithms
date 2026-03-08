@@ -6,7 +6,10 @@ import (
 )
 
 // begin
+// Init a type
 type FuncType func()
+
+// Init a function
 func funcEmptyArray() []int {
 	return []int{}
 }

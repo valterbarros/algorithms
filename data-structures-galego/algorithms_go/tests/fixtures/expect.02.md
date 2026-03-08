@@ -1,13 +1,17 @@
 ## Arrays
 
-[Study](../notes/STUDY.md) / Arrays 
+[Study](../notes/STUDY.md) / Arrays    
+Init a type
 
 ```go
 type FuncType func()
+```
+Init a function
+
+```go
 func funcEmptyArray() []int {
 	return []int{}
 }
-
 ```
 
 ### Internals

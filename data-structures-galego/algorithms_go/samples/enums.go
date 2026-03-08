@@ -3,7 +3,8 @@ package samples
 
 import "fmt"
 
-// set direct value
+// begin
+// ### set direct value
 const (
 	Pending    = "pending"
 	Ready      = "ready"
@@ -29,6 +30,8 @@ const (
 	StateConnected
 )
 
+//end
+
 type EnumsType struct{}
 
 func (e EnumsType) Run() {
@@ -36,6 +39,7 @@ func (e EnumsType) Run() {
 
 	// [Study](../notes/STUDY.md) / Enums
 
+	// usage
 	fmt.Println("untyped: ", Pending, Ready, InProgress)
 	fmt.Println("ServerState: ", StateIddle, StateConnected)
 

@@ -24,6 +24,8 @@ func main() {
 func processComments(data string) string {
 	data = removeHead(data)
 	reg := regexp.MustCompile(`(?im)\n`)
+	// utils.SaveFile("/tmp/arrays2.md", data)
+	// return ""
 
 	markdown := ""
 	splitted := reg.Split(data, -1)
@@ -32,9 +34,11 @@ func processComments(data string) string {
 	for index, original := range splitted {
 		str := original
 
-		if str != "" {
+		if strings.TrimSpace(str) != "" {
 			// remove identation additional
 			str = str[1:]
+			// TODO: fix problem with replace start by x and removed rest of code
+			// str = regexp.MustCompile(`^(x|\s)?`).ReplaceAllString(str, "")
 		} else {
 			// if it is empty that is a new line
 			newLine := "\n"
@@ -87,8 +91,8 @@ func processComments(data string) string {
 
 func removeHead(data string) string {
 	runReg := regexp.MustCompile(`(?i)[\s\S]+Run\(\)\s\{\n`)
-	head := runReg.ReplaceAllLiteralString(data, "")
-	startEndReg := regexp.MustCompile(`(?m)\/\/\sbegin([\s\S]+)\/\/\send`)
+	body := runReg.ReplaceAllLiteralString(data, "")
+	startEndReg := regexp.MustCompile(`(?m)^\/\/\s?begin([\s\S]+)\/\/\s?end`)
 	matches := startEndReg.FindStringSubmatch(data)
 
 	if len(matches) > 0 {
@@ -96,14 +100,15 @@ func removeHead(data string) string {
 		// add spaces to keep pattern
 		comment = regexp.MustCompile(`(?m)^`).ReplaceAllString(comment, " ")
 		// $0 is breadcrumb match
-		head = regexp.MustCompile(breadCrumbPattern).ReplaceAllString(head, "$0"+comment)
+
+		body = regexp.MustCompile(breadCrumbPattern).ReplaceAllString(body, "$0"+comment)
 	}
 
 	// remove new line \n
 	removeReg := regexp.MustCompile(`[\n\}]+$`)
-	head = removeReg.ReplaceAllString(head, "")
+	body = removeReg.ReplaceAllString(body, "")
 
-	return head
+	return body
 }
 
 func isCommentCheck(str string) bool {
