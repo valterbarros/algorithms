@@ -2,9 +2,11 @@ package main
 
 import (
 	"regexp"
-	"strings"
 	"studying-go/utils"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
 
 func TestReplaceBy(t *testing.T) {
@@ -16,10 +18,8 @@ func TestReplaceBy(t *testing.T) {
 		`
 		result := replaceBy(source, "Arrays")
 
-		ok := strings.Contains(result, "[Readme](../README.md) / Arrays")
-		if !ok {
-			t.Errorf("There is no Study")
-		}
+		assert.Contains(t, result, "[Readme](../README.md) / Arrays",
+			"result should contain breadcrumb with Arrays")
 	})
 
 	t.Run("should update breadcrumb after replace n times", func(t *testing.T) {
@@ -34,47 +34,42 @@ func TestReplaceBy(t *testing.T) {
 		result = replaceBy(result, "Arrays")
 
 		breadCrumbReg := regexp.MustCompile(breadCrumbPattern)
-
-		exact := breadCrumbReg.MatchString(result)
-
-		if !exact {
-			t.Errorf("There is no Study %s", result)
-		}
+		assert.Regexp(t, breadCrumbReg, result,
+			"result should match breadcrumb pattern after multiple replaces")
 	})
 }
 
 func TestProcessComments(t *testing.T) {
 	t.Run("should update get comments", func(t *testing.T) {
 		source := utils.GetFileData("../tests/fixtures/source.01.source")
+		expected := utils.GetFileData("../tests/fixtures/expect.01.md")
+		require.NotEmpty(t, source, "fixture source.01.source should exist")
+		require.NotEmpty(t, expected, "fixture expect.01.md should exist")
 
 		result := processComments(source, "/tmp/array2-result.md")
 
-		expected := utils.GetFileData("../tests/fixtures/expect.01.md")
-
-		if result != expected {
-			t.Errorf("\nWrong expected: \n%s result: \n%s", expected, result)
-		}
+		assert.Equal(t, expected, result, "processComments should match expected output")
 	})
+
 	t.Run("should be possible to have multiline comments", func(t *testing.T) {
 		source := utils.GetFileData("../tests/fixtures/source.02.source")
+		expected := utils.GetFileData("../tests/fixtures/expect.02.md")
+		require.NotEmpty(t, source, "fixture source.02.source should exist")
+		require.NotEmpty(t, expected, "fixture expect.02.md should exist")
 
 		result := processComments(source, "/tmp/array2-result.md")
 
-		expected := utils.GetFileData("../tests/fixtures/expect.02.md")
-
-		if result != expected {
-			t.Errorf("\nWrong expected: \n%s result: \n%s", expected, result)
-		}
+		assert.Equal(t, expected, result, "processComments should match expected output for multiline comments")
 	})
+
 	t.Run("should be possible to keep a comment side code", func(t *testing.T) {
 		source := utils.GetFileData("../tests/fixtures/source.03.source")
+		expected := utils.GetFileData("../tests/fixtures/expect.03.md")
+		require.NotEmpty(t, source, "fixture source.03.source should exist")
+		require.NotEmpty(t, expected, "fixture expect.03.md should exist")
 
 		result := processComments(source, "/tmp/array2-result.md")
 
-		expected := utils.GetFileData("../tests/fixtures/expect.03.md")
-
-		if result != expected {
-			t.Errorf("\nWrong expected:\n\n%s result: \n\n%s", expected, result)
-		}
+		assert.Equal(t, expected, result, "processComments should preserve comment beside code")
 	})
 }
