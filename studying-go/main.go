@@ -2,7 +2,6 @@ package main
 
 import (
 	"bufio"
-	"data-structures/algorithms_go/samples"
 	"fmt"
 	"maps"
 	"os"
@@ -10,6 +9,7 @@ import (
 	"slices"
 	"strconv"
 	"strings"
+	"studying-go/samples"
 )
 
 var samplesMap = map[string]samples.Sample{

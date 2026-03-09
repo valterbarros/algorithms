@@ -3,11 +3,11 @@ package main
 // trying to add breadcrumb and other automatizations to samples/*.md
 
 import (
-	"data-structures/algorithms_go/utils"
 	"flag"
 	"fmt"
 	"regexp"
 	"strings"
+	"studying-go/utils"
 )
 
 const breadCrumbPattern string = `(?i)(\/\/\s)?\[Readme+\].+`

@@ -1,9 +1,9 @@
 package main
 
 import (
-	"data-structures/algorithms_go/utils"
 	"regexp"
 	"strings"
+	"studying-go/utils"
 	"testing"
 )
 
