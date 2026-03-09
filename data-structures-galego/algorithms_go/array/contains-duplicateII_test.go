@@ -3,6 +3,8 @@ package array
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func containsNearbyDuplicate(nums []int, k int) bool {
@@ -32,8 +34,7 @@ func TestContains(t *testing.T) {
 
 	for _, tt := range tests {
 		result := containsNearbyDuplicate(tt.input, tt.value)
-		if result != tt.expected {
-			t.Errorf("The result should be: %v, but got: %v", tt.expected, result)
-		}
+		assert.Equal(t, tt.expected, result,
+			"containsNearbyDuplicate(input=%v, k=%d) deve retornar %v", tt.input, tt.value, tt.expected)
 	}
 }

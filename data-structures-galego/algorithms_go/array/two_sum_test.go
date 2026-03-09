@@ -5,6 +5,8 @@ package array
 import (
 	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func RunTwoSum(nums []int, target int) []int {
@@ -40,9 +42,7 @@ func TestRunTwoSum(t *testing.T) {
 	for _, tt := range tests {
 		result := RunTwoSum(tt.nums, tt.target)
 		fmt.Println(result)
-		// compare each item by item
-		if result[0] != tt.expect[0] || result[1] != tt.expect[1] {
-			t.Errorf("input: %q, expected, got", result)
-		}
+		assert.ElementsMatch(t, tt.expect, result,
+			"RunTwoSum(nums=%v, target=%d) deve retornar índices %v", tt.nums, tt.target, tt.expect)
 	}
 }

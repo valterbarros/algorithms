@@ -5,6 +5,8 @@ package array
 import (
 	"fmt"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func init() {
@@ -51,7 +53,5 @@ func TestReverse(t *testing.T) {
 	expected := "retlav acissej"
 	result := RunTwoPointers(input)
 
-	if result != expected {
-		t.Errorf("esperado %v, obteve %v", expected, result)
-	}
+	assert.Equal(t, expected, result, "RunTwoPointers deve reverter cada palavra")
 }

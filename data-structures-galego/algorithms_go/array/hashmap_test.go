@@ -5,6 +5,8 @@ package array
 
 import (
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 func RunHashMap(s string) int {
@@ -49,9 +51,8 @@ func TestHashMap(t *testing.T) {
 	for _, tt := range tests {
 		t.Run("should return right index when input is: "+tt.input, func(t *testing.T) {
 			result := RunHashMap(tt.input)
-			if result != tt.expected {
-				t.Errorf("input: %q, expected %d, got %d", tt.input, tt.expected, result)
-			}
+			assert.Equal(t, tt.expected, result,
+				"RunHashMap(%q) deve retornar índice do primeiro caractere único", tt.input)
 		})
 	}
 }
