@@ -33,7 +33,7 @@ You can use these as learning material or as a base for your own projects.
 example:
 
 ```shell
-go run processing/main.go -file-run variables
+go run parser/main.go -file-run variables
 ```
 
 ### Running with VS Code
