@@ -39,14 +39,14 @@ func TestReplaceBy(t *testing.T) {
 	})
 }
 
-func TestProcessComments(t *testing.T) {
+func TestParseComments(t *testing.T) {
 	t.Run("should update get comments", func(t *testing.T) {
 		source := utils.GetFileData("../tests/fixtures/source.01.source")
 		expected := utils.GetFileData("../tests/fixtures/expect.01.md")
 		require.NotEmpty(t, source, "fixture source.01.source should exist")
 		require.NotEmpty(t, expected, "fixture expect.01.md should exist")
 
-		result := processComments(source, "/tmp/array2-result.md")
+		result := parseComments(source, "/tmp/array2-result.md")
 
 		assert.Equal(t, expected, result, "processComments should match expected output")
 	})
@@ -57,7 +57,7 @@ func TestProcessComments(t *testing.T) {
 		require.NotEmpty(t, source, "fixture source.02.source should exist")
 		require.NotEmpty(t, expected, "fixture expect.02.md should exist")
 
-		result := processComments(source, "/tmp/array2-result.md")
+		result := parseComments(source, "/tmp/array2-result.md")
 
 		assert.Equal(t, expected, result, "processComments should match expected output for multiline comments")
 	})
@@ -68,7 +68,7 @@ func TestProcessComments(t *testing.T) {
 		require.NotEmpty(t, source, "fixture source.03.source should exist")
 		require.NotEmpty(t, expected, "fixture expect.03.md should exist")
 
-		result := processComments(source, "/tmp/array2-result.md")
+		result := parseComments(source, "/tmp/array2-result.md")
 
 		assert.Equal(t, expected, result, "processComments should preserve comment beside code")
 	})
