@@ -9,7 +9,7 @@ type ControlsType struct{}
 func (e ControlsType) Run() {
 	// ## Controls
 
-	// [Study](../notes/STUDY.md) / Controls
+	// [Readme](../README.md) / Controls
 
 	returnBool := func() int {
 		return 1

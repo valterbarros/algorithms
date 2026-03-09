@@ -1,6 +1,6 @@
 ## Structs
 
-[Study](../notes/STUDY.md) / Structs    
+[Readme](../README.md) / Structs    
 ### Creating structs
 
 ```go

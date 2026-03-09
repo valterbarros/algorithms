@@ -32,7 +32,7 @@ func (i IntType) getInt() {
 func (t TypesType) Run() {
 	// ## Types
 
-	// [Study](../notes/STUDY.md) / Types
+	// [Readme](../README.md) / Types
 
 	// ### Methods on types
 

@@ -10,14 +10,22 @@ import (
 	"strings"
 )
 
-const breadCrumbPattern string = `(?i)(\/\/\s)?\[Study+\].+`
+const breadCrumbPattern string = `(?i)(\/\/\s)?\[Readme+\].+`
 
 func main() {
 	fileRun := flag.String("file-run", "", "File name")
 	flag.Parse()
 
-	data := utils.GetFileData("samples/" + *fileRun + ".go")
-	processComments(data, "samples/"+*fileRun+".md")
+	if *fileRun == "*" {
+		utils.IterateFiles("samples/", ".go", func(name string) {
+			fmt.Println(name)
+			data := utils.GetFileData("samples/" + name)
+			processComments(data, "samples/"+strings.ReplaceAll(name, ".go", ".md"))
+		})
+	} else {
+		data := utils.GetFileData("samples/" + *fileRun + ".go")
+		processComments(data, "samples/"+*fileRun+".md")
+	}
 	// addBreadCrumb()
 }
 

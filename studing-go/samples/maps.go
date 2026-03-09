@@ -10,7 +10,7 @@ type MapsType struct{}
 func (e MapsType) Run() {
 	// ## Maps
 
-	// [Study](../notes/STUDY.md) / Maps
+	// [Readme](../README.md) / Maps
 
 	// ### Working with map
 

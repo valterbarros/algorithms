@@ -31,7 +31,7 @@ type VariablesType struct{}
 func (v VariablesType) Run() {
 	// ## Variables
 
-	// [Study](../notes/STUDY.md) / Variables
+	// [Readme](../README.md) / Variables
 
 	// and using inference `:=`
 	// inference only works inside functions

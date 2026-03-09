@@ -1,6 +1,6 @@
 ## Enums
 
-[Study](../notes/STUDY.md) / Enums    
+[Readme](../README.md) / Enums    
 ### Set direct value
 
 ```go

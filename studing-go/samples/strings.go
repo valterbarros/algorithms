@@ -13,7 +13,7 @@ type StringsType struct{}
 func (s StringsType) Run() {
 	// ## Strings
 
-	// [Study](../notes/STUDY.md) / Strings
+	// [Readme](../README.md) / Strings
 
 	// ### String "interpolations"
 

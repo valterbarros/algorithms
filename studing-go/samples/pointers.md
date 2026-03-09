@@ -1,6 +1,6 @@
 ## Pointers
 
-[Study](../notes/STUDY.md) / Pointers
+[Readme](../README.md) / Pointers
 
 ### Working with pointers
 

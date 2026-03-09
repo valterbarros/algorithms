@@ -25,7 +25,7 @@ type FunctionsType struct{}
 func (ff FunctionsType) Run() {
 	// ## Functions
 
-	// [Study](../notes/STUDY.md) / Functions
+	// [Readme](../README.md) / Functions
 
 	// ### defer keyword
 

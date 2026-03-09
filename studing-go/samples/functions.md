@@ -1,6 +1,6 @@
 ## Functions
 
-[Study](../notes/STUDY.md) / Functions 
+[Readme](../README.md) / Functions 
 
 ```go
 func testingDefer() int {

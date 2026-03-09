@@ -37,7 +37,7 @@ type EnumsType struct{}
 func (e EnumsType) Run() {
 	// ## Enums
 
-	// [Study](../notes/STUDY.md) / Enums
+	// [Readme](../README.md) / Enums
 
 	// usage
 	fmt.Println("untyped: ", Pending, Ready, InProgress)

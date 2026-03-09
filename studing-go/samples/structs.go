@@ -50,7 +50,7 @@ type StructsType struct{}
 func (s StructsType) Run() {
 	// ## Structs
 
-	// [Study](../notes/STUDY.md) / Structs
+	// [Readme](../README.md) / Structs
 
 	// ### Inherit in structs
 

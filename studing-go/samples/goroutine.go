@@ -10,7 +10,7 @@ type GoroutineType struct{}
 func (e GoroutineType) Run() {
 	// ## Goroutine
 
-	// [Study](../notes/STUDY.md) / Goroutine
+	// [Readme](../README.md) / Goroutine
 
 	// TODO: add examples iterating with for range on channels
 	// ### Channels usage

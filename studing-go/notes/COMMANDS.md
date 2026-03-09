@@ -3,7 +3,7 @@
 ```bash
 // Remove not used modules from go.mod
 
-go tidy
+go mod tidy
 ```
 
 ```bash

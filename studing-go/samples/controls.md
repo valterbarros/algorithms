@@ -1,6 +1,6 @@
 ## Controls
 
-[Study](../notes/STUDY.md) / Controls
+[Readme](../README.md) / Controls
 
 
 ```go
