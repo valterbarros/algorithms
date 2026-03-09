@@ -34,7 +34,7 @@ You can use these as learning material or as a base for your own projects.
 example:
 
 ```shell
-go run parser/main.go -file-run variables
+go run parser_cmd/main.go -file-run variables
 ```
 
 ### Running with VS Code
