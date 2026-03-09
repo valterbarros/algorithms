@@ -97,31 +97,4 @@ func (t TypesType) Run() {
 	// this is anonymous function
 	whatIsType := func() {}
 	fmt.Println(reflect.TypeOf(whatIsType))
-
-	// ### Type Assert
-
-	// is possible to do this
-	// `any == interface{}`
-
-	var whatIsType2 any = func() {}
-	var a int = 1
-	fmt.Println(a)
-	// it is a type switch
-	switch whatIsType2.(type) {
-	case func():
-		fmt.Println("is a function")
-	case int:
-		fmt.Println("is an int")
-	case string:
-		fmt.Println("is a string")
-	default:
-		fmt.Println("is not a function")
-	}
-
-	// It is possible to run type assertion like that
-	var newSt any = "Olá, Go!"
-
-	// Checks if newSt is string
-	strVar, ok := newSt.(string)
-	fmt.Println("valor of check: ", strVar, ok)
 }
