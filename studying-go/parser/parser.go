@@ -105,6 +105,7 @@ func isCommentCheck(str string) bool {
 	return strings.TrimSpace(str) != "" && strings.Contains(str, "//") && strings.Index(str, "//") < 10
 }
 
+// deprecated
 func addBreadCrumb() {
 	// TODO: run each file in a go routine
 	// Replace first and then overwrite the file with new content
@@ -122,6 +123,7 @@ func addBreadCrumb() {
 	})
 }
 
+// deprecated
 func replaceBy(data, name string) string {
 	// (?i) is for case insensitive
 	titleReg := regexp.MustCompile(`(?im)(^##\s[a-z]+)`)
