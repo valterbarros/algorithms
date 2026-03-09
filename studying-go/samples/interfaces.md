@@ -43,7 +43,29 @@ func trigger(t animal) {
 }
 ```
 
+### Generic types
 
+The old way to run generics is using interface and duplicating code   
+But now go has Generics as default a example of generics
+
+
+```go
+type code[T any] struct {
+	code T
+}
+```
+
+
+
+It is possible to have string type
+
+```go
+code1 := code[string]{"123f1"}
+fmt.Println(code1)
+// It is possible to have int type
+code2 := code[int]{123}
+fmt.Println(code2)
+```
 
 ### Using interfaces on functions
 
@@ -54,8 +76,6 @@ trigger(anima1) // Au!
 anima2 := cat{}
 trigger(anima2) // Meow!
 ```
-
-### Generic types
 
 ### Type Assert   
 > Interfaces are used to create generic code and overcome strictness go types system
@@ -94,7 +114,7 @@ strVar, ok := newSt.(string)
 fmt.Println("valor of check: ", strVar, ok)
 ```
 
-Perhaps go supports any it is mandatory to run a type assert to use values like:
+Peharps go supports any it is mandatory to run a type assert to use values like:
 
 ```go
 var newSt2 any = "Olá, Go!"

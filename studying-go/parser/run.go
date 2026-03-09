@@ -1,4 +1,4 @@
-package main
+package parser
 
 // trying to add breadcrumb and other automatizations to samples/*.md
 
@@ -8,7 +8,7 @@ import (
 	"studying-go/utils"
 )
 
-func main() {
+func Run() {
 	fileRun := flag.String("file-run", "", "File name")
 	flag.Parse()
 
