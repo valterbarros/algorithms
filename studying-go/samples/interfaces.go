@@ -51,10 +51,10 @@ func (e InterfacesType) Run() {
 
 	// It is possible to have string type
 	code1 := code[string]{"123f1"}
-	fmt.Println(code1)
+	fmt.Println("code is: ", code1.code)
 	// It is possible to have int type
 	code2 := code[int]{123}
-	fmt.Println(code2)
+	fmt.Println("code2 is: ", code2.code)
 
 	// ### Using interfaces on functions
 
