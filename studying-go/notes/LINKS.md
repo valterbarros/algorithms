@@ -1,4 +1,6 @@
-Links go docs:
+### Links go:
+
+[Readme](../README.md) / Links go
 
 [Go documentation](https://go.dev/doc/)
   - [Installing go](https://go.dev/doc/install)

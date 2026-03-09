@@ -11,6 +11,7 @@ Some notes about go and important links
     - [Goroutines](./samples/goroutine.md)
     - [Maps](./samples/maps.md)
     - [Pointers](./samples/pointers.md)
+    - [Interfaces](./samples/interfaces.md)
     - [Strings](./samples/strings.md)
     - [Structs](./samples/structs.md)
     - [Types](./samples/types.md)

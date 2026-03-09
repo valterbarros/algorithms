@@ -1,4 +1,6 @@
-### Command line
+## Command line
+
+[Readme](../README.md) / Command line
 
 ```bash
 // Remove not used modules from go.mod
