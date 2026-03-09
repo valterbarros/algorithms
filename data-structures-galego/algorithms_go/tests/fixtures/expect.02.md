@@ -14,6 +14,7 @@ func funcEmptyArray() []int {
 }
 ```
 
+
 ### Internals
 
 There is some types for int and float   

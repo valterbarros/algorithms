@@ -52,7 +52,7 @@ func processComments(data string) string {
 		}
 
 		isComment := isCommentCheck(original)
-		isNextNewLine := index < len(splitted)-1 && splitted[index+1] == ""
+		isNextNewLine := index < len(splitted)-1 && strings.TrimSpace(splitted[index+1]) == ""
 		isNextComment := index < len(splitted)-1 && isCommentCheck(splitted[index+1])
 
 		if !hasCodeSeq && isComment {
@@ -115,7 +115,7 @@ func isCommentCheck(str string) bool {
 	// check if it current is comment and if comment that is at begin of string?
 	// // new comment here => results true
 	// slices[0] + ... // new comment here => results false
-	return str != "" && strings.Contains(str, "//") && strings.Index(str, "//") < 10
+	return strings.TrimSpace(str) != "" && strings.Contains(str, "//") && strings.Index(str, "//") < 10
 }
 
 func addBreadCrumb() {
