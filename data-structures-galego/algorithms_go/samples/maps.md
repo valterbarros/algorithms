@@ -19,8 +19,8 @@ map2["first"] = 1
 fmt.Println("map2: ", map2)
 ```
 
-Here is necessary to run a type assertition   
-C := int64(map2["first"]) * 2
+here is necessary to run a type assertition   
+`c := int64(map2["first"]) * 2`
 
 It is possible to create map inner map
 
@@ -38,13 +38,13 @@ As that map is using **any** type go don't permit the usage of that without a ty
 > That garantes less errors at runtime
 
 ```go   
-Error:   
-C := int64(map2["first"]) * 2   
+error:   
+c := int64(map2["first"]) * 2   
 ```
 
 ### Editing map
 
-Remove a key
+remove a key
 
 ```go
 delete(map3, "inner")
@@ -52,8 +52,8 @@ delete(map3, "inner")
 clear(map3)
 ```
 
-Maps package has so many fns like maps.Equal()   
-Map keys
+maps package has so many fns like maps.Equal()   
+map keys
 
 ```go
 map4 := map[string]string{
@@ -63,7 +63,7 @@ map4 := map[string]string{
 fmt.Println("map4: ", map4)
 ```
 
-It returns a seq and is necessary to use slice.Collect to get slice of that   
+it returns a seq and is necessary to use slice.Collect to get slice of that   
 > More about [Range Over Function Types](https://go.dev/blog/slices-intro)
 
 ```go

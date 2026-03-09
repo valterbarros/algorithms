@@ -7,27 +7,27 @@
 > More deep details about array and slices can be found   
 [Go Slices: usage and internals](https://go.dev/blog/slices-intro)
 
-It is possible to create slice with make   
-Capacity 15 and length 10
+it is possible to create slice with make   
+capacity 15 and length 10
 
 ```go
 slice0 := make([]float32, 10, 15)
 fmt.Println("capacity slice0", cap(slice0), len(slice0))
 ```
 
-Array fixed size
+array fixed size
 
 ```go
 array1 := [5]int{1, 2, 3}
 ```
-Change array pos
+change array pos
 
 ```go
 array1[1] = 4
 fmt.Println("array1: ", array1)
 ```
 
-Slice has a pointer to real array and the size is dynamic
+slice has a pointer to real array and the size is dynamic
 
 ```go
 slice1 := []int{1, 2, 3, 4}
@@ -40,7 +40,7 @@ fmt.Println("capacity slice1", cap(slice1), len(slice1))
 
 ### Manipulation
 
-Append to slice   
+append to slice   
 Append returns a new array
 
 ```go
@@ -52,7 +52,7 @@ slice2 = append(slice2, 50)
 ```go
 fmt.Println("slice1: ", slice1)
 ```
-It is possible to swap slice positions
+it is possible to swap slice positions
 
 ```go
 slice3 := []int{1, 2, 3, 4, 5, 6}
@@ -61,7 +61,7 @@ slice3[0], slice3[1] = slice3[1], slice3[0]
 fmt.Println("slice3: ", slice3)
 ```
 
-It is possible to get a slice of array range
+it is possible to get a slice of array range
 
 ```go
 array2 := [...]int{1, 2, 3, 4, 5} // ... is for "dynamic" array but not appendable
@@ -71,7 +71,7 @@ fmt.Println("slice4: ", slice4)
 
 ### Using slices package
 
-Unordered slice of array
+unordered slice of array
 
 ```go
 slice5 := []int{50, 10, 1, 9, 4}
@@ -82,7 +82,7 @@ fmt.Println("slice5: ", slice5)
 
 ### Curiosity
 
-Is it possible to change original array?!   
+is it possible to change original array?!   
 > as slice has a pointer to original array if you change that it reflects on original array
 
 ```go

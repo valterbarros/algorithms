@@ -46,7 +46,7 @@ fnType = func() {
 fnType.callFn()
 ```
 
-Method on int
+method on int
 
 ```go
 var intType IntType
@@ -57,9 +57,9 @@ intType.getInt()
 ### Int types
 
 > there is some types for int and float   
-Basically int: int, int8, int16, int32, int64   
-Go get type by inference and set int, that is based on processor architecture   
-Go get type by inference and set int, that is based on processor architecture
+basically int: int, int8, int16, int32, int64   
+go get type by inference and set int, that is based on processor architecture   
+go get type by inference and set int, that is based on processor architecture
 
 ```go
 num := 1
@@ -67,30 +67,30 @@ fmt.Println("infer int type: ", reflect.TypeOf(num))
 ```
 
 It is not possible to make operations with differents types like int8 + int1   
-Var byt int8 = 1   
-Var byt2 int16 = 2   
+var byt int8 = 1   
+var byt2 int16 = 2   
 X Error   
 ```go   
-Byt+byt2   
+byt+byt2   
 ````
 
 X error:   
 ```go   
-Var variable uint = -1   
+var variable uint = -1   
 ```
 
 > rune is alias for int32   
-Byte is an alias for uint8
+byte is an alias for uint8
 
-Returns int
+returns int
 
 ```go
 fmt.Println(reflect.TypeOf(num))
 ```
 ### Other types
 
-For float there is just   
-Float32 and float64
+for float there is just   
+float32 and float64
 
 
 ```go
@@ -99,22 +99,22 @@ num2 := 2.0
 fmt.Println(reflect.TypeOf(num2))
 ```
 
-Type boolean
+type boolean
 
 ```go
 isOk := true
 fmt.Println(isOk)
 ```
 
-Type error
+type error
 
 ```go
 var erro error = errors.New("panic internal error")
 fmt.Println(erro)
 ```
 
-Function type   
-This is anonymous function
+function type   
+this is anonymous function
 
 ```go
 whatIsType := func() {}
@@ -123,7 +123,7 @@ fmt.Println(reflect.TypeOf(whatIsType))
 
 ### Type Assert
 
-Is possible to do this   
+is possible to do this   
 `any == interface{}`
 
 

@@ -15,7 +15,7 @@ func (s StringsType) Run() {
 
 	// [Study](../notes/STUDY.md) / Strings
 
-	// ###String "interpolations"
+	// ### String "interpolations"
 
 	// Doc with replacements %d %s, etc
 	// https://pkg.go.dev/fmt#hdr-Printing
@@ -27,7 +27,7 @@ func (s StringsType) Run() {
 
 	// this is a rune
 	// With rune is possible to store utf8 characters in a single value
-	// rune is int32
+	// `rune` is `int32`
 	var fullChar rune
 	// can only be one character, just like char in other languages
 	fullChar = 'é'

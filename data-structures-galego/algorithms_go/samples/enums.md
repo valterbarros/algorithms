@@ -1,7 +1,7 @@
 ## Enums
 
 [Study](../notes/STUDY.md) / Enums    
-### set direct value
+### Set direct value
 
 ```go
 const (
@@ -11,7 +11,7 @@ const (
 )
 ```
 
-Use a type to set enums
+use a type to set enums
 
 ```go
 type ServerState int
@@ -40,7 +40,7 @@ const (
 
 
 
-Usage
+usage
 
 ```go
 fmt.Println("untyped: ", Pending, Ready, InProgress)

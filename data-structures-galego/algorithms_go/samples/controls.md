@@ -11,8 +11,8 @@ returnBool := func() int {
 
 ### If init
 
-It is called if init, init a var inside if   
-If init
+it is called if init, init a var inside if   
+if init
 
 ```go
 if val := returnBool(); val > 0 {
@@ -20,7 +20,7 @@ if val := returnBool(); val > 0 {
 }
 ```
 
-It is possible to redeclare val
+it is possible to redeclare val
 
 ```go
 val := 1
@@ -39,7 +39,7 @@ default:
 }
 ```
 
-Switch change position of condition
+switch change position of condition
 
 ```go
 switch {

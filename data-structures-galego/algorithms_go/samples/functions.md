@@ -26,20 +26,20 @@ func recoverFunc() {
 
 ### defer keyword
 
-Defer is used to run that as last function, that is executed before a return from function
+defer is used to run that as last function, that is executed before a return from function
 
 
 ```go
 fmt.Println("Testing return: ", testingDefer())
 ```
-Output:   
-Defer fn, use it to clear data   
+output:   
+defer fn, use it to clear data   
 Testing return:  1
 
 ### More examples and function capabilities
 
-Functions are first class citizens in go   
-And can be used just like any other var
+functions are first class citizens in go   
+and can be used just like any other var
 
 ```go
 var f = func(text string) string {
@@ -48,7 +48,7 @@ var f = func(text string) string {
 fmt.Println(f("Hey Jude!"))
 ```
 
-Function can have multi returns
+function can have multi returns
 
 ```go
 locale := func() (string, string) {
@@ -107,7 +107,7 @@ parameters(1, 2, 3)
 parameters([]int{3, 2, 1}...)
 ```
 
-Panic and recover
+panic and recover
 
 ```go
 recoverFunc := func() {
@@ -135,7 +135,7 @@ funcWillPanic := func() int {
 }
 ```
 
-Not Panic because the recover inside defer fn
+not Panic because the recover inside defer fn
 
 ```go
 funcWillPanic()

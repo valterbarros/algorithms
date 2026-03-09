@@ -9,7 +9,7 @@ type person struct {
 }
 ```
 
-Inherit?
+inherit?
 
 ```go
 type student struct {
@@ -17,7 +17,7 @@ type student struct {
 }
 ```
 
-Creates struct
+creates struct
 
 ```go
 type Recurrence struct {
@@ -42,7 +42,7 @@ func (r Recurrence) GetName() string {
 }
 ```
 
-Using * alter the original r variable
+using * alter the original r variable
 
 ```go
 func (r *Recurrence) SetName(name string) {
@@ -52,7 +52,7 @@ func (r *Recurrence) SetName(name string) {
 ```
 
 ### Private method   
-Is private when first char is lowercase
+is private when first char is lowercase
 
 ```go
 func (r Recurrence) privateProp() string {
@@ -64,7 +64,7 @@ func (r Recurrence) privateProp() string {
 
 ### Inherit in structs
 
-Inherit?!
+inherit?!
 
 ```go
 stud := student{person{20}}
@@ -74,7 +74,7 @@ fmt.Println("age of student: ", stud.age)
 
 ### Using structs
 
-Creating new struct
+creating new struct
 
 ```go
 r := Recurrence{name: "valter 123"}

@@ -4,8 +4,8 @@
 
 ### Declaring Vars
 
-Type variable1 int   
-Can be declared like this
+type variable1 int   
+can be declared like this
 
 ```go
 var (
@@ -14,17 +14,17 @@ var (
 )
 ```
 
-Or like this
+or like this
 
 ```go
 var variable3 string
 ```
-Custom type
+custom type
 
 ```go
 type newType string
 ```
-Const constant
+const constant
 
 ```go
 const (
@@ -34,13 +34,13 @@ const (
 
 
 
-And using inference `:=`   
-Inference only works inside functions
+and using inference `:=`   
+inference only works inside functions
 
 ```go
 variable4 := "valter"
 ```
-Custom type
+custom type
 
 ```go
 var variable5 newType
@@ -51,7 +51,7 @@ variable5 = variable6
 variable5 = constType
 ```
 
-Assignment
+assignment
 
 ```go
 variable1 = "valter"
@@ -62,8 +62,8 @@ fmt.Println(variable1, variable2, variable3, variable4, variable5, variable6)
 
 ### Swap values
 
-Is possible to swap variables value   
-Valter junior -> junior valter
+is possible to swap variables value   
+valter junior -> junior valter
 
 ```go
 variable1, variable2 = variable2, variable1

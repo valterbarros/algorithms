@@ -24,7 +24,7 @@ func (e MapsType) Run() {
 	fmt.Println("map2: ", map2)
 
 	// here is necessary to run a type assertition
-	// c := int64(map2["first"]) * 2
+	// `c := int64(map2["first"]) * 2`
 
 	// It is possible to create map inner map
 	map3 := make(map[string]map[string]int)
