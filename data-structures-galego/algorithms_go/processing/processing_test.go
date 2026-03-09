@@ -47,11 +47,9 @@ func TestProcessComments(t *testing.T) {
 	t.Run("should update get comments", func(t *testing.T) {
 		source := utils.GetFileData("../tests/fixtures/source.01.source")
 
-		result := processComments(source)
+		result := processComments(source, "/tmp/array2-result.md")
 
 		expected := utils.GetFileData("../tests/fixtures/expect.01.md")
-
-		utils.SaveFile("/tmp/array2-result.md", expected)
 
 		if result != expected {
 			t.Errorf("\nWrong expected: \n%s result: \n%s", expected, result)
@@ -60,11 +58,9 @@ func TestProcessComments(t *testing.T) {
 	t.Run("should be possible to have multiline comments", func(t *testing.T) {
 		source := utils.GetFileData("../tests/fixtures/source.02.source")
 
-		result := processComments(source)
+		result := processComments(source, "/tmp/array2-result.md")
 
 		expected := utils.GetFileData("../tests/fixtures/expect.02.md")
-
-		utils.SaveFile("/tmp/array2-result.md", expected)
 
 		if result != expected {
 			t.Errorf("\nWrong expected: \n%s result: \n%s", expected, result)
@@ -73,11 +69,9 @@ func TestProcessComments(t *testing.T) {
 	t.Run("should be possible to keep a comment side code", func(t *testing.T) {
 		source := utils.GetFileData("../tests/fixtures/source.03.source")
 
-		result := processComments(source)
+		result := processComments(source, "/tmp/array2-result.md")
 
 		expected := utils.GetFileData("../tests/fixtures/expect.03.md")
-
-		utils.SaveFile("/tmp/array2-result.md", expected)
 
 		if result != expected {
 			t.Errorf("\nWrong expected:\n\n%s result: \n\n%s", expected, result)

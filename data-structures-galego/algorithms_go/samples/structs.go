@@ -5,6 +5,7 @@ package samples
 import "fmt"
 
 // begin
+// ### Creating structs
 type person struct {
 	age int
 }
@@ -23,6 +24,8 @@ type Recurrences []struct {
 	name string
 }
 
+// ### Adding methods to struct
+
 // (r Recurrence) is Receiver and this function can be called struct embeded too
 func (r Recurrence) GetName() string {
 	return r.name
@@ -34,6 +37,7 @@ func (r *Recurrence) SetName(name string) {
 	r.name = name
 }
 
+// ### Private method
 // is private when first char is lowercase
 func (r Recurrence) privateProp() string {
 	return "prop"
@@ -48,16 +52,18 @@ func (s StructsType) Run() {
 
 	// [Study](../notes/STUDY.md) / Structs
 
-	// inherit?
+	// ### Inherit in structs
+
+	// inherit?!
 	stud := student{person{20}}
 	// Actually age is inside person, but it is possible to acess direct on student as it "inherit" it
 	fmt.Println("age of student: ", stud.age)
+
+	// ### Using structs
+
 	// creating new struct
 	r := Recurrence{name: "valter 123"}
 	fmt.Println(r.GetName())
-
-	// _, ok := r.(Recurrence)
-	// fmt.Println("is of type Recurrence: ", ok)
 
 	// Set
 	r.SetName("valter 2")

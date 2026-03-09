@@ -1,23 +1,34 @@
 ## Structs
 
-[Study](../notes/STUDY.md) / Structs
-
+[Study](../notes/STUDY.md) / Structs    
 ### Creating structs
 
 ```go
 type person struct {
-    age int
-}
-type student struct {
-    person
+	age int
 }
 ```
 
-creates struct
+Inherit?
+
+```go
+type student struct {
+	person
+}
+```
+
+Creates struct
 
 ```go
 type Recurrence struct {
-    name string
+	name string
+}
+```
+
+
+```go
+type Recurrences []struct {
+	name string
 }
 ```
 
@@ -27,32 +38,33 @@ type Recurrence struct {
 
 ```go
 func (r Recurrence) GetName() string {
-    return r.name
+	return r.name
 }
 ```
 
-using * alter the original r variable
+Using * alter the original r variable
 
 ```go
 func (r *Recurrence) SetName(name string) {
-    fmt.Println("hey jude", r)
-    r.name = name
+	fmt.Println("hey jude", r)
+	r.name = name
 }
 ```
 
-### Private method
-
-is private when first char is lowercase
+### Private method   
+Is private when first char is lowercase
 
 ```go
 func (r Recurrence) privateProp() string {
-    return "prop"
+	return "prop"
 }
 ```
 
+
+
 ### Inherit in structs
 
-inherit?! in next example it is possible to access, student.age or person.student.age
+Inherit?!
 
 ```go
 stud := student{person{20}}
@@ -62,15 +74,28 @@ fmt.Println("age of student: ", stud.age)
 
 ### Using structs
 
-creating new struct
+Creating new struct
 
 ```go
 r := Recurrence{name: "valter 123"}
 fmt.Println(r.GetName())
 ```
-SetName and check change
+
+Set
 
 ```go
 r.SetName("valter 2")
+```
+
+```go
 fmt.Println("change original name: ", r.GetName() == "valter 2")
 ```
+An especime of shurtcut to create many items in single interaction
+
+```go
+rs := Recurrences{
+	{name: "valter"},
+	{name: "jessica"},
+	{name: "other"},
+}
+fmt.Println(rs)

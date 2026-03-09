@@ -8,6 +8,7 @@ import (
 
 type TypesType struct{}
 
+// begin
 type FuncType func()
 
 // It is possible to add method a to func type?!
@@ -21,14 +22,19 @@ type anyStruct struct {
 	param any
 }
 
+// Add method to int type
 func (i IntType) getInt() {
 	fmt.Println("selected type: ", i)
 }
+
+// end
 
 func (t TypesType) Run() {
 	// ## Types
 
 	// [Study](../notes/STUDY.md) / Types
+
+	// ### Methods on types
 
 	var fnType FuncType
 	fnType = func() {
@@ -37,10 +43,12 @@ func (t TypesType) Run() {
 	// More advance example a function type call a method of that method
 	fnType.callFn()
 
-	// Add method to int type
+	// method on int
 	var intType IntType
 	intType = 1
 	intType.getInt()
+
+	// ### Int types
 
 	// > there is some types for int and float
 	// basically int: int, int8, int16, int32, int64
@@ -68,6 +76,8 @@ func (t TypesType) Run() {
 	// returns int
 	fmt.Println(reflect.TypeOf(num))
 
+	// ### Other types
+
 	// for float there is just
 	// float32 and float64
 
@@ -88,9 +98,11 @@ func (t TypesType) Run() {
 	whatIsType := func() {}
 	fmt.Println(reflect.TypeOf(whatIsType))
 
+	// ### Type Assert
+
 	// is possible to do this
-	// var f func()
-	// any == interface{}
+	// `any == interface{}`
+
 	var whatIsType2 any = func() {}
 	var a int = 1
 	fmt.Println(a)

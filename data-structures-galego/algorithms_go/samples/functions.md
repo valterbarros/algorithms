@@ -1,10 +1,6 @@
 ## Functions
 
-[Study](../notes/STUDY.md) / Functions
-
-### defer keyword
-
-defer is used to run that as last function, that is executed before a return from function
+[Study](../notes/STUDY.md) / Functions 
 
 ```go
 func testingDefer() int {
@@ -12,54 +8,68 @@ func testingDefer() int {
 	defer func() {
 		fmt.Println("\ndefer fn, use it to clear data")
 	}()
-
 	return 1
 }
+```
 
+
+```go
+func recoverFunc() {
+	// The `r` variable from recover will return the error
+	if r := recover(); r != nil {
+		fmt.Println("\n\napp was recovered from recoverFunc", r)
+	}
+}
+```
+
+
+
+### defer keyword
+
+Defer is used to run that as last function, that is executed before a return from function
+
+
+```go
 fmt.Println("Testing return: ", testingDefer())
-
 ```
-
-output:
-
-```
-// defer fn, use it to clear data
-// Testing return:  1
-```
+Output:   
+Defer fn, use it to clear data   
+Testing return:  1
 
 ### More examples and function capabilities
 
-Functions are first class citizens in go
-and can be used just like any other var
+Functions are first class citizens in go   
+And can be used just like any other var
 
 ```go
 var f = func(text string) string {
 	return text
 }
-
 fmt.Println(f("Hey Jude!"))
 ```
 
-function can have multi returns
+Function can have multi returns
 
 ```go
 locale := func() (string, string) {
 	return "!Ola! Cabron!", "Hello man"
 }
-
 esMx, ptBR := locale()
 fmt.Println(esMx, ptBR)
 ```
 
 Go has shurtcut? yes
 
+
 ```go
 shurt := func() bool {
 	fmt.Println("shurt")
+```
 
+
+```go
 	return true
 }
-
 if true && shurt() {
 	fmt.Println("shurtcut")
 }
@@ -71,17 +81,20 @@ It is possible to create function with named return
 named := func(n1, n2 int) (sum int, sub int) {
 	sum = n1 + n2
 	sub = n1 - n2
-
 	// note for return with no clause
 	return
 }
-
-sum, sub := named(1, 2)
-
-fmt.Println("sum and sub: ", sum, sub)
 ```
 
-It is possible to pass n parameters to a function variadic
+
+```go
+sum, sub := named(1, 2)
+```
+
+```go
+fmt.Println("sum and sub: ", sum, sub)
+```
+It is possible to pass n parameters
 
 ```go
 parameters := func(nums ...int) {
@@ -89,14 +102,20 @@ parameters := func(nums ...int) {
 		fmt.Printf("nums: %d ", n)
 	}
 }
-
 parameters(1, 2, 3)
+// it is possible to call that with array
+parameters([]int{3, 2, 1}...)
 ```
 
-it is possible to call that with array
+Panic and recover
 
 ```go
-parameters([]int{3, 2, 1}...)
+recoverFunc := func() {
+	if r := recover(); r != nil {
+		// r is the error
+		fmt.Println("\n\napp was recovered from recoverFunc", r)
+	}
+}
 ```
 
 ### Panic and recover
@@ -107,27 +126,16 @@ It will cause a panic
 
 > To force a panic we can call `panic("error here")`
 
-```go
-func funcWillPanic() int {
-	defer recoverFunc()
 
-	// trying to acess a index out of bound = panic
+```go
+funcWillPanic := func() int {
+	defer recoverFunc()
+	// trying to acess a index out of bound
 	return []int{1, 2, 3}[50]
 }
 ```
 
-The `r` variable from recover will return the error
-
-```go
-func recoverFunc() {
-	if r := recover(); r != nil {
-		fmt.Println("\n\napp was recovered from recoverFunc", r)
-	}
-}
-```
-
-not Panic because the recover inside defer fn
+Not Panic because the recover inside defer fn
 
 ```go
 funcWillPanic()
-```

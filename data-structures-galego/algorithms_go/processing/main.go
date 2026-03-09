@@ -17,11 +17,11 @@ func main() {
 	flag.Parse()
 
 	data := utils.GetFileData("samples/" + *fileRun + ".go")
-	processComments(data)
+	processComments(data, "samples/"+*fileRun+".md")
 	// addBreadCrumb()
 }
 
-func processComments(data string) string {
+func processComments(data string, path string) string {
 	data = removeHead(data)
 	reg := regexp.MustCompile(`(?im)\n`)
 	// utils.SaveFile("/tmp/arrays2.md", data)
@@ -56,7 +56,7 @@ func processComments(data string) string {
 		isNextComment := index < len(splitted)-1 && isCommentCheck(splitted[index+1])
 
 		if !hasCodeSeq && isComment {
-			str = utils.Capitalize(strings.ReplaceAll(str, "// ", ""))
+			str = strings.ReplaceAll(str, "// ", "")
 		}
 
 		// to avoid many comment line be in same line
@@ -85,7 +85,8 @@ func processComments(data string) string {
 	removeReg := regexp.MustCompile(`[\n\}]+$`)
 	markdown = removeReg.ReplaceAllString(markdown, "")
 
-	utils.SaveFile("/tmp/arrays2.md", markdown)
+	// utils.SaveFile("/tmp/arrays2.md", markdown)
+	utils.SaveFile(path, markdown)
 	return markdown
 }
 

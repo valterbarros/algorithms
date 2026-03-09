@@ -4,7 +4,7 @@ package samples
 import "fmt"
 
 // begin
-// ### set direct value
+// ### Set direct value
 const (
 	Pending    = "pending"
 	Ready      = "ready"

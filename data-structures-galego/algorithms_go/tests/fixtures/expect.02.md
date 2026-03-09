@@ -17,10 +17,10 @@ func funcEmptyArray() []int {
 
 ### Internals
 
-There is some types for int and float   
-Basically int: int, int8, int16, int32, int64   
-Go get type by inference and set int, that is based on processor architecture   
-Go get type by inference and set int, that is based on processor architecture
+there is some types for int and float   
+basically int: int, int8, int16, int32, int64   
+go get type by inference and set int, that is based on processor architecture   
+go get type by inference and set int, that is based on processor architecture
 
 
 ```go
@@ -30,7 +30,7 @@ num := 1
 slice3[0], slice3[1] = slice3[1], slice3[0]
 ```
 
-Get first element
+get first element
 
 ```go
 slices[1]

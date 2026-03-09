@@ -1,46 +1,52 @@
 ## Enums
 
-[Study](../notes/STUDY.md) / Enums
-
+[Study](../notes/STUDY.md) / Enums    
 ### set direct value
 
 ```go
 const (
-    Pending    = "pending"
-    Ready      = "ready"
-    InProgress = "in_progress"
+	Pending    = "pending"
+	Ready      = "ready"
+	InProgress = "in_progress"
 )
 ```
 
-### use a type to set enums
+Use a type to set enums
 
 ```go
 type ServerState int
-
-const (
-    StateIddle ServerState = iota
-    StateConnected
-)
 ```
-
-### Methods on int type
+Methods on int type \o/
 
 ```go
 func (ss ServerState) String() string {
-    if ss == 0 {
-        return "idle"
-    }
-    if ss == 1 {
-        return "connected"
-    }
-    return "other"
+	if ss == 0 {
+		return "idle"
+	}
+	if ss == 1 {
+		return "connected"
+	}
+	return "other"
 }
 ```
 
-usage
+
+```go
+const (
+	StateIddle ServerState = iota
+	StateConnected
+)
+```
+
+
+
+Usage
 
 ```go
 fmt.Println("untyped: ", Pending, Ready, InProgress)
 fmt.Println("ServerState: ", StateIddle, StateConnected)
-fmt.Println("ServerState String: ", StateIddle.String())
 ```
+
+
+```go
+fmt.Println("ServerState String: ", StateIddle.String())

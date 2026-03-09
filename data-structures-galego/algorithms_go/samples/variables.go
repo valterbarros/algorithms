@@ -4,6 +4,8 @@ import "fmt"
 
 // begin
 
+// ### Declaring Vars
+
 // type variable1 int
 // can be declared like this
 var (
@@ -14,8 +16,10 @@ var (
 // or like this
 var variable3 string
 
+// custom type
 type newType string
 
+// const constant
 const (
 	constType newType = "const type"
 )
@@ -29,7 +33,7 @@ func (v VariablesType) Run() {
 
 	// [Study](../notes/STUDY.md) / Variables
 
-	// and using inference :=
+	// and using inference `:=`
 	// inference only works inside functions
 	variable4 := "valter"
 
@@ -41,10 +45,13 @@ func (v VariablesType) Run() {
 	// or constType because is newType too
 	variable5 = constType
 
+	// assignment
 	variable1 = "valter"
 	variable2 = "junior"
 	variable3 = "developer"
 	fmt.Println(variable1, variable2, variable3, variable4, variable5, variable6)
+
+	// ### Swap values
 
 	// is possible to swap variables value
 	// valter junior -> junior valter

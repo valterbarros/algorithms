@@ -2,6 +2,24 @@ package samples
 
 import "fmt"
 
+// begin
+func testingDefer() int {
+	// defer is used to run that as last function
+	defer func() {
+		fmt.Println("\ndefer fn, use it to clear data")
+	}()
+	return 1
+}
+
+func recoverFunc() {
+	// The `r` variable from recover will return the error
+	if r := recover(); r != nil {
+		fmt.Println("\n\napp was recovered from recoverFunc", r)
+	}
+}
+
+// end
+
 type FunctionsType struct{}
 
 func (ff FunctionsType) Run() {
@@ -9,14 +27,17 @@ func (ff FunctionsType) Run() {
 
 	// [Study](../notes/STUDY.md) / Functions
 
-	testingDefer := func() int {
-		// defer is used to run that as last function
-		defer func() {
-			fmt.Println("\ndefer fn, use it to clear data")
-		}()
-		return 1
-	}
+	// ### defer keyword
+
+	// defer is used to run that as last function, that is executed before a return from function
+
 	fmt.Println("Testing return: ", testingDefer())
+
+	// output:
+	// defer fn, use it to clear data
+	// Testing return:  1
+
+	// ### More examples and function capabilities
 
 	// functions are first class citizens in go
 	// and can be used just like any other var
@@ -73,10 +94,20 @@ func (ff FunctionsType) Run() {
 		}
 	}
 
+	// ### Panic and recover
+
+	// In some manner it is similar to try...catch, defer + recover is basically a catch
+
+	// It will cause a panic
+
+	// > To force a panic we can call `panic("error here")`
+
 	funcWillPanic := func() int {
 		defer recoverFunc()
 		// trying to acess a index out of bound
 		return []int{1, 2, 3}[50]
 	}
+
+	// not Panic because the recover inside defer fn
 	funcWillPanic()
 }

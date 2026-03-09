@@ -12,11 +12,13 @@ func (e MapsType) Run() {
 
 	// [Study](../notes/STUDY.md) / Maps
 
-	// create a map without initialization
+	// ### Working with map
+
+	// Create a map without initialization
 	map1 := make(map[string]int)
 	fmt.Println("map1: ", map1)
 
-	// it is possible to use any to accept any type but is more recommended to use struct
+	// It is possible to use any to accept any type but is more recommended to use struct
 	map2 := make(map[string]any)
 	map2["first"] = 1
 	fmt.Println("map2: ", map2)
@@ -31,6 +33,18 @@ func (e MapsType) Run() {
 	}
 	fmt.Println("map3: ", map3)
 
+	// ### Go safe map attributes manipulation
+
+	// As that map is using **any** type go don't permit the usage of that without a type assertition
+	// > That garantes less errors at runtime
+
+	// ```go
+	// error:
+	// c := int64(map2["first"]) * 2
+	// ```
+
+	// ### Editing map
+
 	// remove a key
 	delete(map3, "inner")
 	// clear map
@@ -43,6 +57,8 @@ func (e MapsType) Run() {
 		"structs": "structs",
 	}
 	fmt.Println("map4: ", map4)
+
 	// it returns a seq and is necessary to use slice.Collect to get slice of that
+	// > More about [Range Over Function Types](https://go.dev/blog/slices-intro)
 	fmt.Println("keys4: ", maps.Keys(map4))
 }

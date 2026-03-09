@@ -1,48 +1,46 @@
 ## Variables
 
-[Study](../notes/STUDY.md) / Variables
+[Study](../notes/STUDY.md) / Variables 
 
 ### Declaring Vars
 
-type variable1 int
-
-can be declared like this
+Type variable1 int   
+Can be declared like this
 
 ```go
 var (
-    variable1 string
-    variable2 string
+	variable1 string
+	variable2 string
 )
 ```
 
-or like this
+Or like this
 
 ```go
 var variable3 string
 ```
-
-custom type
+Custom type
 
 ```go
 type newType string
 ```
-
-const
+Const constant
 
 ```go
 const (
-    constType newType = "const type"
+	constType newType = "const type"
 )
 ```
 
-and using inference :=
-inference only works inside functions
+
+
+And using inference `:=`   
+Inference only works inside functions
 
 ```go
 variable4 := "valter"
 ```
-
-custom type
+Custom type
 
 ```go
 var variable5 newType
@@ -53,7 +51,7 @@ variable5 = variable6
 variable5 = constType
 ```
 
-assignment
+Assignment
 
 ```go
 variable1 = "valter"
@@ -64,10 +62,9 @@ fmt.Println(variable1, variable2, variable3, variable4, variable5, variable6)
 
 ### Swap values
 
-is possible to swap variables value
-valter junior -> junior valter
+Is possible to swap variables value   
+Valter junior -> junior valter
 
 ```go
 variable1, variable2 = variable2, variable1
 fmt.Println("after swap: ", variable1, variable2)
-```

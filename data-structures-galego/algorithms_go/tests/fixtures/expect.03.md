@@ -5,7 +5,7 @@ slice3 := []int{1,2,3,4}
 slice3[0], slice3[1] = slice3[1], slice3[0]
 ```
 
-Get first element
+get first element
 
 ```go
 slices[1]
