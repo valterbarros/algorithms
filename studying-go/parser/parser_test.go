@@ -16,7 +16,7 @@ func TestReplaceBy(t *testing.T) {
 		`
 		result := replaceBy(source, "Arrays")
 
-		ok := strings.Contains(result, "[Study](../notes/STUDY.md) / Arrays")
+		ok := strings.Contains(result, "[Readme](../README.md) / Arrays")
 		if !ok {
 			t.Errorf("There is no Study")
 		}

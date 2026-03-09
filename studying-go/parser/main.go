@@ -147,7 +147,7 @@ func addBreadCrumb() {
 func replaceBy(data, name string) string {
 	// (?i) is for case insensitive
 	titleReg := regexp.MustCompile(`(?im)(^##\s[a-z]+)`)
-	breadBase := "[Study](../notes/STUDY.md) / " + name
+	breadBase := "[Readme](../README.md) / " + name
 	breadCrumbReg := regexp.MustCompile(breadCrumbPattern)
 
 	// if has edit update breadcrumb
