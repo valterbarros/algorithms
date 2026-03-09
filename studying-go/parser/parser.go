@@ -25,8 +25,6 @@ func parseComments(data string, path string) string {
 		if strings.TrimSpace(str) != "" {
 			// remove identation additional
 			str = str[1:]
-			// TODO: fix problem with replace start by x and removed rest of code
-			// str = regexp.MustCompile(`^(x|\s)?`).ReplaceAllString(str, "")
 		} else {
 			// if it is empty that is a new line
 			newLine := "\n"
