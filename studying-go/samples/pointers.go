@@ -15,6 +15,7 @@ func (p PointersType) Run() {
 
 	// passing var as pointer, it is a pointer for a int
 	TestPointer := func(v *int) {
+		*v = *v + 1
 		fmt.Println("value of *int is: ", v)
 	}
 
@@ -23,6 +24,7 @@ func (p PointersType) Run() {
 	variable1 := 1
 	pointer1 := &variable1
 	TestPointer(pointer1)
+	fmt.Println("change value: ", variable1) // it returns 2 because TestPointer changed it
 
 	// to get the original value from pointer it could be possible using dereference
 	fmt.Println("original value: ", *pointer1)

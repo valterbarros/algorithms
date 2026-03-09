@@ -18,6 +18,12 @@ func recoverFunc() {
 	}
 }
 
+// ### Init functio
+// this function run before main fn used to start resource etc
+func init() {
+	fmt.Println("runned at init and before main")
+}
+
 // end
 
 type FunctionsType struct{}
@@ -110,4 +116,17 @@ func (ff FunctionsType) Run() {
 
 	// not Panic because the recover inside defer fn
 	funcWillPanic()
+
+	// ### Closure
+	// Closure basically is used to "save" vars from outer functions and acess on a inner function
+	closure := func(name string) func() { // in that specific case it is using the arg var
+		hello := func() {
+			fmt.Println("hello " + name)
+		}
+
+		return hello
+	}
+
+	outer := closure("valter")
+	outer()
 }

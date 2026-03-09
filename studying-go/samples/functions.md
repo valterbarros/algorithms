@@ -22,6 +22,14 @@ func recoverFunc() {
 }
 ```
 
+this function run before main fn used to start resource etc
+
+```go
+func init() {
+	fmt.Println("runned at init and before main")
+}
+```
+
 
 
 ### defer keyword
@@ -139,3 +147,24 @@ not Panic because the recover inside defer fn
 
 ```go
 funcWillPanic()
+```
+### Closure   
+Closure basically is used to "save" vars from outer functions and acess on a inner function
+
+```go
+closure := func(name string) func() { // in that specific case it is using the arg var
+	hello := func() {
+		fmt.Println("hello " + name)
+	}
+```
+
+
+```go
+	return hello
+}
+```
+
+
+```go
+outer := closure("valter")
+outer()

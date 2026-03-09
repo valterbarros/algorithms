@@ -8,6 +8,7 @@ passing var as pointer, it is a pointer for a int
 
 ```go
 TestPointer := func(v *int) {
+	*v = *v + 1
 	fmt.Println("value of *int is: ", v)
 }
 ```
@@ -19,6 +20,7 @@ that holds memory address for v1
 variable1 := 1
 pointer1 := &variable1
 TestPointer(pointer1)
+fmt.Println("change value: ", variable1) // it returns 2 because TestPointer changed it
 ```
 
 to get the original value from pointer it could be possible using dereference
