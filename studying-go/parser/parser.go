@@ -8,74 +8,7 @@ import (
 
 const breadCrumbPattern string = `(?i)(\/\/\s)?\[Readme+\].+`
 
-func parseComments(data string, path string) string {
-	data = stripBoilerPlate(data)
-	// reg := regexp.MustCompile(`(?im)\n`)
-	// utils.SaveFile("/tmp/arrays2.md", data)
-	// return ""
-
-	markdown := ""
-	splitted := strings.Split(string(data), "\n")
-	hasCodeSeq := false
-
-	for index, original := range splitted {
-		str := original
-
-		if strings.TrimSpace(str) != "" {
-			// remove identation additional
-			str = str[1:]
-		} else {
-			// if it is empty that is a new line
-			newLine := "\n"
-			if hasCodeSeq /* I'm new line and a code squence is open I need to close that*/ {
-				hasCodeSeq = false
-				newLine = "```\n"
-			}
-
-			markdown += newLine
-			continue
-		}
-
-		isComment := isCommentCheck(original)
-		isNextNewLine := index < len(splitted)-1 && strings.TrimSpace(splitted[index+1]) == ""
-		isNextComment := index < len(splitted)-1 && isCommentCheck(splitted[index+1])
-
-		if !hasCodeSeq && isComment {
-			str = strings.ReplaceAll(str, "// ", "")
-		}
-
-		// to avoid many comment line be in same line
-		if !hasCodeSeq && isComment && isNextComment {
-			str = str + "   "
-		}
-
-		// after split \n was removed fro all lines
-		str = str + "\n"
-
-		// open comment ```go
-		// it comes from a comment and that is a code
-		if !hasCodeSeq && !isComment {
-			hasCodeSeq = true
-			str = "\n```go\n" + str
-		} else if hasCodeSeq && isNextNewLine /*The isNextNewLine closes the code sequence*/ {
-			hasCodeSeq = false
-			// close comment ```
-			str = str + "```\n"
-		}
-
-		markdown += str
-	}
-
-	// remove new line \n
-	removeReg := regexp.MustCompile(`[\n\}]+$`)
-	markdown = removeReg.ReplaceAllString(markdown, "")
-
-	// utils.SaveFile("/tmp/arrays2.md", markdown)
-	utils.SaveFile(path, markdown)
-	return markdown
-}
-
-func newParseComments(data string) string {
+func fromGoToMarkdown(data, path string) string {
 	data = stripBoilerPlate(data)
 
 	splitted := strings.Split(string(data), "\n")
@@ -99,7 +32,11 @@ func newParseComments(data string) string {
 		}
 	}
 
-	return trimTab(markdown.String())
+	trimmed := trimTab(markdown.String())
+
+	utils.SaveFile(path, trimmed)
+
+	return trimmed
 }
 
 func parseCodeSequence(str []string, left int) (string, int) {

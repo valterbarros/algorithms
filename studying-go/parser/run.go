@@ -15,10 +15,10 @@ func Run() {
 	if *fileRun == "*" {
 		utils.IterateFiles("samples/", ".go", func(name string) {
 			data := utils.GetFileData("samples/" + name)
-			parseComments(data, "samples/"+strings.ReplaceAll(name, ".go", ".md"))
+			fromGoToMarkdown(data, "samples/"+strings.ReplaceAll(name, ".go", ".md"))
 		})
 	} else {
 		data := utils.GetFileData("samples/" + *fileRun + ".go")
-		parseComments(data, "samples/"+*fileRun+".md")
+		fromGoToMarkdown(data, "samples/"+*fileRun+".md")
 	}
 }
