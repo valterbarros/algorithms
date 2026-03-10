@@ -138,7 +138,7 @@ func parseCommentSequence(str []string, left int) (string, int) {
 		right++
 	}
 
-	joined := strings.Join(str[startL:right], "\n")
+	joined := strings.Join(str[startL:right], "   \n")
 	parsed := strings.ReplaceAll(joined, "// ", "") + "\n"
 
 	return parsed, right
@@ -174,7 +174,7 @@ func isCommentCheck(str string) bool {
 }
 
 func isCodeCheck(str string) bool {
-	return regexp.MustCompile(`(?i)^[a-z]+`).MatchString(str)
+	return regexp.MustCompile(`(?i)^[a-z\}]+`).MatchString(str)
 }
 
 func isEmpty(str string) bool {

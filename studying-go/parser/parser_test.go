@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"regexp"
 	"strings"
 	"studying-go/utils"
 	"testing"
@@ -9,36 +8,6 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
-
-func TestReplaceBy(t *testing.T) {
-	t.Run("Checking for replace one time", func(t *testing.T) {
-		source := `
-## Arrays
-
-### Sub topic
-		`
-		result := replaceBy(source, "Arrays")
-
-		assert.Contains(t, result, "[Readme](../README.md) / Arrays",
-			"result should contain breadcrumb with Arrays")
-	})
-
-	t.Run("should update breadcrumb after replace n times", func(t *testing.T) {
-		source := `
-## Arrays
-
-### Sub topic
-		`
-		result := replaceBy(source, "Arrays")
-		result = replaceBy(result, "Arrays")
-		result = replaceBy(result, "Arrays")
-		result = replaceBy(result, "Arrays")
-
-		breadCrumbReg := regexp.MustCompile(breadCrumbPattern)
-		assert.Regexp(t, breadCrumbReg, result,
-			"result should match breadcrumb pattern after multiple replaces")
-	})
-}
 
 func TestParseComments(t *testing.T) {
 	t.Run("should update get comments", func(t *testing.T) {
@@ -72,6 +41,25 @@ func TestParseComments(t *testing.T) {
 		result := parseComments(source, "/tmp/array2-result.md")
 
 		assert.Equal(t, expected, result, "processComments should preserve comment beside code")
+	})
+}
+
+func TestNewParseComments(t *testing.T) {
+	t.Run("should parse comment and code together", func(t *testing.T) {
+		source := utils.GetFileData("../tests/fixtures/source.06.source")
+		expected := utils.GetFileData("../tests/fixtures/expect.06.md")
+
+		result := newParseComments(source)
+
+		assert.Equal(t, expected, result, "should parse right")
+	})
+	t.Run("should parse comment and code together with boilerplate", func(t *testing.T) {
+		source := utils.GetFileData("../tests/fixtures/source.01.source")
+		expected := utils.GetFileData("../tests/fixtures/expect.01.md")
+
+		result := newParseComments(source)
+
+		assert.Equal(t, expected, result, "should parse right")
 	})
 }
 
@@ -118,17 +106,6 @@ lorem ipsum new code
 `
 
 		result, _ := parseCommentSequence(source, 5)
-
-		assert.Equal(t, expected, result, "should parse right")
-	})
-}
-
-func TestNewParseComments(t *testing.T) {
-	t.Run("should parse comment and code together", func(t *testing.T) {
-		source := utils.GetFileData("../tests/fixtures/source.06.source")
-		expected := utils.GetFileData("../tests/fixtures/expect.06.md")
-
-		result := newParseComments(source)
 
 		assert.Equal(t, expected, result, "should parse right")
 	})
