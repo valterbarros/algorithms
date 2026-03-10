@@ -22,6 +22,7 @@ func recoverFunc() {
 }
 ```
 
+### Init functio   
 this function run before main fn used to start resource etc
 
 ```go
