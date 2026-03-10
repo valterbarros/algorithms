@@ -113,7 +113,7 @@ func TestParseCommentSequence(t *testing.T) {
 	t.Run("should parse comment with advanced left", func(t *testing.T) {
 		raw := utils.GetFileData("../tests/fixtures/source.05.source")
 		source := strings.Split(raw, "\n")
-		expected := `Other comments not parsed due to \n prefix
+		expected := `Other comments not parsed due to \n prefix   
 lorem ipsum new code
 `
 
