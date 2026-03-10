@@ -1,3 +1,4 @@
+
 	// Init a type
 	type FuncType func()
 	

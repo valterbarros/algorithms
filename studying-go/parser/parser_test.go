@@ -45,21 +45,26 @@ func TestParseComments(t *testing.T) {
 }
 
 func TestNewParseComments(t *testing.T) {
-	t.Run("should parse comment and code together", func(t *testing.T) {
-		source := utils.GetFileData("../tests/fixtures/source.06.source")
-		expected := utils.GetFileData("../tests/fixtures/expect.06.md")
-
-		result := newParseComments(source)
-
-		assert.Equal(t, expected, result, "should parse right")
-	})
 	t.Run("should parse comment and code together with boilerplate", func(t *testing.T) {
 		source := utils.GetFileData("../tests/fixtures/source.01.source")
 		expected := utils.GetFileData("../tests/fixtures/expect.01.md")
 
 		result := newParseComments(source)
 
+		utils.SaveFile("/tmp/arrays2.md", result)
+
 		assert.Equal(t, expected, result, "should parse right")
+	})
+	t.Run("should be possible to have multiline comments", func(t *testing.T) {
+		source := utils.GetFileData("../tests/fixtures/source.02.source")
+		expected := utils.GetFileData("../tests/fixtures/expect.02.md")
+		require.NotEmpty(t, source, "fixture source.02.source should exist")
+		require.NotEmpty(t, expected, "fixture expect.02.md should exist")
+
+		result := newParseComments(source)
+		utils.SaveFile("/tmp/arrays2.md", result)
+
+		assert.Equal(t, expected, result, "processComments should match expected output for multiline comments")
 	})
 }
 
@@ -80,6 +85,16 @@ func TestExtractBeginEnd(t *testing.T) {
 	t.Run("should extract begin and end code", func(t *testing.T) {
 		source := utils.GetFileData("../tests/fixtures/source.08.source")
 		expected := utils.GetFileData("../tests/fixtures/expect.08.md")
+
+		result := extractBeginEnd(source)
+
+		utils.SaveFile("/tmp/arrays2.md", result)
+
+		assert.Equal(t, expected, result, "should parse head right")
+	})
+	t.Run("should return nothing when no comment begin..end", func(t *testing.T) {
+		source := utils.GetFileData("../tests/fixtures/source.01.source")
+		expected := ""
 
 		result := extractBeginEnd(source)
 

@@ -76,36 +76,30 @@ func parseComments(data string, path string) string {
 }
 
 func newParseComments(data string) string {
-	// disabled
-	// data = removeHead(data)
-	// utils.SaveFile("/tmp/arrays2.md", data)
-	// return ""
+	data = stripBoilerPlate(data)
 
 	splitted := strings.Split(string(data), "\n")
 
 	left := 0
-	// right := len(splitted) - 1
 
-	markdown := ""
+	var markdown strings.Builder
 
 	for left < len(splitted) {
 		code, comment := "", ""
 
 		if isCommentCheck(splitted[left]) {
 			code, left = parseCommentSequence(splitted, left)
-			markdown += code
+			markdown.WriteString(code)
 		} else if isCodeCheck(splitted[left]) {
 			comment, left = parseCodeSequence(splitted, left)
-			markdown += comment
+			markdown.WriteString(comment)
 		} else {
-			markdown += "\n"
+			markdown.WriteString("\n")
 			left++
 		}
 	}
 
-	utils.SaveFile("/tmp/arrays2.md", markdown)
-
-	return markdown
+	return trimTab(markdown.String())
 }
 
 func parseCodeSequence(str []string, left int) (string, int) {
@@ -135,7 +129,7 @@ func parseCommentSequence(str []string, left int) (string, int) {
 		right++
 	}
 
-	joined := strings.Join(str[startL:right], "\n")
+	joined := strings.Join(str[startL:right], "   \n")
 	parsed := strings.ReplaceAll(joined, "// ", "") + "\n"
 
 	return parsed, right
@@ -169,10 +163,17 @@ func extractBeginEnd(data string) string {
 		// ident comment code
 		comment = regexp.MustCompile(`(?m)^`).ReplaceAllString(comment, "\t")
 
-		return comment
+		return "\n" + comment
 	}
 
 	return ""
+}
+
+func trimTab(str string) string {
+	if !isEmpty(str) {
+		return regexp.MustCompile(`(?m)^(\t|  )`).ReplaceAllString(str, "")
+	}
+	return str
 }
 
 func isCommentCheck(str string) bool {
@@ -183,7 +184,7 @@ func isCommentCheck(str string) bool {
 }
 
 func isCodeCheck(str string) bool {
-	return regexp.MustCompile(`(?i)^[a-z\}]+`).MatchString(str)
+	return regexp.MustCompile(`(?i)^\s*[a-z\}]+`).MatchString(str)
 }
 
 func isEmpty(str string) bool {
