@@ -1,18 +1,16 @@
 ## Types
 
-[Readme](../README.md) / Types 
-
+[Readme](../README.md) / Types
 ```go
 type FuncType func()
 ```
-It is possible to add method a to func type?!
 
+It is possible to add method a to func type?!
 ```go
 func (f FuncType) callFn() {
 	f()
 }
 ```
-
 
 ```go
 type IntType int
@@ -25,17 +23,13 @@ type anyStruct struct {
 ```
 
 Add method to int type
-
 ```go
 func (i IntType) getInt() {
 	fmt.Println("selected type: ", i)
 }
 ```
 
-
-
 ### Methods on types
-
 
 ```go
 var fnType FuncType
@@ -47,7 +41,6 @@ fnType.callFn()
 ```
 
 method on int
-
 ```go
 var intType IntType
 intType = 1
@@ -60,7 +53,6 @@ intType.getInt()
 basically int: int, int8, int16, int32, int64   
 go get type by inference and set int, that is based on processor architecture   
 go get type by inference and set int, that is based on processor architecture
-
 ```go
 num := 1
 fmt.Println("infer int type: ", reflect.TypeOf(num))
@@ -83,15 +75,14 @@ var variable uint = -1
 byte is an alias for uint8
 
 returns int
-
 ```go
 fmt.Println(reflect.TypeOf(num))
 ```
+
 ### Other types
 
 for float there is just   
 float32 and float64
-
 
 ```go
 num2 := 2.0
@@ -100,14 +91,12 @@ fmt.Println(reflect.TypeOf(num2))
 ```
 
 type boolean
-
 ```go
 isOk := true
 fmt.Println(isOk)
 ```
 
 type error
-
 ```go
 var erro error = errors.New("panic internal error")
 fmt.Println(erro)
@@ -115,7 +104,7 @@ fmt.Println(erro)
 
 function type   
 this is anonymous function
-
 ```go
 whatIsType := func() {}
 fmt.Println(reflect.TypeOf(whatIsType))
+```

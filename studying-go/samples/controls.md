@@ -2,7 +2,6 @@
 
 [Readme](../README.md) / Controls
 
-
 ```go
 returnBool := func() int {
 	return 1
@@ -13,7 +12,6 @@ returnBool := func() int {
 
 it is called if init, init a var inside if   
 if init
-
 ```go
 if val := returnBool(); val > 0 {
 	fmt.Println("return int", val)
@@ -21,14 +19,12 @@ if val := returnBool(); val > 0 {
 ```
 
 it is possible to redeclare val
-
 ```go
 val := 1
 fmt.Println("redeclare val: ", val)
 ```
 
 ### switch case:
-
 ```go
 cond := 1
 switch cond {
@@ -40,7 +36,6 @@ default:
 ```
 
 switch change position of condition
-
 ```go
 switch {
 case 1 > 0:
@@ -48,3 +43,4 @@ case 1 > 0:
 case 0 > -1:
 	fmt.Println("yes it is greather too : 0 > -1")
 ```
+

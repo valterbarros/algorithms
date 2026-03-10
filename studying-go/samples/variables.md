@@ -1,12 +1,11 @@
 ## Variables
 
-[Readme](../README.md) / Variables 
+[Readme](../README.md) / Variables
 
 ### Declaring Vars
 
 type variable1 int   
 can be declared like this
-
 ```go
 var (
 	variable1 string
@@ -15,33 +14,29 @@ var (
 ```
 
 or like this
-
 ```go
 var variable3 string
 ```
-custom type
 
+custom type
 ```go
 type newType string
 ```
-const constant
 
+const constant
 ```go
 const (
 	constType newType = "const type"
 )
 ```
 
-
-
 and using inference `:=`   
 inference only works inside functions
-
 ```go
 variable4 := "valter"
 ```
-custom type
 
+custom type
 ```go
 var variable5 newType
 var variable6 newType = "typed valter"
@@ -52,7 +47,6 @@ variable5 = constType
 ```
 
 assignment
-
 ```go
 variable1 = "valter"
 variable2 = "junior"
@@ -64,7 +58,7 @@ fmt.Println(variable1, variable2, variable3, variable4, variable5, variable6)
 
 is possible to swap variables value   
 valter junior -> junior valter
-
 ```go
 variable1, variable2 = variable2, variable1
 fmt.Println("after swap: ", variable1, variable2)
+```

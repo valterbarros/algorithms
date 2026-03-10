@@ -1,8 +1,7 @@
 ## Enums
 
-[Readme](../README.md) / Enums    
+[Readme](../README.md) / Enums   
 ### Set direct value
-
 ```go
 const (
 	Pending    = "pending"
@@ -12,12 +11,11 @@ const (
 ```
 
 use a type to set enums
-
 ```go
 type ServerState int
 ```
-Methods on int type \o/
 
+Methods on int type \o/
 ```go
 func (ss ServerState) String() string {
 	if ss == 0 {
@@ -30,7 +28,6 @@ func (ss ServerState) String() string {
 }
 ```
 
-
 ```go
 const (
 	StateIddle ServerState = iota
@@ -38,15 +35,12 @@ const (
 )
 ```
 
-
-
 usage
-
 ```go
 fmt.Println("untyped: ", Pending, Ready, InProgress)
 fmt.Println("ServerState: ", StateIddle, StateConnected)
 ```
 
-
 ```go
 fmt.Println("ServerState String: ", StateIddle.String())
+```
