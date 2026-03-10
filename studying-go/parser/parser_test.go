@@ -79,8 +79,7 @@ func TestParseCodeSequence(t *testing.T) {
 		source := strings.Split(raw, "\n")
 		expected := "```go" + `
 slices.Sort(array2)
-fmt.printLn(array2)
-` + "```"
+fmt.printLn(array2)` + "\n```\n"
 
 		result, _ := parseCodeSequence(source, 8)
 

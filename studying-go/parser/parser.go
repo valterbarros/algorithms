@@ -138,7 +138,7 @@ func parseCommentSequence(str []string, left int) (string, int) {
 		right++
 	}
 
-	joined := strings.Join(str[startL:right], "   \n")
+	joined := strings.Join(str[startL:right], "\n")
 	parsed := strings.ReplaceAll(joined, "// ", "") + "\n"
 
 	return parsed, right
