@@ -38,6 +38,16 @@ func TestFromGoToMarkdown(t *testing.T) {
 
 		assert.Equal(t, expected, result, "processComments should preserve comment beside code")
 	})
+	t.Run("should be work with big file", func(t *testing.T) {
+		source := utils.GetFileData("../tests/fixtures/source.09.source")
+		expected := utils.GetFileData("../tests/fixtures/expect.09.md")
+		require.NotEmpty(t, source, "fixture source.09.source should exist")
+		require.NotEmpty(t, expected, "fixture expect.09.md should exist")
+
+		result := fromGoToMarkdown(source, "/tmp/arrays2.md")
+
+		assert.Equal(t, expected, result, "processComments should preserve comment beside code")
+	})
 }
 
 func TestStripBoilerPlate(t *testing.T) {

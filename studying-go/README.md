@@ -37,6 +37,19 @@ example:
 go run parser_cmd/main.go -file-run variables
 ```
 
+### Testes
+generate big file
+
+```shell
+go run ./cmd/fixturegen -lines 20000 -out tests/fixtures/source.huge.source
+```
+
+run testes
+
+```shell
+go test ./parser
+```
+
 ### Running with VS Code
 
 You can also run and debug algorithms or tests directly in [Visual Studio Code](https://code.visualstudio.com/):
