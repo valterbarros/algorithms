@@ -11,12 +11,12 @@ const breadCrumbPattern string = `(?i)(\/\/\s)?\[Readme+\].+`
 
 func parseComments(data string, path string) string {
 	data = removeHead(data)
-	reg := regexp.MustCompile(`(?im)\n`)
+	// reg := regexp.MustCompile(`(?im)\n`)
 	// utils.SaveFile("/tmp/arrays2.md", data)
 	// return ""
 
 	markdown := ""
-	splitted := reg.Split(data, -1)
+	splitted := strings.Split(string(data), "\n")
 	hasCodeSeq := false
 
 	for index, original := range splitted {
