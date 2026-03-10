@@ -15,7 +15,9 @@ use a type to set enums
 type ServerState int
 ```
 
-Methods on int type \o/
+Methods on int type \o/   
+It is possible to create a String() method to return the string   
+It is like toString in other languages
 ```go
 func (ss ServerState) String() string {
 	if ss == 0 {
@@ -38,6 +40,7 @@ const (
 usage
 ```go
 fmt.Println("untyped: ", Pending, Ready, InProgress)
+// StateIddle, StateConnected invoke the String() method
 fmt.Println("ServerState: ", StateIddle, StateConnected)
 ```
 
