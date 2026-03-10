@@ -5,3 +5,6 @@ fmt.Println("array1: ", array1)
 
 // Comment that dont appear
 fmt.Println("testing")
+
+slices.Sort(array2)
+fmt.printLn(array2)
