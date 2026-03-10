@@ -76,6 +76,44 @@ func parseComments(data string, path string) string {
 	return markdown
 }
 
+func parseCodeSequence(str []string, left int) string {
+	start := str[left]
+	startL := left
+	right := left + 1
+
+	if isCommentCheck(start) {
+		return ""
+	}
+
+	markdown := "```go\n"
+
+	for len(str) > right && !isEmpty(str[right]) {
+		right++
+	}
+
+	return markdown + strings.Join(str[startL:right], "\n") + "\n```"
+}
+
+func parseCommentSequence(str []string, left int) string {
+	start := str[left]
+	startL := left
+	right := left + 1
+
+	if !isCommentCheck(start) {
+		return ""
+	}
+
+	for len(str) > right && !isEmpty(str[right]) {
+		fmt.Println(str[right])
+		right++
+	}
+
+	joined := strings.Join(str[startL:right], "\n")
+	parsed := strings.ReplaceAll(joined, "// ", "") + "\n"
+
+	return parsed
+}
+
 func removeHead(data string) string {
 	runReg := regexp.MustCompile(`(?i)[\s\S]+Run\(\)\s\{\n`)
 	body := runReg.ReplaceAllLiteralString(data, "")
@@ -92,8 +130,8 @@ func removeHead(data string) string {
 	}
 
 	// remove new line \n
-	removeReg := regexp.MustCompile(`[\n\}]+$`)
-	body = removeReg.ReplaceAllString(body, "")
+	clearReg := regexp.MustCompile(`[\n\}]+$`)
+	body = clearReg.ReplaceAllString(body, "")
 
 	return body
 }
@@ -102,7 +140,11 @@ func isCommentCheck(str string) bool {
 	// check if it current is comment and if comment that is at begin of string?
 	// // new comment here => results true
 	// slices[0] + ... // new comment here => results false
-	return strings.TrimSpace(str) != "" && strings.Contains(str, "//") && strings.Index(str, "//") < 10
+	return !isEmpty(str) && strings.Contains(str, "//") && strings.Index(str, "//") < 10
+}
+
+func isEmpty(str string) bool {
+	return strings.TrimSpace(str) == ""
 }
 
 // deprecated

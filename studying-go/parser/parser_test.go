@@ -2,6 +2,7 @@ package parser
 
 import (
 	"regexp"
+	"strings"
 	"studying-go/utils"
 	"testing"
 
@@ -71,5 +72,28 @@ func TestParseComments(t *testing.T) {
 		result := parseComments(source, "/tmp/array2-result.md")
 
 		assert.Equal(t, expected, result, "processComments should preserve comment beside code")
+	})
+}
+
+func TestParseCodeSequence(t *testing.T) {
+	t.Run("should parse code", func(t *testing.T) {
+		raw := utils.GetFileData("../tests/fixtures/source.04.source")
+		source := strings.Split(raw, "\n")
+		expected := utils.GetFileData("../tests/fixtures/expect.04.md")
+
+		result := parseCodeSequence(source, 0)
+
+		assert.Equal(t, expected, result, "should parse right")
+	})
+}
+func TestParseCommentSequence(t *testing.T) {
+	t.Run("should parse comment", func(t *testing.T) {
+		raw := utils.GetFileData("../tests/fixtures/source.05.source")
+		source := strings.Split(raw, "\n")
+		expected := utils.GetFileData("../tests/fixtures/expect.05.md")
+
+		result := parseCommentSequence(source, 0)
+
+		assert.Equal(t, expected, result, "should parse right")
 	})
 }
