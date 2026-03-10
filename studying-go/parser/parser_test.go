@@ -82,9 +82,9 @@ func TestParseCodeSequence(t *testing.T) {
 		source := strings.Split(raw, "\n")
 		expected := utils.GetFileData("../tests/fixtures/expect.04.md")
 
-		result, _ := parseCodeSequence(source, 0)
+		content, _ := parseCodeSequence(source, 0)
 
-		assert.Equal(t, expected, result, "should parse right")
+		assert.Equal(t, expected, content, "should parse right")
 	})
 
 	t.Run("should parse code with advance left code", func(t *testing.T) {
@@ -94,9 +94,9 @@ func TestParseCodeSequence(t *testing.T) {
 slices.Sort(array2)
 fmt.printLn(array2)` + "\n```\n"
 
-		result, _ := parseCodeSequence(source, 8)
+		content, _ := parseCodeSequence(source, 8)
 
-		assert.Equal(t, expected, result, "should parse right")
+		assert.Equal(t, expected, content, "should parse right")
 	})
 }
 func TestParseCommentSequence(t *testing.T) {
@@ -105,9 +105,9 @@ func TestParseCommentSequence(t *testing.T) {
 		source := strings.Split(raw, "\n")
 		expected := utils.GetFileData("../tests/fixtures/expect.05.md")
 
-		result, _ := parseCommentSequence(source, 0)
+		content, _ := parseCommentSequence(source, 0)
 
-		assert.Equal(t, expected, result, "should parse right")
+		assert.Equal(t, expected, content, "should parse right")
 	})
 
 	t.Run("should parse comment with advanced left", func(t *testing.T) {
@@ -117,9 +117,9 @@ func TestParseCommentSequence(t *testing.T) {
 lorem ipsum new code
 `
 
-		result, _ := parseCommentSequence(source, 5)
+		content, _ := parseCommentSequence(source, 5)
 
-		assert.Equal(t, expected, result, "should parse right")
+		assert.Equal(t, expected, content, "should parse right")
 	})
 }
 

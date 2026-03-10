@@ -8,122 +8,143 @@ import (
 
 const breadCrumbPattern string = `(?i)(\/\/\s)?\[Readme+\].+`
 
+var (
+	reRunBlock   = regexp.MustCompile(`(?i)[\s\S]+Run\(\)\s\{\n`)
+	reBreadCrumb = regexp.MustCompile(breadCrumbPattern)
+	reTrailNL    = regexp.MustCompile(`[\n\}]+$`)
+	reBeginEnd   = regexp.MustCompile(`(?m)^\s*\/\/\s?begin\r?\n([\s\S]+?)\s*\/\/\s*end`)
+	reIndentLine = regexp.MustCompile(`(?m)^`)
+	reTrimIndent = regexp.MustCompile(`(?m)^(\t|  )`)
+	reCodePrefix = regexp.MustCompile(`(?i)^\s*[a-z\}]+`)
+)
+
+type lineKind int
+
+const (
+	lineEmpty lineKind = iota
+	lineComment
+	lineCode
+)
+
+// this is similar to toString in other languages
+func (k lineKind) String() string {
+	switch k {
+	case lineEmpty:
+		return "empty"
+	case lineComment:
+		return "comment"
+	case lineCode:
+		return "code"
+	default:
+		return "unknown"
+	}
+}
+
 func fromGoToMarkdown(data, path string) string {
 	data = stripBoilerPlate(data)
+	lines := strings.Split(data, "\n")
 
-	splitted := strings.Split(string(data), "\n")
-
+	var out strings.Builder
 	left := 0
 
-	var markdown strings.Builder
-
-	for left < len(splitted) {
-		code, comment := "", ""
-
-		if isCommentCheck(splitted[left]) {
-			code, left = parseCommentSequence(splitted, left)
-			markdown.WriteString(code)
-		} else if isCodeCheck(splitted[left]) {
-			comment, left = parseCodeSequence(splitted, left)
-			markdown.WriteString(comment)
-		} else {
-			markdown.WriteString("\n")
+	for left < len(lines) {
+		switch classifyLine(lines[left]) {
+		case lineComment:
+			content, next := parseCommentSequence(lines, left)
+			out.WriteString(content)
+			left = next
+		case lineCode:
+			content, next := parseCodeSequence(lines, left)
+			out.WriteString(content)
+			left = next
+		default:
+			out.WriteString("\n")
 			left++
 		}
 	}
 
-	trimmed := trimTab(markdown.String())
+	trimmed := trimLeadingIndent(out.String())
 
-	utils.SaveFile(path, trimmed)
+	if path != "" {
+		utils.SaveFile(path, trimmed)
+	}
 
 	return trimmed
 }
 
-func parseCodeSequence(str []string, left int) (string, int) {
-	// Parse spaces inside here
-	startL := left
+func parseCodeSequence(lines []string, left int) (content string, next int) {
+	start := left
 	right := left + 1
-
-	markdown := "```go\n"
-	close := "\n```\n"
-
-	// Code can sequence with comments if no \n
-	for len(str) > right && !isEmpty(str[right]) {
+	// Code block continues until an empty line; comment lines beside code stay in the same block.
+	for right < len(lines) && !isEmpty(lines[right]) {
 		right++
 	}
-
-	parsed := markdown + strings.Join(str[startL:right], "\n") + close
-
-	return parsed, right
+	content = "```go\n" + strings.Join(lines[start:right], "\n") + "\n```\n"
+	return content, right
 }
 
-func parseCommentSequence(str []string, left int) (string, int) {
-	startL := left
+func parseCommentSequence(lines []string, left int) (content string, next int) {
+	start := left
 	right := left + 1
-
-	// Code can't sequence with code or \n
-	for len(str) > right && isCommentCheck(str[right]) {
+	for right < len(lines) && isCommentLine(lines[right]) {
 		right++
 	}
-
-	joined := strings.Join(str[startL:right], "   \n")
-	parsed := strings.ReplaceAll(joined, "// ", "") + "\n"
-
-	return parsed, right
+	joined := strings.Join(lines[start:right], "   \n")
+	content = strings.ReplaceAll(joined, "// ", "") + "\n"
+	return content, right
 }
 
 func stripBoilerPlate(data string) string {
-	runReg := regexp.MustCompile(`(?i)[\s\S]+Run\(\)\s\{\n`)
-	body := runReg.ReplaceAllLiteralString(data, "")
-
+	body := reRunBlock.ReplaceAllLiteralString(data, "")
 	comment := extractBeginEnd(data)
-	body = regexp.MustCompile(breadCrumbPattern).ReplaceAllString(body, "$0"+comment)
-
-	// remove new line \n
-	clearReg := regexp.MustCompile(`[\n\}]+$`)
-	body = clearReg.ReplaceAllString(body, "")
-
+	body = reBreadCrumb.ReplaceAllString(body, "$0"+comment)
+	body = reTrailNL.ReplaceAllString(body, "")
 	return body
 }
 
-// Extract comment head
-// // begin
-// ...inner
-// // end
-// returns inner
+// extractBeginEnd extracts the block between // begin and // end.
 func extractBeginEnd(data string) string {
-	startEndReg := regexp.MustCompile(`(?m)^\s*\/\/\s?begin\r?\n([\s\S]+?)\s*\/\/\s*end`)
-	matches := startEndReg.FindStringSubmatch(data)
-
-	if len(matches) > 0 {
-		comment := matches[1]
-		// ident comment code
-		comment = regexp.MustCompile(`(?m)^`).ReplaceAllString(comment, "\t")
-
-		return "\n" + comment
+	matches := reBeginEnd.FindStringSubmatch(data)
+	if len(matches) == 0 {
+		return ""
 	}
-
-	return ""
+	comment := reIndentLine.ReplaceAllString(matches[1], "\t")
+	return "\n" + comment
 }
 
-func trimTab(str string) string {
-	if !isEmpty(str) {
-		return regexp.MustCompile(`(?m)^(\t|  )`).ReplaceAllString(str, "")
+func trimLeadingIndent(s string) string {
+	if isEmpty(s) {
+		return s
 	}
-	return str
+	return reTrimIndent.ReplaceAllString(s, "")
 }
 
-func isCommentCheck(str string) bool {
-	// check if it current is comment and if comment that is at begin of string?
-	// // new comment here => results true
-	// slices[0] + ... // new comment here => results false
-	return !isEmpty(str) && strings.Contains(str, "//") && strings.Index(str, "//") < 10
+// isCommentLine reports whether the line is a comment at the start (// within the first ~10 chars).
+func isCommentLine(s string) bool {
+	return !isEmpty(s) && strings.Contains(s, "//") && strings.Index(s, "//") < 10
+}
+
+func classifyLine(s string) lineKind {
+	if isEmpty(s) {
+		return lineEmpty
+	}
+	if isCommentLine(s) {
+		return lineComment
+	}
+	if reCodePrefix.MatchString(s) {
+		return lineCode
+	}
+	return lineEmpty
 }
 
 func isCodeCheck(str string) bool {
-	return regexp.MustCompile(`(?i)^\s*[a-z\}]+`).MatchString(str)
+	return reCodePrefix.MatchString(str)
 }
 
-func isEmpty(str string) bool {
-	return strings.TrimSpace(str) == ""
+func isCommentCheck(str string) bool {
+	return isCommentLine(str)
+}
+
+func isEmpty(s string) bool {
+	return strings.TrimSpace(s) == ""
 }
