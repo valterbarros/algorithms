@@ -1,7 +1,6 @@
 package parser
 
 import (
-	"fmt"
 	"regexp"
 	"strings"
 	"studying-go/utils"
@@ -10,7 +9,7 @@ import (
 const breadCrumbPattern string = `(?i)(\/\/\s)?\[Readme+\].+`
 
 func parseComments(data string, path string) string {
-	data = removeHead(data)
+	data = stripBoilerPlate(data)
 	// reg := regexp.MustCompile(`(?im)\n`)
 	// utils.SaveFile("/tmp/arrays2.md", data)
 	// return ""
@@ -102,8 +101,6 @@ func newParseComments(data string) string {
 			markdown += "\n"
 			left++
 		}
-
-		fmt.Println(left)
 	}
 
 	utils.SaveFile("/tmp/arrays2.md", markdown)
@@ -144,26 +141,38 @@ func parseCommentSequence(str []string, left int) (string, int) {
 	return parsed, right
 }
 
-func removeHead(data string) string {
+func stripBoilerPlate(data string) string {
 	runReg := regexp.MustCompile(`(?i)[\s\S]+Run\(\)\s\{\n`)
 	body := runReg.ReplaceAllLiteralString(data, "")
-	startEndReg := regexp.MustCompile(`(?m)^\/\/\s?begin([\s\S]+)\/\/\s?end`)
-	matches := startEndReg.FindStringSubmatch(data)
 
-	if len(matches) > 0 {
-		comment := matches[1]
-		// add spaces to keep pattern
-		comment = regexp.MustCompile(`(?m)^`).ReplaceAllString(comment, " ")
-		// $0 is breadcrumb match
-
-		body = regexp.MustCompile(breadCrumbPattern).ReplaceAllString(body, "$0"+comment)
-	}
+	comment := extractBeginEnd(data)
+	body = regexp.MustCompile(breadCrumbPattern).ReplaceAllString(body, "$0"+comment)
 
 	// remove new line \n
 	clearReg := regexp.MustCompile(`[\n\}]+$`)
 	body = clearReg.ReplaceAllString(body, "")
 
 	return body
+}
+
+// Extract comment head
+// // begin
+// ...inner
+// // end
+// returns inner
+func extractBeginEnd(data string) string {
+	startEndReg := regexp.MustCompile(`(?m)^\s*\/\/\s?begin\r?\n([\s\S]+?)\s*\/\/\s*end`)
+	matches := startEndReg.FindStringSubmatch(data)
+
+	if len(matches) > 0 {
+		comment := matches[1]
+		// ident comment code
+		comment = regexp.MustCompile(`(?m)^`).ReplaceAllString(comment, "\t")
+
+		return comment
+	}
+
+	return ""
 }
 
 func isCommentCheck(str string) bool {
@@ -179,37 +188,4 @@ func isCodeCheck(str string) bool {
 
 func isEmpty(str string) bool {
 	return strings.TrimSpace(str) == ""
-}
-
-// deprecated
-func addBreadCrumb() {
-	// TODO: run each file in a go routine
-	// Replace first and then overwrite the file with new content
-	// add breadcrumb to all files
-	utils.IterateFiles("samples/", ".md", func(name string) {
-		data := utils.GetFileData("samples/" + name)
-
-		viewName := utils.Capitalize(strings.ReplaceAll(name, ".md", ""))
-
-		withBreadCrumb := replaceBy(data, viewName)
-		fmt.Println(withBreadCrumb)
-
-		// Save to file
-		utils.SaveFile("samples/"+name, withBreadCrumb)
-	})
-}
-
-// deprecated
-func replaceBy(data, name string) string {
-	// (?i) is for case insensitive
-	titleReg := regexp.MustCompile(`(?im)(^##\s[a-z]+)`)
-	breadBase := "[Readme](../README.md) / " + name
-	breadCrumbReg := regexp.MustCompile(breadCrumbPattern)
-
-	// if has edit update breadcrumb
-	if has := breadCrumbReg.MatchString(data); has {
-		return breadCrumbReg.ReplaceAllString(data, breadBase)
-	} else {
-		return titleReg.ReplaceAllString(data, "$1\n\n"+breadBase)
-	}
 }

@@ -63,6 +63,32 @@ func TestNewParseComments(t *testing.T) {
 	})
 }
 
+func TestStripBoilerPlate(t *testing.T) {
+	t.Run("should remove boilerplate and extract begin..end code", func(t *testing.T) {
+		source := utils.GetFileData("../tests/fixtures/source.07.source")
+		expected := utils.GetFileData("../tests/fixtures/expect.07.md")
+
+		result := stripBoilerPlate(source)
+
+		utils.SaveFile("/tmp/arrays2.md", result)
+
+		assert.Equal(t, expected, result, "should parse head right")
+	})
+}
+
+func TestExtractBeginEnd(t *testing.T) {
+	t.Run("should extract begin and end code", func(t *testing.T) {
+		source := utils.GetFileData("../tests/fixtures/source.08.source")
+		expected := utils.GetFileData("../tests/fixtures/expect.08.md")
+
+		result := extractBeginEnd(source)
+
+		utils.SaveFile("/tmp/arrays2.md", result)
+
+		assert.Equal(t, expected, result, "should parse head right")
+	})
+}
+
 func TestParseCodeSequence(t *testing.T) {
 	t.Run("should parse code", func(t *testing.T) {
 		raw := utils.GetFileData("../tests/fixtures/source.04.source")

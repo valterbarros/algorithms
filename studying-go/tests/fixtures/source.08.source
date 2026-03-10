@@ -1,0 +1,49 @@
+package samples
+
+import (
+	"fmt"
+	"slices"
+)
+
+// begin
+// Init a type
+type FuncType func()
+
+// Init a function
+func funcEmptyArray() []int {
+	return []int{}
+}
+
+num := 1
+// many line inside code
+// many line inside code
+slice3[0], slice3[1] = slice3[1], slice3[0]
+
+// get first element
+slices[1]
+var fnType FuncType
+// end
+
+type ArrayType struct{}
+
+func (e ArrayType) Run() {
+	// ## Arrays
+
+	// [Readme](../README.md) / Arrays
+
+	// ### Internals
+
+	// there is some types for int and float
+	// basically int: int, int8, int16, int32, int64
+	// go get type by inference and set int, that is based on processor architecture
+	// go get type by inference and set int, that is based on processor architecture
+
+	num := 1
+  // many line inside code
+  // many line inside code
+	slice3[0], slice3[1] = slice3[1], slice3[0]
+
+	// get first element
+	slices[1]
+	var fnType FuncType
+}
