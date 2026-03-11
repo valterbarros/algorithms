@@ -3,19 +3,7 @@
 Some notes about go and important links
   - [Links](./notes/LINKS.md)
   - [Commands](./notes/COMMANDS.md)
-  - [Samples of go with comments](../samples/)
-    - [Arrays](./samples/arrays.md)
-    - [Controls](./samples/controls.md)
-    - [Enums](./samples/enums.md)
-    - [Functions](./samples/functions.md)
-    - [Goroutines](./samples/goroutine.md)
-    - [Maps](./samples/maps.md)
-    - [Pointers](./samples/pointers.md)
-    - [Interfaces](./samples/interfaces.md)
-    - [Strings](./samples/strings.md)
-    - [Structs](./samples/structs.md)
-    - [Types](./samples/types.md)
-    - [Variables](./samples/variables.md)
+  - [Samples of go with notes](https://github.com/valterbarros/algorithms/wiki)
 
 ## Go Algorithms – Usage Guide
 
@@ -35,6 +23,15 @@ example:
 
 ```shell
 go run parser_cmd/main.go -file-run variables
+```
+
+copy files to wiki
+
+```shell
+cp samples/*.md algorithms.wiki/
+git add .
+git commit -sm "..."
+git push
 ```
 
 ### Testes
