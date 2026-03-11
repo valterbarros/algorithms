@@ -25,15 +25,6 @@ example:
 go run parser_cmd/main.go -file-run variables
 ```
 
-copy files to wiki
-
-```shell
-cp samples/*.md algorithms.wiki/
-git add .
-git commit -sm "..."
-git push
-```
-
 ### Testes
 generate big file
 
