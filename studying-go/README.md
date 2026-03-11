@@ -50,6 +50,12 @@ run testes
 go test ./parser
 ```
 
+run dlv debug
+
+```shell
+dlv debug --headless --listen=:2345 --accept-multiclient --continue --only-same-user=false --log
+```
+
 ### Running with VS Code
 
 You can also run and debug algorithms or tests directly in [Visual Studio Code](https://code.visualstudio.com/):
