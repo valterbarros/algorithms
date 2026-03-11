@@ -31,6 +31,14 @@
       "request": "launch",
       "mode": "test",
       "program": "${workspaceFolder}/algorithms_go/array"
+    },
+    {
+      "name": "Attach to Lambda (Delve)",
+      "type": "go",
+      "request": "attach",
+      "mode": "remote",
+      "host": "localhost",
+      "port": 2345
     }
   ]
 }
