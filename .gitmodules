@@ -1,0 +1,3 @@
+[submodule "studying-go/algorithms.wiki"]
+	path = studying-go/algorithms.wiki
+	url = https://github.com/valterbarros/algorithms.wiki.git
