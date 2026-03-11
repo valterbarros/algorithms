@@ -1,6 +1,3 @@
-## Variables
-
-[Readme](../README.md) / Variables
 
 ### Declaring Vars
 

@@ -1,7 +1,3 @@
-## Strings
-
-[Readme](../README.md) / Strings
-
 ### String "interpolations"
 
 Doc with replacements %d %s, etc   

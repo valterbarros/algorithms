@@ -8,10 +8,6 @@ import (
 type MapsType struct{}
 
 func (e MapsType) Run() {
-	// ## Maps
-
-	// [Readme](../README.md) / Maps
-
 	// ### Working with map
 
 	// Create a map without initialization

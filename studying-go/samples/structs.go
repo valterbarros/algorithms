@@ -48,10 +48,6 @@ func (r Recurrence) privateProp() string {
 type StructsType struct{}
 
 func (s StructsType) Run() {
-	// ## Structs
-
-	// [Readme](../README.md) / Structs
-
 	// ### Inherit in structs
 
 	// inherit?!

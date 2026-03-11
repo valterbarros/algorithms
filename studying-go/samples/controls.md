@@ -1,7 +1,3 @@
-## Controls
-
-[Readme](../README.md) / Controls
-
 ```go
 returnBool := func() int {
 	return 1

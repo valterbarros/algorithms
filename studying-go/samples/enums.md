@@ -1,6 +1,3 @@
-## Enums
-
-[Readme](../README.md) / Enums   
 ### Set direct value
 ```go
 const (

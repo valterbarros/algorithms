@@ -7,10 +7,6 @@ import "fmt"
 type PointersType struct{}
 
 func (p PointersType) Run() {
-	// ## Pointers
-
-	// [Readme](../README.md) / Pointers
-
 	// ### Working with pointers
 
 	// passing var as pointer, it is a pointer for a int

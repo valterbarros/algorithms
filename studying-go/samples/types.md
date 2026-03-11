@@ -1,6 +1,3 @@
-## Types
-
-[Readme](../README.md) / Types
 ```go
 type FuncType func()
 ```

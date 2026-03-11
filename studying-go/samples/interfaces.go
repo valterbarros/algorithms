@@ -45,10 +45,6 @@ type code[T any] struct {
 type InterfacesType struct{}
 
 func (e InterfacesType) Run() {
-	// ## Functions
-
-	// [Readme](../README.md) / Interfaces
-
 	// It is possible to have string type
 	code1 := code[string]{"123f1"}
 	fmt.Println("code is: ", code1.code)

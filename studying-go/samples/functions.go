@@ -29,10 +29,6 @@ func init() {
 type FunctionsType struct{}
 
 func (ff FunctionsType) Run() {
-	// ## Functions
-
-	// [Readme](../README.md) / Functions
-
 	// ### defer keyword
 
 	// defer is used to run that as last function, that is executed before a return from function

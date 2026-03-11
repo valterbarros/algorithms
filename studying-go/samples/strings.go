@@ -11,10 +11,6 @@ import (
 type StringsType struct{}
 
 func (s StringsType) Run() {
-	// ## Strings
-
-	// [Readme](../README.md) / Strings
-
 	// ### String "interpolations"
 
 	// Doc with replacements %d %s, etc

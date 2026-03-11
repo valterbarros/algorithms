@@ -1,6 +1,3 @@
-## Functions
-
-[Readme](../README.md) / Functions
 ```go
 func testingDefer() int {
 	// defer is used to run that as last function

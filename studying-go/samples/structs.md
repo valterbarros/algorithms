@@ -1,6 +1,3 @@
-## Structs
-
-[Readme](../README.md) / Structs   
 ### Creating structs
 ```go
 type person struct {

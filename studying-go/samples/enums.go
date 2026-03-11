@@ -37,10 +37,6 @@ const (
 type EnumsType struct{}
 
 func (e EnumsType) Run() {
-	// ## Enums
-
-	// [Readme](../README.md) / Enums
-
 	// usage
 	fmt.Println("untyped: ", Pending, Ready, InProgress)
 	// StateIddle, StateConnected invoke the String() method

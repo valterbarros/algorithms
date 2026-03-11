@@ -8,10 +8,6 @@ import (
 type GoroutineType struct{}
 
 func (e GoroutineType) Run() {
-	// ## Goroutine
-
-	// [Readme](../README.md) / Goroutine
-
 	// TODO: add examples iterating with for range on channels
 	// ### Channels usage
 

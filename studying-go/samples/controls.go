@@ -7,10 +7,6 @@ import (
 type ControlsType struct{}
 
 func (e ControlsType) Run() {
-	// ## Controls
-
-	// [Readme](../README.md) / Controls
-
 	returnBool := func() int {
 		return 1
 	}

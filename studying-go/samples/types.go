@@ -30,10 +30,6 @@ func (i IntType) getInt() {
 // end
 
 func (t TypesType) Run() {
-	// ## Types
-
-	// [Readme](../README.md) / Types
-
 	// ### Methods on types
 
 	var fnType FuncType

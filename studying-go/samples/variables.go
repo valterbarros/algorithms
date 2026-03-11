@@ -29,10 +29,6 @@ const (
 type VariablesType struct{}
 
 func (v VariablesType) Run() {
-	// ## Variables
-
-	// [Readme](../README.md) / Variables
-
 	// and using inference `:=`
 	// inference only works inside functions
 	variable4 := "valter"

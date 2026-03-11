@@ -1,6 +1,3 @@
-## Functions
-
-[Readme](../README.md) / Interfaces
 
 Creates a interface
 ```go

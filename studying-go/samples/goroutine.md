@@ -1,7 +1,3 @@
-## Goroutine
-
-[Readme](../README.md) / Goroutine
-
 TODO: add examples iterating with for range on channels   
 ### Channels usage
 
