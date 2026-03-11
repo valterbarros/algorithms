@@ -1,6 +1,3 @@
-## Arrays
-
-[Readme](../README.md) / Arrays   
 Init a type
 ```go
 type FuncType func()

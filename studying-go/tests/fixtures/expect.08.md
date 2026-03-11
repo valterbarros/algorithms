@@ -1,4 +1,3 @@
-
 	// Init a type
 	type FuncType func()
 	
@@ -15,3 +14,4 @@
 	// get first element
 	slices[1]
 	var fnType FuncType
+

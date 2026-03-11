@@ -1,6 +1,3 @@
-	// ## Arrays
-
-	// [Readme](../README.md) / Arrays
 	// Init a type
 	type FuncType func()
 	

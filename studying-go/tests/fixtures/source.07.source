@@ -18,10 +18,6 @@ func funcEmptyArray() []int {
 type ArrayType struct{}
 
 func (e ArrayType) Run() {
-	// ## Arrays
-
-	// [Readme](../README.md) / Arrays
-
 	// ### Internals
 
 	// there is some types for int and float

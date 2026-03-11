@@ -10,7 +10,6 @@ const breadCrumbPattern string = `(?i)(\/\/\s)?\[Readme+\].+`
 
 var (
 	reRunBlock   = regexp.MustCompile(`(?i)[\s\S]+Run\(\)\s\{\n`)
-	reBreadCrumb = regexp.MustCompile(breadCrumbPattern)
 	reTrailNL    = regexp.MustCompile(`[\n\}]+$`)
 	reBeginEnd   = regexp.MustCompile(`(?m)^\s*\/\/\s?begin\r?\n([\s\S]+?)\s*\/\/\s*end`)
 	reIndentLine = regexp.MustCompile(`(?m)^`)
@@ -97,7 +96,7 @@ func parseCommentSequence(lines []string, left int) (content string, next int) {
 func stripBoilerPlate(data string) string {
 	body := reRunBlock.ReplaceAllLiteralString(data, "")
 	comment := extractBeginEnd(data)
-	body = reBreadCrumb.ReplaceAllString(body, "$0"+comment)
+	body = comment + body
 	body = reTrailNL.ReplaceAllString(body, "")
 	return body
 }
@@ -109,7 +108,7 @@ func extractBeginEnd(data string) string {
 		return ""
 	}
 	comment := reIndentLine.ReplaceAllString(matches[1], "\t")
-	return "\n" + comment
+	return comment + "\n\n"
 }
 
 func trimLeadingIndent(s string) string {

@@ -1,7 +1,3 @@
-## Arrays
-
-[Readme](../README.md) / Arrays
-
 ### Internals
 
 > More deep details about array and slices can be found   

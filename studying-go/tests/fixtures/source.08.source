@@ -27,10 +27,6 @@ var fnType FuncType
 type ArrayType struct{}
 
 func (e ArrayType) Run() {
-	// ## Arrays
-
-	// [Readme](../README.md) / Arrays
-
 	// ### Internals
 
 	// there is some types for int and float
@@ -44,6 +40,5 @@ func (e ArrayType) Run() {
 	slice3[0], slice3[1] = slice3[1], slice3[0]
 
 	// get first element
-	slices[1]
-	var fnType FuncType
+	slices[2]
 }

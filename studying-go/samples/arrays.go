@@ -8,10 +8,6 @@ import (
 type ArrayType struct{}
 
 func (e ArrayType) Run() {
-	// ## Arrays
-
-	// [Readme](../README.md) / Arrays
-
 	// ### Internals
 
 	// > More deep details about array and slices can be found
