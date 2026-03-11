@@ -1,7 +1,6 @@
 package utils
 
 import (
-	"fmt"
 	"os"
 	"strings"
 )
@@ -31,8 +30,7 @@ func ResetFile(file string) {
 func GetFileData(file string) string {
 	data, err := os.ReadFile(file)
 	if err != nil {
-		fmt.Println("Error to open file")
-		return ""
+		panic("Error to open file")
 	}
 
 	return string(data)
