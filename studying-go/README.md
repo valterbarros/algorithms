@@ -22,7 +22,7 @@ You can use these as learning material or as a base for your own projects.
 example:
 
 ```shell
-go run parser_cmd/main.go -file-run variables
+go run ./cmd/parser/main.go -file-run variables
 ```
 
 ### Testes
