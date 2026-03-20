@@ -21,7 +21,9 @@ func Pipe() {
 	for s.Scan() {
 		line := s.Text()
 		wg.Add(1)
-
+        // as buffer is 5
+		// after 5 passes it blocks until
+		// goroutine frees channel <-semaphore
 		semaphore <- ""
 
 		go func(l string) {
