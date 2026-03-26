@@ -18,7 +18,8 @@
   - A comprehensive collection of practical Go code snippets, examples, and recipes for building efficient, reliable, and scalable applications. 
 [Go tour](https://research.swtch.com/gotour)
   - A talk about go explaining about interfaces etc
-[Code cademy go courses](https://www.codecademy.com/catalog/language/go)
+[Code codecademy go courses](https://www.codecademy.com/catalog/language/go)
+[Aprenda go com tests (last updated 5 years ago)](https://larien.gitbook.io/aprenda-go-com-testes/primeiros-passos-com-go/ola-mundo)
 
 [Arrays]
 
