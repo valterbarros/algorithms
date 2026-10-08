@@ -87,6 +87,7 @@ func (e InterfacesType) Run() {
 	// Or
 	strVar, ok := newSt.(string)
 	fmt.Println("valor of check: ", strVar, ok)
+	fmt.Printf("type of strVar: %T\n", strVar+"123")
 
 	// Peharps go supports any it is mandatory to run a type assert to use values like:
 	var newSt2 any = "Olá, Go!"
@@ -102,6 +103,16 @@ func (e InterfacesType) Run() {
 	if ok {
 		fmt.Println(string(strVarToPrint) + " another string")
 	}
+
+	// Dynamic method kind it
+
+	// dynamic receives any type that implements the animal interface and call the talk method of that type
+	var dynamic = func(el animal) {
+		fmt.Println("dynamic: ", el.talk())
+	}
+
+	dynamic(cat{}) // Meow!
+	dynamic(dog{}) // Au!
 
 	// ### Array with any
 

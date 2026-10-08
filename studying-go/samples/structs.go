@@ -64,6 +64,7 @@ func (s StructsType) Run() {
 	// Set
 	r.SetName("valter 2")
 
+	// changed original struct because receive was passed as pointer
 	fmt.Println("change original name: ", r.GetName() == "valter 2")
 
 	// An especime of shurtcut to create many items in single interaction

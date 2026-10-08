@@ -39,6 +39,25 @@ func (e MapsType) Run() {
 	// c := int64(map2["first"]) * 2
 	// ```
 
+	// ### Map literals
+
+	type Two struct {
+		one, two int
+	}
+
+	map5 := map[string]Two{
+		"first":  {one: 1, two: 2},
+		"second": {one: 3, two: 4},
+	}
+	fmt.Println("map5: ", map5)
+
+	// ### Check if key exists
+
+	// check if key exists
+	if _, ok := map5["first"]; ok {
+		fmt.Println("map5 has key first")
+	}
+
 	// ### Editing map
 
 	// remove a key

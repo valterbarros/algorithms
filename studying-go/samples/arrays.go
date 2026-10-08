@@ -15,8 +15,14 @@ func (e ArrayType) Run() {
 
 	// it is possible to create slice with make
 	// capacity 15 and length 10
+	// > the capacity is the size of the intern array and the length is the size of the slice
+	// > when the slice reach the capacity, go basically duplicate the size of the intern array
+	// > if you know ahead of time the size the slice could be set that to capacity, for performance reasons
+	// > When capacity is reached, some copies of underlying array are made
 	slice0 := make([]float32, 10, 15)
 	fmt.Println("capacity slice0", cap(slice0), len(slice0))
+
+	fmt.Println(len(append(slice0, 1.0)))
 
 	// array fixed size
 	array1 := [5]int{1, 2, 3}
@@ -53,6 +59,12 @@ func (e ArrayType) Run() {
 	slice4 := array2[1:3]
 	fmt.Println("slice4: ", slice4)
 
+	// ### for range loop
+
+	for i, v := range slice4 {
+		fmt.Println("for range slice4[", i, "] = ", v)
+	}
+
 	// ### Using slices package
 
 	// unordered slice of array
@@ -60,6 +72,17 @@ func (e ArrayType) Run() {
 	// using slices package
 	slices.Sort(slice5)
 	fmt.Println("slice5: ", slice5)
+
+	// ### Slice of slice
+
+	var outter [][]uint8
+	var inner []uint8
+
+	inner = append(inner, 1)
+
+	outter = append(outter, inner)
+
+	fmt.Println("slice of slice: ", outter[0])
 
 	// ### Curiosity
 

@@ -5,7 +5,8 @@ import "fmt"
 // begin
 func testingDefer() int {
 	// defer is used to run that as last function
-	defer func() {
+	// If run many defer functions, they will be stacked and runned in reverse order
+	defer func() {	
 		fmt.Println("\ndefer fn, use it to clear data")
 	}()
 	return 1

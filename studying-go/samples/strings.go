@@ -5,8 +5,22 @@ package samples
 import (
 	"fmt"
 	"regexp"
+	"strconv"
 	"strings"
 )
+
+type ImpStr byte
+
+// ### Stringer
+// To implement Stringer that works like a toString in other languages
+// Just to implement a method String() string to object
+
+//	type Stringer interface {
+//	 String() string
+//	}
+func (i ImpStr) String() string {
+	return strconv.Itoa(int(i))
+}
 
 type StringsType struct{}
 
@@ -46,6 +60,11 @@ func (s StringsType) Run() {
 		// char is type rune
 		fmt.Println(idx, char)
 	}
+
+	// ### Implementing Stringer
+	// It is like toString in other languages
+	var i ImpStr = 123
+	fmt.Printf("custom stringer: %s \n", i) // -> 123
 
 	// ### Replace
 
