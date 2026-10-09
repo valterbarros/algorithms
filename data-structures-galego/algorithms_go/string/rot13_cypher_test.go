@@ -1,7 +1,6 @@
 package string
 
 import (
-	"fmt"
 	"io"
 	"strings"
 	"testing"
@@ -60,35 +59,15 @@ var replaces = map[string]byte{
 
 // It implements a Reader and read from a Reader
 func (r13 rot13Reader) Read(store []byte) (int, error) {
-	// Create a copy to temp read data
-	// the size 7 is because the string has 21 chars and is multiple of 21
-	aux := make([]byte, 7)
-	// offset to read after offset read
-	var offset int
+	// Read the size of bytes passed on store
+	// if the store is only 7 bytes it only read 7 bytes
+	n, err := r13.r.Read(store)
 
-	fmt.Println("store: ", len(store))
-
-	for {
-		n, err := r13.r.Read(aux)
-
-		if err == io.EOF {
-			break
-		}
-
-		// Copy characters and decrypt rot13
-		for i := range n {
-			// Mapper from replaces and return in byte type
-			char := replaces[string(aux[i])]
-
-			store[offset+i] = char
-		}
-
-		offset += n
+	for i := range n {
+		store[i] = replaces[string(store[i])]
 	}
 
-	fmt.Printf("bytes: %s \n", string(store))
-
-	return offset, io.EOF
+	return n, err
 }
 
 func TestRot13(t *testing.T) {
@@ -103,15 +82,28 @@ func TestRot13(t *testing.T) {
 		input    string
 		expected string
 	}{
-		{"Lbh penpxrq gur pbqr!", "You cracked the code"},
+		{"Lbh penpxrq gur pbqr!", "You cracked the code!"},
 	}
 
 	for _, tt := range tests {
 		t.Run("should return right decrypted string: "+tt.input, func(t *testing.T) {
-			store := make([]byte, 21)
-			r.Read(store)
+			// Reading from reader
+			// Can be splited in many peaces, the string has 21 bytes, can be read in 3 parts of 7
+			decrypt := ""
+			store := make([]byte, 7)
+			for {
+				n, err := r.Read(store)
 
-			assert.Equal(t, tt.expected, string(store),
+				if n > 0 {
+					decrypt += string(store)
+				}
+
+				if err == io.EOF {
+					break
+				}
+			}
+
+			assert.Equal(t, tt.expected, decrypt,
 				"Rot13(%q) deve retornar a mensagem sem criptografia", tt.input)
 		})
 	}
