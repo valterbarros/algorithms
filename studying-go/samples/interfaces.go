@@ -31,27 +31,9 @@ func trigger(t animal) {
 	fmt.Println(t.talk())
 }
 
-// ### Generic types
-
-// The old way to run generics is using interface and duplicating code
-// But now go has Generics as default a example of generics
-
-type code[T any] struct {
-	code T
-}
-
-// end
-
 type InterfacesType struct{}
 
 func (e InterfacesType) Run() {
-	// It is possible to have string type
-	code1 := code[string]{"123f1"}
-	fmt.Println("code is: ", code1.code)
-	// It is possible to have int type
-	code2 := code[int]{123}
-	fmt.Println("code2 is: ", code2.code)
-
 	// ### Using interfaces on functions
 
 	anima1 := dog{}
