@@ -63,6 +63,7 @@ func (r13 rot13Reader) Read(store []byte) (int, error) {
 	// if the store is only 7 bytes it only read 7 bytes
 	n, err := r13.r.Read(store)
 
+	// Only transformation of data, the control is passed to caller
 	for i := range n {
 		store[i] = replaces[string(store[i])]
 	}
@@ -88,7 +89,7 @@ func TestRot13(t *testing.T) {
 	for _, tt := range tests {
 		t.Run("should return right decrypted string: "+tt.input, func(t *testing.T) {
 			// Reading from reader
-			// Can be splited in many peaces, the string has 21 bytes, can be read in 3 parts of 7
+			// Can be splited in many peaces, the string has 21 bytes
 			decrypt := ""
 			store := make([]byte, 7)
 			for {

@@ -17,7 +17,8 @@
     - A amazing guided tour through go from original maintainers
   - [Tech packages documentation](https://pkg.go.dev)
     - A low level documentation about each go package 
-
+[Go blog](https://go.dev/blog/)
+  - Go official blog with cool material about go
 [Go cookbook](https://go-cookbook.com/)
   - A comprehensive collection of practical Go code snippets, examples, and recipes for building efficient, reliable, and scalable applications. 
 [Go tour](https://research.swtch.com/gotour)
