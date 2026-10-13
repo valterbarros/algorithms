@@ -130,15 +130,16 @@ func TestCrawler(t *testing.T) {
 	t.Run("should contain links", func(t *testing.T) {
 		str := RunCrawl()
 
+		lines := strings.Split(str, "\n")
+
 		assert.Contains(t, str, "https://golang.org/pkg/os/")
 		assert.Contains(t, str, "https://golang.org/cmd")
 		assert.Contains(t, str, "https://golang.org/pkg/fmt")
+		assert.Equal(t, 5, len(lines))
 	})
 
 	t.Run("Should not have duplicated urls", func(t *testing.T) {
 		str := RunCrawl()
-
-		fmt.Println("values: ", str)
 
 		reg := regexp.MustCompile(`https:\/\/golang.org\/\s`)
 		result := reg.FindAllString(str, 10)
