@@ -27,6 +27,7 @@ var samplesMap = map[string]samples.Sample{
 	"interface": samples.InterfacesType{},
 	"readers":   samples.ReadersType{},
 	"generics":  samples.GenericsType{},
+	"mutex":     samples.MutexType{},
 }
 
 // maps.Keys return seq and is necessary to put that on a slice with slices.Collect

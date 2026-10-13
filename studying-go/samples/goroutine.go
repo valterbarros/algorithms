@@ -9,6 +9,7 @@ type GoroutineType struct{}
 
 func (e GoroutineType) Run() {
 	// see walk_tree_test.go for more examples
+	// see https://www.youtube.com/watch?v=cmlKLz5S6G4
 
 	// ### Channels usage
 
@@ -100,4 +101,12 @@ func (e GoroutineType) Run() {
 	case c4 <- 1:
 		fmt.Println("c4")
 	}
+
+	// ### Readonly channels and Writeonly channel
+	// It is possible to create readonly e writeonly channels
+
+	// Readonly
+	// c7 := make(<-chan int)
+	// Writeonly
+	// c8 := make(chan<- int)
 }

@@ -24,6 +24,14 @@
 [Go tour](https://research.swtch.com/gotour)
   - A talk about go explaining about interfaces etc
 
+- Repos to study
+  - [Grrep](https://github.com/bep/grrep)
+    - A reimplementation of grep in go
+  - [Sift](https://github.com/timtatt/sift)
+    - A lightweight terminal UI for traversing Go tests
+  - [Restic](https://github.com/restic/restic)
+    - (Complex project) Fast, secure, efficient backup program
+
 [Code codecademy go courses](https://www.codecademy.com/catalog/language/go)
 
 [Aprenda go com tests (last updated 5 years ago)](https://larien.gitbook.io/aprenda-go-com-testes/primeiros-passos-com-go/ola-mundo)

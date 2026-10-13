@@ -1,9 +1,9 @@
 package main
 
-import (
-	"studying-go/playground"
-)
+// import (
+// "studying-go/playground"
+// )
 
 func main() {
-	playground.Pipe()
+	// playground.RunCrawl()
 }
