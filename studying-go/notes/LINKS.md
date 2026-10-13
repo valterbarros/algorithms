@@ -13,6 +13,10 @@
     - A list with so many go snippet code with explanations
   - [Go standard library](https://pkg.go.dev/std)
     - A more tecnical description about each go method
+  - [Go tour](https://go.dev/tour)
+    - A amazing guided tour through go from original maintainers
+  - [Tech packages documentation](https://pkg.go.dev)
+    - A low level documentation about each go package 
 
 [Go cookbook](https://go-cookbook.com/)
   - A comprehensive collection of practical Go code snippets, examples, and recipes for building efficient, reliable, and scalable applications. 
