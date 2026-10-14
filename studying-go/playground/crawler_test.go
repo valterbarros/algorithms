@@ -19,6 +19,7 @@ type SafeCache struct {
 }
 
 func (sc *SafeCache) hasBeenVisited(url string) bool {
+	// Protect all this function block with lock
 	sc.mu.Lock()
 	defer sc.mu.Unlock()
 
@@ -47,7 +48,7 @@ func Crawl(url string, depth int, fetcher Fetcher, wg *sync.WaitGroup, w io.Writ
 	}
 
 	body, urls, err := fetcher.Fetch(url)
-	if err != nil && !strings.Contains(err.Error(), "already") {
+	if err != nil {
 		fmt.Fprintf(w, "%v", err)
 		return
 	}
@@ -128,7 +129,7 @@ var fetcher = fakeFetcher{
 
 func TestCrawler(t *testing.T) {
 	t.Run("should contain links", func(t *testing.T) {
-		str := RunCrawl()
+		str := RunCrawl(t)
 
 		lines := strings.Split(str, "\n")
 
@@ -139,7 +140,7 @@ func TestCrawler(t *testing.T) {
 	})
 
 	t.Run("Should not have duplicated urls", func(t *testing.T) {
-		str := RunCrawl()
+		str := RunCrawl(t)
 
 		reg := regexp.MustCompile(`https:\/\/golang.org\/\s`)
 		result := reg.FindAllString(str, 10)
@@ -148,7 +149,8 @@ func TestCrawler(t *testing.T) {
 	})
 }
 
-func RunCrawl() string {
+func RunCrawl(t *testing.T) string {
+	t.Helper()
 	clear(safeCache.visited)
 
 	var wg sync.WaitGroup

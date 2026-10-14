@@ -13,7 +13,7 @@ type SafeCounter struct {
 }
 
 // It is required to pass as * because lock
-func (s SafeCounter) increment(key string) {
+func (s *SafeCounter) increment(key string) {
 	// This function is locked after next instruction
 	// if another call to incremented is made it don't continue
 	// The door is closed
